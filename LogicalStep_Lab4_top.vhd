@@ -60,6 +60,41 @@ COMPONENT Bin_Counter4bit is port
 );
 end COMPONENT;
 
+COMPONENT FourBitComparator is port (
+	
+	bitA0, bitA1, bitA2, bitA3, bitB0, bitB1, bitB2, bitB3 : in std_logic;
+	
+	AGTB	: out std_logic;
+	AEQB	: out std_logic;
+	ALTB	: out std_logic
+
+	);
+end COMPONENT;
+
+COMPONENT Grappler IS Port (
+ clk_input, rst_n, controlButton, enable						: IN std_logic;
+ grappleControl													: OUT std_logic
+ );
+end COMPONENT;
+
+COMPONENT Bidir_shift_reg is port
+(
+	CLK		: in std_logic :='0';
+	RESET_n	: in std_logic :='0';
+	CLK_EN	: in std_logic :='0';
+	LEFT0_RIGHT1 : in std_logic :='0';
+	REG_BITS	: OUT std_logic_vector(3 downto 0)
+);
+end COMPONENT;
+
+COMPONENT Extender IS Port
+(
+ clk_input, rst_n, controlButton, enable						: IN std_logic;
+ currentShiftValue 													: IN std_logic_vector(3 downto 0);
+ bitShifting, extenderOut, bitShiftDirection, grapplerEnable		: OUT std_logic
+ );
+END COMPONENT;
+
 
 
 
@@ -76,9 +111,13 @@ end COMPONENT;
 ----------------------------------------------------------------------------------------------------
 	
 	SIGNAL XTARGET, YTARGET : std_logic_vector(6 downto 0);
-	SIGNAL 
+	SIGNAL XCURRENT, YCURRENT : std_logic_vector(3 downto 0);
+	
+	SIGNAL XTargLTCurr, XTargEQCurr, XTargGTCurr : std_logic;
+	SIGNAL YTargLTCurr, YTargEQCurr, YTargGTCurr : std_logic;
 
-
+	SIGNAL bitShiftDirControl, bitShiftEnable : std_logic;
+	SIGNAL currentShiftValue : std_logic_vector(3 downto 0);
 
 
 
@@ -104,15 +143,47 @@ Clock_Source:
 					
 ---------------------------------------------------------------------------------------------------
 
-
+leds (3 downto 0) <= currentShiftValue (3 downto 0);
 ---------------------------------------------------------------------------------------------------
 INST1: SevenSegment PORT MAP (sw(7 downto 4),XTARGET);
 INST2: SevenSegment PORT MAP (sw(3 downto 0),YTARGET);
+-- switch to targets
 
 INST3: segment7_mux PORT MAP (clkin_50, XTARGET(6 downto 0), YTARGET(6 downto 0), seg7_data(6 downto 0), seg7_char1, seg7_char2);
 
-INST4: Bin_Counter4bit PORT MAP (Main_CLK,rst_n,'1s','1',leds(3 downto 0) );
+INST4X: Bin_Counter4bit PORT MAP (Main_CLK,rst_n,'1','1',XCURRENT(3 downto 0) );
 
+INST5Y: Bin_Counter4bit PORT MAP (Main_CLK,rst_n, '1','1',YCURRENT(3 downto 0) );
+
+
+INST6X: FourBitComparator PORT MAP (
+	
+	XTARGET(0),XTARGET(1), XTARGET(2), XTARGET(3),
+	XCURRENT(0), XCURRENT(1), XCURRENT(2), XCURRENT(3), 
+	XTargGTCurr, XTargEQCurr, XTargLTCurr);
+	
+INST7Y: FourBitComparator PORT MAP (
+	
+	YTARGET(0),YTARGET(1), YTARGET(2), YTARGET(3),
+	YCURRENT(0), YCURRENT(1), YCURRENT(2), YCURRENT(3), 
+	YTargGTCurr, YTargEQCurr, YTargLTCurr);
+	
+	
+--INST8GrapplerSM: Grappler PORT MAP (Main_Clk, rst_n, pb(0) , sw(7), leds(3)); --working
+
+INST9: Bidir_shift_reg PORT MAP(
+	Main_Clk, rst_n,	
+	bitShiftEnable, bitShiftDirControl, 
+	currentShiftValue (3 downto 0) );
+	
+INST10: Extender PORT MAP (
+
+ Main_Clk, rst_n, pb(2), sw(5),						
+ currentShiftValue(3 downto 0), 												
+ bitShiftEnable, leds(6), bitShiftDirControl, leds(7)
+ );
+
+ 
 --INST4: MealyStatemachine PORT MAP ( Main_CLK, rst_n, X_EQ, X_GT, X_LT : IN std_logic; --comparing DESIRED TO ACTUAL
  --Y_EQ, Y_GT, Y_LT : IN std_logic; --comparing DESIRED TO ACTUAL
  --isError : IN std_logic; -- need to put that somewhere

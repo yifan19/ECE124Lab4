@@ -1,0 +1,8 @@
+
+State Machine - |LogicalStep_Lab4_top|Extender:INST10|current_state
+Name current_state.FULLYEXTENDED current_state.EXTENDING3 current_state.EXTENDING2 current_state.EXTENDING1 current_state.RETRACTED 
+current_state.RETRACTED 0 0 0 0 0 
+current_state.EXTENDING1 0 0 0 1 1 
+current_state.EXTENDING2 0 0 1 0 1 
+current_state.EXTENDING3 0 1 0 0 1 
+current_state.FULLYEXTENDED 1 0 0 0 1 

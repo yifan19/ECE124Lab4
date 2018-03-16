@@ -20,6 +20,14 @@
 					"strict" : false
 				},
 				{
+					"name" : "leds[6]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[7]",
+					"strict" : false
+				},
+				{
 					"name" : "seg7_data[0]",
 					"strict" : false
 				},
@@ -89,6 +97,10 @@
 				},
 				{
 					"name" : "rst_n",
+					"strict" : false
+				},
+				{
+					"name" : "pb[2]",
 					"strict" : false
 				},
 				{

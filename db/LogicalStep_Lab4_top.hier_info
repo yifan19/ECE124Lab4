@@ -26,10 +26,13 @@ clkin_50 => bin_counter[22].CLK
 clkin_50 => bin_counter[23].CLK
 clkin_50 => bin_counter[24].CLK
 clkin_50 => bin_counter[25].CLK
-rst_n => Bin_Counter4bit:INST4.rst_n
+rst_n => Bin_Counter4bit:INST4X.rst_n
+rst_n => Bin_Counter4bit:INST5Y.rst_n
+rst_n => Bidir_shift_reg:INST9.RESET_n
+rst_n => Extender:INST10.rst_n
 pb[0] => ~NO_FANOUT~
 pb[1] => ~NO_FANOUT~
-pb[2] => ~NO_FANOUT~
+pb[2] => Extender:INST10.controlButton
 pb[3] => ~NO_FANOUT~
 sw[0] => SevenSegment:INST2.hex[0]
 sw[1] => SevenSegment:INST2.hex[1]
@@ -37,25 +40,26 @@ sw[2] => SevenSegment:INST2.hex[2]
 sw[3] => SevenSegment:INST2.hex[3]
 sw[4] => SevenSegment:INST1.hex[0]
 sw[5] => SevenSegment:INST1.hex[1]
+sw[5] => Extender:INST10.enable
 sw[6] => SevenSegment:INST1.hex[2]
 sw[7] => SevenSegment:INST1.hex[3]
-leds[0] <= Bin_Counter4bit:INST4.counter_bits[0]
-leds[1] <= Bin_Counter4bit:INST4.counter_bits[1]
-leds[2] <= Bin_Counter4bit:INST4.counter_bits[2]
-leds[3] <= Bin_Counter4bit:INST4.counter_bits[3]
-leds[4] <= <GND>
-leds[5] <= <GND>
-leds[6] <= <GND>
-leds[7] <= <GND>
-seg7_data[0] <= segment7_mux:INST3.DOUT[0]
-seg7_data[1] <= segment7_mux:INST3.DOUT[1]
-seg7_data[2] <= segment7_mux:INST3.DOUT[2]
-seg7_data[3] <= segment7_mux:INST3.DOUT[3]
-seg7_data[4] <= segment7_mux:INST3.DOUT[4]
-seg7_data[5] <= segment7_mux:INST3.DOUT[5]
-seg7_data[6] <= segment7_mux:INST3.DOUT[6]
-seg7_char1 <= segment7_mux:INST3.DIG2
-seg7_char2 <= segment7_mux:INST3.DIG1
+leds[0] << Bidir_shift_reg:INST9.REG_BITS[0]
+leds[1] << Bidir_shift_reg:INST9.REG_BITS[1]
+leds[2] << Bidir_shift_reg:INST9.REG_BITS[2]
+leds[3] << Bidir_shift_reg:INST9.REG_BITS[3]
+leds[4] << <GND>
+leds[5] << <GND>
+leds[6] << Extender:INST10.extenderOut
+leds[7] << Extender:INST10.grapplerEnable
+seg7_data[0] << segment7_mux:INST3.DOUT[0]
+seg7_data[1] << segment7_mux:INST3.DOUT[1]
+seg7_data[2] << segment7_mux:INST3.DOUT[2]
+seg7_data[3] << segment7_mux:INST3.DOUT[3]
+seg7_data[4] << segment7_mux:INST3.DOUT[4]
+seg7_data[5] << segment7_mux:INST3.DOUT[5]
+seg7_data[6] << segment7_mux:INST3.DOUT[6]
+seg7_char1 << segment7_mux:INST3.DIG2
+seg7_char2 << segment7_mux:INST3.DIG1
 
 
 |LogicalStep_Lab4_top|SevenSegment:INST1
@@ -171,7 +175,7 @@ DIG2 <= \clk_proc:COUNT[10].DB_MAX_OUTPUT_PORT_TYPE
 DIG1 <= \clk_proc:COUNT[10].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|LogicalStep_Lab4_top|Bin_Counter4bit:INST4
+|LogicalStep_Lab4_top|Bin_Counter4bit:INST4X
 Main_clk => ud_bin_counter[0].CLK
 Main_clk => ud_bin_counter[1].CLK
 Main_clk => ud_bin_counter[2].CLK
@@ -188,5 +192,198 @@ counter_bits[0] <= ud_bin_counter[0].DB_MAX_OUTPUT_PORT_TYPE
 counter_bits[1] <= ud_bin_counter[1].DB_MAX_OUTPUT_PORT_TYPE
 counter_bits[2] <= ud_bin_counter[2].DB_MAX_OUTPUT_PORT_TYPE
 counter_bits[3] <= ud_bin_counter[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|Bin_Counter4bit:INST5Y
+Main_clk => ud_bin_counter[0].CLK
+Main_clk => ud_bin_counter[1].CLK
+Main_clk => ud_bin_counter[2].CLK
+Main_clk => ud_bin_counter[3].CLK
+rst_n => ud_bin_counter[0].ACLR
+rst_n => ud_bin_counter[1].ACLR
+rst_n => ud_bin_counter[2].ACLR
+rst_n => ud_bin_counter[3].ACLR
+clk_en => process_0.IN0
+clk_en => process_0.IN0
+up1_down0 => process_0.IN1
+up1_down0 => process_0.IN1
+counter_bits[0] <= ud_bin_counter[0].DB_MAX_OUTPUT_PORT_TYPE
+counter_bits[1] <= ud_bin_counter[1].DB_MAX_OUTPUT_PORT_TYPE
+counter_bits[2] <= ud_bin_counter[2].DB_MAX_OUTPUT_PORT_TYPE
+counter_bits[3] <= ud_bin_counter[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FourBitComparator:INST6X
+bitA0 => SingleBitComparator:INST1.bit1
+bitA1 => SingleBitComparator:INST2.bit1
+bitA2 => SingleBitComparator:INST3.bit1
+bitA3 => SingleBitComparator:INST4.bit1
+bitB0 => SingleBitComparator:INST1.bit2
+bitB1 => SingleBitComparator:INST2.bit2
+bitB2 => SingleBitComparator:INST3.bit2
+bitB3 => SingleBitComparator:INST4.bit2
+AGTB <= AGTB_signal.DB_MAX_OUTPUT_PORT_TYPE
+AEQB <= AEQB_signal.DB_MAX_OUTPUT_PORT_TYPE
+ALTB <= ALTB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FourBitComparator:INST6X|SingleBitComparator:INST1
+bit1 => gt.IN0
+bit1 => et.IN0
+bit1 => lt.IN0
+bit2 => et.IN1
+bit2 => lt.IN1
+bit2 => gt.IN1
+gt <= gt.DB_MAX_OUTPUT_PORT_TYPE
+et <= et.DB_MAX_OUTPUT_PORT_TYPE
+lt <= lt.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FourBitComparator:INST6X|SingleBitComparator:INST2
+bit1 => gt.IN0
+bit1 => et.IN0
+bit1 => lt.IN0
+bit2 => et.IN1
+bit2 => lt.IN1
+bit2 => gt.IN1
+gt <= gt.DB_MAX_OUTPUT_PORT_TYPE
+et <= et.DB_MAX_OUTPUT_PORT_TYPE
+lt <= lt.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FourBitComparator:INST6X|SingleBitComparator:INST3
+bit1 => gt.IN0
+bit1 => et.IN0
+bit1 => lt.IN0
+bit2 => et.IN1
+bit2 => lt.IN1
+bit2 => gt.IN1
+gt <= gt.DB_MAX_OUTPUT_PORT_TYPE
+et <= et.DB_MAX_OUTPUT_PORT_TYPE
+lt <= lt.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FourBitComparator:INST6X|SingleBitComparator:INST4
+bit1 => gt.IN0
+bit1 => et.IN0
+bit1 => lt.IN0
+bit2 => et.IN1
+bit2 => lt.IN1
+bit2 => gt.IN1
+gt <= gt.DB_MAX_OUTPUT_PORT_TYPE
+et <= et.DB_MAX_OUTPUT_PORT_TYPE
+lt <= lt.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FourBitComparator:INST7Y
+bitA0 => SingleBitComparator:INST1.bit1
+bitA1 => SingleBitComparator:INST2.bit1
+bitA2 => SingleBitComparator:INST3.bit1
+bitA3 => SingleBitComparator:INST4.bit1
+bitB0 => SingleBitComparator:INST1.bit2
+bitB1 => SingleBitComparator:INST2.bit2
+bitB2 => SingleBitComparator:INST3.bit2
+bitB3 => SingleBitComparator:INST4.bit2
+AGTB <= AGTB_signal.DB_MAX_OUTPUT_PORT_TYPE
+AEQB <= AEQB_signal.DB_MAX_OUTPUT_PORT_TYPE
+ALTB <= ALTB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FourBitComparator:INST7Y|SingleBitComparator:INST1
+bit1 => gt.IN0
+bit1 => et.IN0
+bit1 => lt.IN0
+bit2 => et.IN1
+bit2 => lt.IN1
+bit2 => gt.IN1
+gt <= gt.DB_MAX_OUTPUT_PORT_TYPE
+et <= et.DB_MAX_OUTPUT_PORT_TYPE
+lt <= lt.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FourBitComparator:INST7Y|SingleBitComparator:INST2
+bit1 => gt.IN0
+bit1 => et.IN0
+bit1 => lt.IN0
+bit2 => et.IN1
+bit2 => lt.IN1
+bit2 => gt.IN1
+gt <= gt.DB_MAX_OUTPUT_PORT_TYPE
+et <= et.DB_MAX_OUTPUT_PORT_TYPE
+lt <= lt.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FourBitComparator:INST7Y|SingleBitComparator:INST3
+bit1 => gt.IN0
+bit1 => et.IN0
+bit1 => lt.IN0
+bit2 => et.IN1
+bit2 => lt.IN1
+bit2 => gt.IN1
+gt <= gt.DB_MAX_OUTPUT_PORT_TYPE
+et <= et.DB_MAX_OUTPUT_PORT_TYPE
+lt <= lt.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FourBitComparator:INST7Y|SingleBitComparator:INST4
+bit1 => gt.IN0
+bit1 => et.IN0
+bit1 => lt.IN0
+bit2 => et.IN1
+bit2 => lt.IN1
+bit2 => gt.IN1
+gt <= gt.DB_MAX_OUTPUT_PORT_TYPE
+et <= et.DB_MAX_OUTPUT_PORT_TYPE
+lt <= lt.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|Bidir_shift_reg:INST9
+CLK => sreg[0].CLK
+CLK => sreg[1].CLK
+CLK => sreg[2].CLK
+CLK => sreg[3].CLK
+RESET_n => sreg[0].ACLR
+RESET_n => sreg[1].ACLR
+RESET_n => sreg[2].ACLR
+RESET_n => sreg[3].ACLR
+CLK_EN => sreg[3].ENA
+CLK_EN => sreg[2].ENA
+CLK_EN => sreg[1].ENA
+CLK_EN => sreg[0].ENA
+LEFT0_RIGHT1 => sreg.OUTPUTSELECT
+LEFT0_RIGHT1 => sreg.OUTPUTSELECT
+LEFT0_RIGHT1 => sreg.OUTPUTSELECT
+LEFT0_RIGHT1 => sreg.OUTPUTSELECT
+REG_BITS[0] <= sreg[0].DB_MAX_OUTPUT_PORT_TYPE
+REG_BITS[1] <= sreg[1].DB_MAX_OUTPUT_PORT_TYPE
+REG_BITS[2] <= sreg[2].DB_MAX_OUTPUT_PORT_TYPE
+REG_BITS[3] <= sreg[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|Extender:INST10
+clk_input => current_state~1.DATAIN
+rst_n => current_state~3.DATAIN
+controlButton => Transition_Section.IN0
+enable => Transition_Section.IN1
+currentShiftValue[0] => Equal0.IN3
+currentShiftValue[0] => Equal1.IN2
+currentShiftValue[0] => Equal2.IN0
+currentShiftValue[0] => Equal3.IN3
+currentShiftValue[1] => Equal0.IN2
+currentShiftValue[1] => Equal1.IN1
+currentShiftValue[1] => Equal2.IN3
+currentShiftValue[1] => Equal3.IN2
+currentShiftValue[2] => Equal0.IN1
+currentShiftValue[2] => Equal1.IN0
+currentShiftValue[2] => Equal2.IN2
+currentShiftValue[2] => Equal3.IN1
+currentShiftValue[3] => Equal0.IN0
+currentShiftValue[3] => Equal1.IN3
+currentShiftValue[3] => Equal2.IN1
+currentShiftValue[3] => Equal3.IN0
+bitShifting <= bitShifting.DB_MAX_OUTPUT_PORT_TYPE
+extenderOut <= extenderOut.DB_MAX_OUTPUT_PORT_TYPE
+bitShiftDirection <= bitShiftDirection$latch.DB_MAX_OUTPUT_PORT_TYPE
+grapplerEnable <= grapplerEnable.DB_MAX_OUTPUT_PORT_TYPE
 
 

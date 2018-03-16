@@ -1,5 +1,5 @@
 Analysis & Synthesis report for LogicalStep_Lab4_top
-Tue Mar 13 20:49:00 2018
+Fri Mar 16 18:19:00 2018
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -13,12 +13,21 @@ Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Port Connectivity Checks: "Bin_Counter4bit:INST4"
- 11. Post-Synthesis Netlist Statistics for Top Partition
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  8. State Machine - |LogicalStep_Lab4_top|Extender:INST10|current_state
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Port Connectivity Checks: "FourBitComparator:INST7Y"
+ 13. Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST4"
+ 14. Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST3"
+ 15. Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST2"
+ 16. Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST1"
+ 17. Port Connectivity Checks: "FourBitComparator:INST6X"
+ 18. Port Connectivity Checks: "Bin_Counter4bit:INST5Y"
+ 19. Port Connectivity Checks: "Bin_Counter4bit:INST4X"
+ 20. Post-Synthesis Netlist Statistics for Top Partition
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
 
 
 
@@ -45,15 +54,15 @@ agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Mar 13 20:49:00 2018           ;
+; Analysis & Synthesis Status        ; Successful - Fri Mar 16 18:19:00 2018           ;
 ; Quartus Prime Version              ; 15.1.0 Build 185 10/21/2015 SJ Standard Edition ;
 ; Revision Name                      ; LogicalStep_Lab4_top                            ;
 ; Top-level Entity Name              ; LogicalStep_Lab4_top                            ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 59                                              ;
-;     Total combinational functions  ; 59                                              ;
-;     Dedicated logic registers      ; 38                                              ;
-; Total registers                    ; 38                                              ;
+; Total logic elements               ; 75                                              ;
+;     Total combinational functions  ; 75                                              ;
+;     Dedicated logic registers      ; 43                                              ;
+; Total registers                    ; 43                                              ;
 ; Total pins                         ; 31                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -176,7 +185,11 @@ agreement for further details.
 ; LogicalStep_Lab4_top.vhd         ; yes             ; User VHDL File        ; N:/ECE124Lab4/LogicalStep_Lab4_top.vhd ;         ;
 ; segment7_mux.vhd                 ; yes             ; User VHDL File        ; N:/ECE124Lab4/segment7_mux.vhd         ;         ;
 ; SevenSegment.vhd                 ; yes             ; User VHDL File        ; N:/ECE124Lab4/SevenSegment.vhd         ;         ;
+; Extender.vhd                     ; yes             ; User VHDL File        ; N:/ECE124Lab4/Extender.vhd             ;         ;
 ; bin_counter4bit.vhd              ; yes             ; Auto-Found VHDL File  ; N:/ECE124Lab4/bin_counter4bit.vhd      ;         ;
+; fourbitcomparator.vhd            ; yes             ; Auto-Found VHDL File  ; N:/ECE124Lab4/fourbitcomparator.vhd    ;         ;
+; singlebitcomparator.vhd          ; yes             ; Auto-Found VHDL File  ; N:/ECE124Lab4/singlebitcomparator.vhd  ;         ;
+; bidir_shift_reg.vhd              ; yes             ; Auto-Found VHDL File  ; N:/ECE124Lab4/bidir_shift_reg.vhd      ;         ;
 +----------------------------------+-----------------+-----------------------+----------------------------------------+---------+
 
 
@@ -185,20 +198,20 @@ agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 59             ;
+; Estimated Total logic elements              ; 75             ;
 ;                                             ;                ;
-; Total combinational functions               ; 59             ;
+; Total combinational functions               ; 75             ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 15             ;
-;     -- 3 input functions                    ; 10             ;
-;     -- <=2 input functions                  ; 34             ;
+;     -- 4 input functions                    ; 25             ;
+;     -- 3 input functions                    ; 14             ;
+;     -- <=2 input functions                  ; 36             ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 28             ;
+;     -- normal mode                          ; 44             ;
 ;     -- arithmetic mode                      ; 31             ;
 ;                                             ;                ;
-; Total registers                             ; 38             ;
-;     -- Dedicated logic registers            ; 38             ;
+; Total registers                             ; 43             ;
+;     -- Dedicated logic registers            ; 43             ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 31             ;
@@ -207,8 +220,8 @@ agreement for further details.
 ;                                             ;                ;
 ; Maximum fan-out node                        ; clkin_50~input ;
 ; Maximum fan-out                             ; 34             ;
-; Total fan-out                               ; 278            ;
-; Average fan-out                             ; 1.75           ;
+; Total fan-out                               ; 356            ;
+; Average fan-out                             ; 1.98           ;
 +---------------------------------------------+----------------+
 
 
@@ -217,13 +230,39 @@ agreement for further details.
 +----------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                         ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------+--------------+
-; |LogicalStep_Lab4_top      ; 59 (24)           ; 38 (24)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 31   ; 0            ; 0          ; |LogicalStep_Lab4_top                       ; work         ;
-;    |Bin_Counter4bit:INST4| ; 4 (4)             ; 4 (4)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|Bin_Counter4bit:INST4 ; work         ;
+; |LogicalStep_Lab4_top      ; 75 (24)           ; 43 (24)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 31   ; 0            ; 0          ; |LogicalStep_Lab4_top                       ; work         ;
+;    |Bidir_shift_reg:INST9| ; 4 (4)             ; 4 (4)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|Bidir_shift_reg:INST9 ; work         ;
+;    |Extender:INST10|       ; 16 (16)           ; 5 (5)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|Extender:INST10       ; work         ;
 ;    |SevenSegment:INST1|    ; 7 (7)             ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|SevenSegment:INST1    ; work         ;
 ;    |SevenSegment:INST2|    ; 7 (7)             ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|SevenSegment:INST2    ; work         ;
 ;    |segment7_mux:INST3|    ; 17 (17)           ; 10 (10)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|segment7_mux:INST3    ; work         ;
 +----------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |LogicalStep_Lab4_top|Extender:INST10|current_state                                                                                                  ;
++-----------------------------+-----------------------------+--------------------------+--------------------------+--------------------------+-------------------------+
+; Name                        ; current_state.FULLYEXTENDED ; current_state.EXTENDING3 ; current_state.EXTENDING2 ; current_state.EXTENDING1 ; current_state.RETRACTED ;
++-----------------------------+-----------------------------+--------------------------+--------------------------+--------------------------+-------------------------+
+; current_state.RETRACTED     ; 0                           ; 0                        ; 0                        ; 0                        ; 0                       ;
+; current_state.EXTENDING1    ; 0                           ; 0                        ; 0                        ; 1                        ; 1                       ;
+; current_state.EXTENDING2    ; 0                           ; 0                        ; 1                        ; 0                        ; 1                       ;
+; current_state.EXTENDING3    ; 0                           ; 1                        ; 0                        ; 0                        ; 1                       ;
+; current_state.FULLYEXTENDED ; 1                           ; 0                        ; 0                        ; 0                        ; 1                       ;
++-----------------------------+-----------------------------+--------------------------+--------------------------+--------------------------+-------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                       ;
++----------------------------------------------------+-----------------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal         ; Free of Timing Hazards ;
++----------------------------------------------------+-----------------------------+------------------------+
+; Extender:INST10|bitShiftDirection                  ; Extender:INST10|bitShifting ; yes                    ;
+; Number of user-specified and inferred latches = 1  ;                             ;                        ;
++----------------------------------------------------+-----------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
 +--------------------------------------------------------------------+
@@ -242,24 +281,92 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 38    ;
+; Total registers                              ; 43    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 4     ;
+; Number of registers using Asynchronous Clear ; 9     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 4     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------+
-; Port Connectivity Checks: "Bin_Counter4bit:INST4" ;
-+-----------+-------+----------+--------------------+
-; Port      ; Type  ; Severity ; Details            ;
-+-----------+-------+----------+--------------------+
-; clk_en    ; Input ; Info     ; Stuck at VCC       ;
-; up1_down0 ; Input ; Info     ; Stuck at VCC       ;
-+-----------+-------+----------+--------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FourBitComparator:INST7Y"                                                           ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; agtb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; aeqb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; altb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST4"                                 ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; lt   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST3"                                 ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; lt   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST2"                                 ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; lt   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST1"                                 ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; lt   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FourBitComparator:INST6X"                                                           ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; agtb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; aeqb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; altb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------+
+; Port Connectivity Checks: "Bin_Counter4bit:INST5Y" ;
++-----------+-------+----------+---------------------+
+; Port      ; Type  ; Severity ; Details             ;
++-----------+-------+----------+---------------------+
+; clk_en    ; Input ; Info     ; Stuck at VCC        ;
+; up1_down0 ; Input ; Info     ; Stuck at VCC        ;
++-----------+-------+----------+---------------------+
+
+
++----------------------------------------------------+
+; Port Connectivity Checks: "Bin_Counter4bit:INST4X" ;
++-----------+-------+----------+---------------------+
+; Port      ; Type  ; Severity ; Details             ;
++-----------+-------+----------+---------------------+
+; clk_en    ; Input ; Info     ; Stuck at VCC        ;
+; up1_down0 ; Input ; Info     ; Stuck at VCC        ;
++-----------+-------+----------+---------------------+
 
 
 +-----------------------------------------------------+
@@ -268,23 +375,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 31                          ;
-; cycloneiii_ff         ; 38                          ;
-;     CLR               ; 4                           ;
+; cycloneiii_ff         ; 43                          ;
+;     CLR               ; 5                           ;
+;     ENA CLR           ; 4                           ;
 ;     plain             ; 34                          ;
 ; cycloneiii_io_obuf    ; 3                           ;
-; cycloneiii_lcell_comb ; 65                          ;
+; cycloneiii_lcell_comb ; 81                          ;
 ;     arith             ; 31                          ;
 ;         2 data inputs ; 29                          ;
 ;         3 data inputs ; 2                           ;
-;     normal            ; 34                          ;
+;     normal            ; 50                          ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 9                           ;
-;         2 data inputs ; 1                           ;
-;         3 data inputs ; 8                           ;
-;         4 data inputs ; 15                          ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 4                           ;
+;         3 data inputs ; 12                          ;
+;         4 data inputs ; 25                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 3.20                        ;
-; Average LUT depth     ; 2.16                        ;
+; Average LUT depth     ; 2.23                        ;
 +-----------------------+-----------------------------+
 
 
@@ -303,7 +411,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Tue Mar 13 20:48:45 2018
+    Info: Processing started: Fri Mar 16 18:18:45 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LogicalStep_Lab4 -c LogicalStep_Lab4_top
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file logicalstep_lab4_top.vhd
@@ -323,37 +431,65 @@ Info (12021): Found 2 design units, including 1 entities, in source file sevense
     Info (12023): Found entity 1: SevenSegment File: N:/ECE124Lab4/SevenSegment.vhd Line: 10
 Warning (12019): Can't analyze file -- file compx4.vhd is missing
 Warning (12019): Can't analyze file -- file compx1.vhd is missing
+Info (12021): Found 2 design units, including 1 entities, in source file extender.vhd
+    Info (12022): Found design unit 1: Extender-SM File: N:/ECE124Lab4/Extender.vhd Line: 14
+    Info (12023): Found entity 1: Extender File: N:/ECE124Lab4/Extender.vhd Line: 5
 Info (12127): Elaborating entity "LogicalStep_Lab4_top" for the top level hierarchy
-Warning (10873): Using initial value X (don't care) for net "leds[7..4]" at LogicalStep_Lab4_top.vhd(13) File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 13
-Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:INST1" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 109
-Info (12128): Elaborating entity "segment7_mux" for hierarchy "segment7_mux:INST3" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 112
+Warning (10036): Verilog HDL or VHDL warning at LogicalStep_Lab4_top.vhd(116): object "XTargLTCurr" assigned a value but never read File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 116
+Warning (10036): Verilog HDL or VHDL warning at LogicalStep_Lab4_top.vhd(116): object "XTargEQCurr" assigned a value but never read File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 116
+Warning (10036): Verilog HDL or VHDL warning at LogicalStep_Lab4_top.vhd(116): object "XTargGTCurr" assigned a value but never read File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 116
+Warning (10036): Verilog HDL or VHDL warning at LogicalStep_Lab4_top.vhd(117): object "YTargLTCurr" assigned a value but never read File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 117
+Warning (10036): Verilog HDL or VHDL warning at LogicalStep_Lab4_top.vhd(117): object "YTargEQCurr" assigned a value but never read File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 117
+Warning (10036): Verilog HDL or VHDL warning at LogicalStep_Lab4_top.vhd(117): object "YTargGTCurr" assigned a value but never read File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 117
+Warning (10873): Using initial value X (don't care) for net "leds[5..4]" at LogicalStep_Lab4_top.vhd(13) File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 13
+Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:INST1" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 148
+Info (12128): Elaborating entity "segment7_mux" for hierarchy "segment7_mux:INST3" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 152
 Warning (12125): Using design file bin_counter4bit.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: Bin_Counter4bit-one File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 15
     Info (12023): Found entity 1: Bin_Counter4bit File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 5
-Info (12128): Elaborating entity "Bin_Counter4bit" for hierarchy "Bin_Counter4bit:INST4" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 114
+Info (12128): Elaborating entity "Bin_Counter4bit" for hierarchy "Bin_Counter4bit:INST4X" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 154
 Warning (10492): VHDL Process Statement warning at bin_counter4bit.vhd(36): signal "ud_bin_counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 36
+Warning (12125): Using design file fourbitcomparator.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: FOurBitComparator-Behavioural File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 18
+    Info (12023): Found entity 1: FourBitComparator File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 6
+Info (12128): Elaborating entity "FourBitComparator" for hierarchy "FourBitComparator:INST6X" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 159
+Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A3LTB3" assigned a value but never read File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 31
+Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A2LTB2" assigned a value but never read File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 31
+Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A1LTB1" assigned a value but never read File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 31
+Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A0LTB0" assigned a value but never read File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 31
+Warning (12125): Using design file singlebitcomparator.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: SingleBitComparator-Behavioural File: N:/ECE124Lab4/singlebitcomparator.vhd Line: 19
+    Info (12023): Found entity 1: SingleBitComparator File: N:/ECE124Lab4/singlebitcomparator.vhd Line: 6
+Info (12128): Elaborating entity "SingleBitComparator" for hierarchy "FourBitComparator:INST6X|SingleBitComparator:INST1" File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 37
+Warning (12125): Using design file bidir_shift_reg.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: Bidir_shift_reg-one File: N:/ECE124Lab4/bidir_shift_reg.vhd Line: 16
+    Info (12023): Found entity 1: Bidir_shift_reg File: N:/ECE124Lab4/bidir_shift_reg.vhd Line: 6
+Info (12128): Elaborating entity "Bidir_shift_reg" for hierarchy "Bidir_shift_reg:INST9" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 174
+Warning (10492): VHDL Process Statement warning at bidir_shift_reg.vhd(36): signal "sreg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: N:/ECE124Lab4/bidir_shift_reg.vhd Line: 36
+Info (12128): Elaborating entity "Extender" for hierarchy "Extender:INST10" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 179
+Warning (10631): VHDL Process Statement warning at Extender.vhd(98): inferring latch(es) for signal or variable "bitShiftDirection", which holds its previous value in one or more paths through the process File: N:/ECE124Lab4/Extender.vhd Line: 98
+Info (10041): Inferred latch for "bitShiftDirection" at Extender.vhd(98) File: N:/ECE124Lab4/Extender.vhd Line: 98
+Warning (13012): Latch Extender:INST10|bitShiftDirection has unsafe behavior File: N:/ECE124Lab4/Extender.vhd Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Extender:INST10|current_state.FULLYEXTENDED File: N:/ECE124Lab4/Extender.vhd Line: 21
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "leds[4]" is stuck at GND File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 13
     Warning (13410): Pin "leds[5]" is stuck at GND File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 13
-    Warning (13410): Pin "leds[6]" is stuck at GND File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 13
-    Warning (13410): Pin "leds[7]" is stuck at GND File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 13
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 4 input pin(s) that do not drive logic
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "pb[0]" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 11
     Warning (15610): No output dependent on input pin "pb[1]" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 11
-    Warning (15610): No output dependent on input pin "pb[2]" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 11
     Warning (15610): No output dependent on input pin "pb[3]" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 11
-Info (21057): Implemented 90 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 106 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 14 input pins
     Info (21059): Implemented 17 output pins
-    Info (21061): Implemented 59 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 15 warnings
-    Info: Peak virtual memory: 857 megabytes
-    Info: Processing ended: Tue Mar 13 20:49:00 2018
+    Info (21061): Implemented 75 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 29 warnings
+    Info: Peak virtual memory: 858 megabytes
+    Info: Processing ended: Fri Mar 16 18:19:00 2018
     Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:22
+    Info: Total CPU time (on all processors): 00:00:24
 
 

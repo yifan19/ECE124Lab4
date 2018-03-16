@@ -2,20 +2,28 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1200mV 85C Model Setup 'clkin_50'
-Slack : -2.355
-TNS   : -50.132
-
 Type  : Slow 1200mV 85C Model Setup 'bin_counter[23]'
-Slack : -0.317
-TNS   : -0.635
+Slack : -4.272
+TNS   : -26.609
+
+Type  : Slow 1200mV 85C Model Setup 'clkin_50'
+Slack : -2.354
+TNS   : -50.078
+
+Type  : Slow 1200mV 85C Model Setup 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : -0.808
+TNS   : -0.808
+
+Type  : Slow 1200mV 85C Model Hold 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : 0.199
+TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'bin_counter[23]'
-Slack : 0.362
+Slack : 0.263
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clkin_50'
-Slack : 0.378
+Slack : 0.380
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clkin_50'
@@ -24,22 +32,34 @@ TNS   : -53.558
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'bin_counter[23]'
 Slack : -1.487
-TNS   : -5.948
+TNS   : -13.383
 
-Type  : Slow 1200mV 0C Model Setup 'clkin_50'
-Slack : -2.022
-TNS   : -42.517
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : 0.420
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'bin_counter[23]'
-Slack : -0.208
-TNS   : -0.407
+Slack : -4.123
+TNS   : -25.221
+
+Type  : Slow 1200mV 0C Model Setup 'clkin_50'
+Slack : -2.021
+TNS   : -42.463
+
+Type  : Slow 1200mV 0C Model Setup 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : -0.795
+TNS   : -0.795
+
+Type  : Slow 1200mV 0C Model Hold 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : 0.140
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'bin_counter[23]'
-Slack : 0.325
+Slack : 0.195
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clkin_50'
-Slack : 0.338
+Slack : 0.340
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clkin_50'
@@ -48,30 +68,46 @@ TNS   : -53.558
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'bin_counter[23]'
 Slack : -1.487
-TNS   : -5.948
+TNS   : -13.610
 
-Type  : Fast 1200mV 0C Model Setup 'clkin_50'
-Slack : -0.405
-TNS   : -1.813
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : 0.435
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'bin_counter[23]'
-Slack : 0.450
+Slack : -1.254
+TNS   : -6.331
+
+Type  : Fast 1200mV 0C Model Setup 'clkin_50'
+Slack : -0.508
+TNS   : -1.903
+
+Type  : Fast 1200mV 0C Model Setup 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : 0.056
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'bin_counter[23]'
-Slack : 0.152
+Slack : 0.113
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : 0.142
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clkin_50'
-Slack : 0.155
+Slack : 0.156
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clkin_50'
 Slack : -3.000
-TNS   : -42.702
+TNS   : -42.778
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'bin_counter[23]'
 Slack : -1.000
-TNS   : -4.000
+TNS   : -9.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : 0.462
+TNS   : 0.000
 
 ------------------------------------------------------------
