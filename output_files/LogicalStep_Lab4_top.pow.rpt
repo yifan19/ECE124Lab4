@@ -1,5 +1,5 @@
 PowerPlay Power Analyzer report for LogicalStep_Lab4_top
-Fri Mar 16 18:19:30 2018
+Sat Mar 17 00:16:37 2018
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -65,7 +65,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------------------+
 ; PowerPlay Power Analyzer Summary                                                          ;
 +----------------------------------------+--------------------------------------------------+
-; PowerPlay Power Analyzer Status        ; Successful - Fri Mar 16 18:19:30 2018            ;
+; PowerPlay Power Analyzer Status        ; Successful - Sat Mar 17 00:16:37 2018            ;
 ; Quartus Prime Version                  ; 15.1.0 Build 185 10/21/2015 SJ Standard Edition  ;
 ; Revision Name                          ; LogicalStep_Lab4_top                             ;
 ; Top-level Entity Name                  ; LogicalStep_Lab4_top                             ;
@@ -111,22 +111,22 @@ agreement for further details.
 +-------------------------+-----------------------------+
 ; Node                    ; Reason                      ;
 +-------------------------+-----------------------------+
-; pb[0]                   ; No valid clock domain found ;
-; pb[1]                   ; No valid clock domain found ;
-; pb[3]                   ; No valid clock domain found ;
-; sw[4]                   ; No valid clock domain found ;
-; sw[5]                   ; No valid clock domain found ;
-; sw[6]                   ; No valid clock domain found ;
-; sw[7]                   ; No valid clock domain found ;
 ; sw[0]                   ; No valid clock domain found ;
 ; sw[1]                   ; No valid clock domain found ;
 ; sw[2]                   ; No valid clock domain found ;
 ; sw[3]                   ; No valid clock domain found ;
-; rst_n                   ; No valid clock domain found ;
+; pb[3]                   ; No valid clock domain found ;
 ; pb[2]                   ; No valid clock domain found ;
+; sw[4]                   ; No valid clock domain found ;
+; sw[5]                   ; No valid clock domain found ;
+; sw[6]                   ; No valid clock domain found ;
+; sw[7]                   ; No valid clock domain found ;
+; pb[0]                   ; No valid clock domain found ;
+; rst_n                   ; No valid clock domain found ;
 ; clkin_50                ; No valid clock domain found ;
+; pb[1]                   ; No valid clock domain found ;
 ; clkin_50~inputclkctrl   ; No valid clock domain found ;
-; bin_counter[23]~clkctrl ; No valid clock domain found ;
+; bin_counter[24]~clkctrl ; No valid clock domain found ;
 +-------------------------+-----------------------------+
 
 
@@ -183,13 +183,19 @@ agreement for further details.
 +-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+------------------------------------------------------+
 ; |LogicalStep_Lab4_top               ; 1.58 mW (1.58 mW)                    ; 0.00 mW (0.00 mW)               ; 1.58 mW (1.58 mW)                 ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top                                ;
 ;     |hard_block:auto_generated_inst ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|hard_block:auto_generated_inst ;
-;     |SevenSegment:INST1             ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|SevenSegment:INST1             ;
-;     |SevenSegment:INST2             ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|SevenSegment:INST2             ;
+;     |SevenSegment:INST1XTARGET      ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|SevenSegment:INST1XTARGET      ;
+;     |SevenSegment:INST2YTARGET      ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|SevenSegment:INST2YTARGET      ;
 ;     |segment7_mux:INST3             ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|segment7_mux:INST3             ;
+;     |Bin_Counter4bit:INST4X         ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|Bin_Counter4bit:INST4X         ;
+;     |Bin_Counter4bit:INST5Y         ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|Bin_Counter4bit:INST5Y         ;
 ;     |FourBitComparator:INST6X       ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|FourBitComparator:INST6X       ;
 ;     |FourBitComparator:INST7Y       ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|FourBitComparator:INST7Y       ;
+;     |Grappler:INST8GrapplerSM       ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|Grappler:INST8GrapplerSM       ;
 ;     |Bidir_shift_reg:INST9          ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|Bidir_shift_reg:INST9          ;
 ;     |Extender:INST10                ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|Extender:INST10                ;
+;     |SevenSegment:INST11XCURRENT    ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|SevenSegment:INST11XCURRENT    ;
+;     |SevenSegment:INST12YCURRENT    ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|SevenSegment:INST12YCURRENT    ;
+;     |MealyStatemachine:INSTMEALY    ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |LogicalStep_Lab4_top|MealyStatemachine:INSTMEALY    ;
 +-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+------------------------------------------------------+
 (1) Value in parentheses is the power consumed at that level of hierarchy. Value not in parentheses is the power consumed at that level of hierarchy plus the power consumed by all levels of hierarchy below it.
 
@@ -257,19 +263,19 @@ agreement for further details.
 ;                                                                                        ;             ;            ;             ;               ;
 ; Node, entity or clock assignment                                                       ;             ;            ;             ;               ;
 ;     -- Number of signals with Toggle Rate from Node, entity or clock assignment        ; 0 (0.0%)    ; 0 (0.0%)   ; 0 (0.0%)    ; 0 (0.0%)      ;
-;     -- Number of signals with Static Probability from Node, entity or clock assignment ; 2 (0.9%)    ; 0 (0.0%)   ; 0 (0.0%)    ; 2 (1.4%)      ;
+;     -- Number of signals with Static Probability from Node, entity or clock assignment ; 2 (0.7%)    ; 0 (0.0%)   ; 0 (0.0%)    ; 2 (0.9%)      ;
 ;                                                                                        ;             ;            ;             ;               ;
 ; Vectorless estimation                                                                  ;             ;            ;             ;               ;
-;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 200 (92.6%) ; 19 (54.3%) ; 43 (100.0%) ; 138 (100.0%)  ;
-;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 33 (15.3%)  ; 3 (8.6%)   ; 0 (0.0%)    ; 30 (21.7%)    ;
-;     -- Number of signals with Static Probability from Vectorless estimation            ; 198 (91.7%) ; 19 (54.3%) ; 43 (100.0%) ; 136 (98.6%)   ;
+;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 280 (94.6%) ; 19 (54.3%) ; 48 (100.0%) ; 213 (100.0%)  ;
+;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 35 (11.8%)  ; 3 (8.6%)   ; 0 (0.0%)    ; 32 (15.0%)    ;
+;     -- Number of signals with Static Probability from Vectorless estimation            ; 278 (93.9%) ; 19 (54.3%) ; 48 (100.0%) ; 211 (99.1%)   ;
 ;                                                                                        ;             ;            ;             ;               ;
 ; Default assignment                                                                     ;             ;            ;             ;               ;
 ;     -- Number of signals with Toggle Rate from Default assignment                      ; 0 (0.0%)    ; 0 (0.0%)   ; 0 (0.0%)    ; 0 (0.0%)      ;
-;     -- Number of signals with Static Probability from Default assignment               ; 16 (7.4%)   ; 16 (45.7%) ; 0 (0.0%)    ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Default assignment               ; 16 (5.4%)   ; 16 (45.7%) ; 0 (0.0%)    ; 0 (0.0%)      ;
 ;                                                                                        ;             ;            ;             ;               ;
 ; Assumed 0                                                                              ;             ;            ;             ;               ;
-;     -- Number of signals with Toggle Rate assumed 0                                    ; 16 (7.4%)   ; 16 (45.7%) ; 0 (0.0%)    ; 0 (0.0%)      ;
+;     -- Number of signals with Toggle Rate assumed 0                                    ; 16 (5.4%)   ; 16 (45.7%) ; 0 (0.0%)    ; 0 (0.0%)      ;
 +----------------------------------------------------------------------------------------+-------------+------------+-------------+---------------+
 
 
@@ -287,18 +293,26 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime PowerPlay Power Analyzer
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Fri Mar 16 18:19:28 2018
+    Info: Processing started: Sat Mar 17 00:16:34 2018
 Info: Command: quartus_pow --read_settings_files=off --write_settings_files=off LogicalStep_Lab4 -c LogicalStep_Lab4_top
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
-Warning (335093): TimeQuest Timing Analyzer is analyzing 1 combinational loops as latches.
+Warning (335093): TimeQuest Timing Analyzer is analyzing 7 combinational loops as latches.
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'LogicalStep_Lab4_top.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Warning (332060): Node: clkin_50 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register segment7_mux:INST3|\clk_proc:COUNT[10] is being clocked by clkin_50
-Warning (332060): Node: bin_counter[23] was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register Bidir_shift_reg:INST9|sreg[0] is being clocked by bin_counter[23]
+    Info (13166): Register bin_counter[10] is being clocked by clkin_50
+Warning (332060): Node: bin_counter[24] was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register Bin_Counter4bit:INST4X|ud_bin_counter[1] is being clocked by bin_counter[24]
+Warning (332060): Node: MealyStatemachine:INSTMEALY|current_state.ERROR was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Latch MealyStatemachine:INSTMEALY|Y_Clk_en is being clocked by MealyStatemachine:INSTMEALY|current_state.ERROR
+Warning (332060): Node: sw[0] was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Latch MealyStatemachine:INSTMEALY|Y_UPorDOWN is being clocked by sw[0]
+Warning (332060): Node: sw[4] was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Latch MealyStatemachine:INSTMEALY|X_UPorDOWN is being clocked by sw[4]
 Warning (332060): Node: Extender:INST10|current_state.FULLYEXTENDED was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Latch Extender:INST10|bitShiftDirection is being clocked by Extender:INST10|current_state.FULLYEXTENDED
+Warning (332060): Node: MealyStatemachine:INSTMEALY|current_state.STOP was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Latch MealyStatemachine:INSTMEALY|ExtenderEnable is being clocked by MealyStatemachine:INSTMEALY|current_state.STOP
 Warning (332068): No clocks defined in design.
 Info (223000): Starting Vectorless Power Activity Estimation
 Warning (222013): Relative toggle rates could not be calculated because no clock domain could be identified for some nodes
@@ -308,9 +322,9 @@ Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (215049): Average toggle rate for this design is 0.000 millions of transitions / sec
 Info (215031): Total thermal power estimate for the design is 159.83 mW
-Info: Quartus Prime PowerPlay Power Analyzer was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 852 megabytes
-    Info: Processing ended: Fri Mar 16 18:19:31 2018
+Info: Quartus Prime PowerPlay Power Analyzer was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 856 megabytes
+    Info: Processing ended: Sat Mar 17 00:16:37 2018
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 

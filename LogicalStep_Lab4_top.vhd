@@ -38,21 +38,30 @@ COMPONENT segment7_mux is
 end COMPONENT;
 
 COMPONENT MealyStatemachine IS 
-Port
-(
+Port(
+
  clk_input, resetButton : IN std_logic;
+
  X_EQ, X_GT, X_LT : IN std_logic; --comparing DESIRED TO ACTUAL
  Y_EQ, Y_GT, Y_LT : IN std_logic; --comparing DESIRED TO ACTUAL
- isError : IN std_logic; -- need to put that somewhere
+ extenderOut : IN std_logic;
+
  X_MOTION, Y_MOTION : IN std_logic;
- Clk_en, UPorDOWN: OUT std_logic;
- ExtenderEnable: OUT std_logic
+ 
+ X_Clk_en, X_UPorDOWN: OUT std_logic;
+ Y_Clk_en, Y_UPorDOWN: OUT std_logic;
+ 
+ ExtenderEnable: OUT std_logic;
+
+ isError : OUT std_logic
+
+
  );
 END COMPONENT;
 
 COMPONENT Bin_Counter4bit is port
 (
-		Main_clk			: in std_logic := '0';
+		Main_clk			: in std_logic;
 		rst_n				: in std_logic := '0';
 		clk_en			: in std_logic := '0';
 		up1_down0		: in std_logic := '0';
@@ -96,6 +105,26 @@ COMPONENT Extender IS Port
 END COMPONENT;
 
 
+COMPONENT mux is port (
+   
+   hex_in1, hex_in2	: in std_logic_vector(6 downto 0);
+	mux_select :in std_logic;
+	hex_out	:	out std_logic_vector(6 downto 0)
+
+	
+); 
+end COMPONENT;
+
+COMPONENT muxSingle is port (
+   
+   hex_in1, hex_in2	: in std_logic;
+	mux_select :in std_logic;
+	hex_out	:	out std_logic
+
+	
+); 
+end COMPONENT;
+
 
 
 
@@ -104,22 +133,39 @@ END COMPONENT;
 	CONSTANT	SIM							:  boolean := FALSE; 	-- set to TRUE for simulation runs otherwise keep at 0.
    CONSTANT CLK_DIV_SIZE				: 	INTEGER := 26;    -- size of vectors for the counters
 
-   SIGNAL 	Main_CLK						:  STD_LOGIC; 			-- main clock to drive sequencing of State Machine
+   SIGNAL 	Main_Clk						:  STD_LOGIC; 			-- main clock to drive sequencing of State Machine
 
 	SIGNAL 	bin_counter					:  UNSIGNED(CLK_DIV_SIZE-1 downto 0); -- := to_unsigned(0,CLK_DIV_SIZE); -- reset binary counter to zero
 	
 ----------------------------------------------------------------------------------------------------
 	
-	SIGNAL XTARGET, YTARGET : std_logic_vector(6 downto 0);
+	SIGNAL XTARGET7seg, YTARGET7seg : std_logic_vector(6 downto 0);
 	SIGNAL XCURRENT, YCURRENT : std_logic_vector(3 downto 0);
+	SIGNAL XCURRENT7seg, YCURRENT7seg : std_logic_vector(6 downto 0);
+	
+	SIGNAL XMUX7seg, YMUX7seg: std_logic_vector(6 downto 0);
 	
 	SIGNAL XTargLTCurr, XTargEQCurr, XTargGTCurr : std_logic;
 	SIGNAL YTargLTCurr, YTargEQCurr, YTargGTCurr : std_logic;
 
 	SIGNAL bitShiftDirControl, bitShiftEnable : std_logic;
 	SIGNAL currentShiftValue : std_logic_vector(3 downto 0);
+	
+	SIGNAL extenderOutSignal : std_logic;
+	
+	SIGNAL X_ClockEnable, Y_ClockEnable : std_logic;
+	SIGNAL X_Direction, Y_Direction : std_logic;
+	
+	SIGNAL GrappleEnableSignal : std_logic;
 
-
+	SIGNAL extenderEnableSignal : std_logic;
+	SIGNAL ERROR7seg : std_logic_vector(6 downto 0);
+	SIGNAL X_ERROR_AND_VALUE7seg, Y_ERROR_AND_VALUE7seg:std_logic_vector(6 downto 0);
+	
+	SIGNAL ERROR : std_logic;
+	
+	SIGNAL MUX_CLOCK : std_logic;
+	
 
 
 ----------------------------------------------------------------------------------------------------
@@ -139,56 +185,107 @@ BinCLK: PROCESS(clkin_50, rst_n) is
 Clock_Source:
 				Main_Clk <= 
 				clkin_50 when sim = TRUE else				-- for simulations only
-				std_logic(bin_counter(23));								-- for real FPGA operation
+				std_logic(bin_counter(24));								-- for real FPGA operation
 					
 ---------------------------------------------------------------------------------------------------
 
-leds (3 downto 0) <= currentShiftValue (3 downto 0);
+leds (7 downto 4) <= currentShiftValue (3 downto 0);
+leds (0) <= ERROR;
+ERROR7seg <= "1111001";
+
+
 ---------------------------------------------------------------------------------------------------
-INST1: SevenSegment PORT MAP (sw(7 downto 4),XTARGET);
-INST2: SevenSegment PORT MAP (sw(3 downto 0),YTARGET);
--- switch to targets
+INST1XTARGET: SevenSegment PORT MAP (sw(7 downto 4),XTARGET7Seg);
+INST2YTARGET: SevenSegment PORT MAP (sw(3 downto 0),YTARGET7Seg);
+INST11XCURRENT: SevenSegment PORT MAP (XCURRENT,XCURRENT7seg);
+INST12YCURRENT: SevenSegment PORT MAP (YCURRENT,YCURRENT7seg);
 
-INST3: segment7_mux PORT MAP (clkin_50, XTARGET(6 downto 0), YTARGET(6 downto 0), seg7_data(6 downto 0), seg7_char1, seg7_char2);
+INST13MUX_X:mux PORT MAP (
+   
+   XCURRENT7seg, XTARGET7Seg,
+	pb(3),
+	XMUX7seg);
+	
+INST14MUX_Y:mux PORT MAP (
+   
+   YCURRENT7seg, YTARGET7Seg,
+	pb(2),
+	YMUX7seg);
+	
+INST15X_MUX_ERROR :mux PORT MAP (
+   
+   XMUX7seg, ERROR7seg,
+	ERROR,
+	X_ERROR_AND_VALUE7seg);
+	
+INST16Y_MUX_ERROR :mux PORT MAP (
+   
+   YMUX7seg,ERROR7seg,
+	ERROR,
+	Y_ERROR_AND_VALUE7seg);
 
-INST4X: Bin_Counter4bit PORT MAP (Main_CLK,rst_n,'1','1',XCURRENT(3 downto 0) );
+INST17CLOCKMUX :muxSingle PORT MAP (
+   
+   std_logic(bin_counter(23)),clkin_50,
+	ERROR,
+	MUX_CLOCK);
 
-INST5Y: Bin_Counter4bit PORT MAP (Main_CLK,rst_n, '1','1',YCURRENT(3 downto 0) );
+
+
+INST3: segment7_mux PORT MAP (clkin_50, X_ERROR_AND_VALUE7seg(6 downto 0), Y_ERROR_AND_VALUE7seg(6 downto 0), seg7_data(6 downto 0), seg7_char1, seg7_char2);
+
+INST4X: Bin_Counter4bit PORT MAP (Main_Clk,rst_n,X_ClockEnable,X_Direction,XCURRENT(3 downto 0) );
+
+INST5Y: Bin_Counter4bit PORT MAP (Main_Clk,rst_n, Y_ClockEnable,Y_Direction,YCURRENT(3 downto 0) );
 
 
 INST6X: FourBitComparator PORT MAP (
 	
-	XTARGET(0),XTARGET(1), XTARGET(2), XTARGET(3),
+	sw(4),sw(5), sw(6), sw(7),
 	XCURRENT(0), XCURRENT(1), XCURRENT(2), XCURRENT(3), 
 	XTargGTCurr, XTargEQCurr, XTargLTCurr);
 	
 INST7Y: FourBitComparator PORT MAP (
 	
-	YTARGET(0),YTARGET(1), YTARGET(2), YTARGET(3),
+	sw(0),sw(1), sw(2), sw(3),
 	YCURRENT(0), YCURRENT(1), YCURRENT(2), YCURRENT(3), 
 	YTargGTCurr, YTargEQCurr, YTargLTCurr);
 	
 	
---INST8GrapplerSM: Grappler PORT MAP (Main_Clk, rst_n, pb(0) , sw(7), leds(3)); --working
+INST8GrapplerSM: Grappler PORT MAP (Main_Clk, rst_n, pb(0) , GrappleEnableSignal, leds(3)); --working
 
 INST9: Bidir_shift_reg PORT MAP(
 	Main_Clk, rst_n,	
 	bitShiftEnable, bitShiftDirControl, 
 	currentShiftValue (3 downto 0) );
-	
+--	
 INST10: Extender PORT MAP (
 
- Main_Clk, rst_n, pb(2), sw(5),						
- currentShiftValue(3 downto 0), 												
- bitShiftEnable, leds(6), bitShiftDirControl, leds(7)
- );
+	Main_Clk, rst_n, pb(1), extenderEnableSignal,						
+	currentShiftValue(3 downto 0), 												
+	bitShiftEnable, extenderOutSignal, bitShiftDirControl,GrappleEnableSignal
+);
 
  
---INST4: MealyStatemachine PORT MAP ( Main_CLK, rst_n, X_EQ, X_GT, X_LT : IN std_logic; --comparing DESIRED TO ACTUAL
- --Y_EQ, Y_GT, Y_LT : IN std_logic; --comparing DESIRED TO ACTUAL
- --isError : IN std_logic; -- need to put that somewhere
- --X_MOTION, Y_MOTION : IN std_logic;
- --Clk_en, UPorDOWN: OUT std_logic;
- --ExtenderEnable: OUT std_logic
+INSTMEALY: MealyStatemachine PORT MAP (
+
+ Main_Clk, rst_n,
+ 
+ XTargEQCurr, XTargGTCurr, XTargLTCurr,
+ YTargEQCurr, YTargGTCurr, YTargLTCurr,
+ extenderOutSignal,
+ pb(3), pb(2),
+ 
+ X_ClockEnable, X_Direction,
+ Y_ClockEnable, Y_Direction,
+ 
+ extenderEnableSignal,
+ ERROR
+ 
+ );
+ 
+ 
+ --INST13ERROR_MUX:mux PORT MAP (ERROR7seg,
+
 
 END SimpleCircuit;

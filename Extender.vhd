@@ -42,7 +42,7 @@ END PROCESS;
 
 -- TRANSITION LOGIC PROCESS
 
-Transition_Section: PROCESS (controlButton, enable, currentShiftValue, current_state) 
+Transition_Section: PROCESS ( current_state,controlButton, enable, currentShiftValue) 
 
 BEGIN
      CASE current_state IS
@@ -95,7 +95,7 @@ BEGIN
 
 -- DECODER SECTION PROCESS
 
-Decoder_Section: PROCESS (controlButton, enable, currentShiftValue, current_state) 
+Decoder_Section: PROCESS ( current_state,controlButton, enable, currentShiftValue)
 
 BEGIN
      CASE current_state IS
@@ -129,11 +129,6 @@ BEGIN
 				bitShiftDirection <= '0';
 
 				
-				
-				
-				
-				
-         
          WHEN others =>		
 				bitShifting <= '0';
 				extenderOut<= '0';

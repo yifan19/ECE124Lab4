@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for LogicalStep_Lab4_top
-Fri Mar 16 18:19:39 2018
+Sat Mar 17 00:16:45 2018
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -101,15 +101,19 @@ agreement for further details.
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clocks                                                                                                                                                                                                                                                   ;
-+---------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------------------------------+
-; Clock Name                                  ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                                         ;
-+---------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------------------------------+
-; bin_counter[23]                             ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { bin_counter[23] }                             ;
-; clkin_50                                    ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clkin_50 }                                    ;
-; Extender:INST10|current_state.FULLYEXTENDED ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { Extender:INST10|current_state.FULLYEXTENDED } ;
-+---------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                                                           ;
++-------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------------------------------------+
+; Clock Name                                      ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                                             ;
++-------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------------------------------------+
+; bin_counter[24]                                 ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { bin_counter[24] }                                 ;
+; clkin_50                                        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clkin_50 }                                        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { Extender:INST10|current_state.FULLYEXTENDED }     ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { MealyStatemachine:INSTMEALY|current_state.ERROR } ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { MealyStatemachine:INSTMEALY|current_state.STOP }  ;
+; sw[0]                                           ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { sw[0] }                                           ;
+; sw[4]                                           ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { sw[4] }                                           ;
++-------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------+
@@ -117,33 +121,43 @@ agreement for further details.
 +------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                  ; Note                                                          ;
 +------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
-; 189.68 MHz ; 189.68 MHz      ; bin_counter[23]                             ;                                                               ;
-; 298.15 MHz ; 250.0 MHz       ; clkin_50                                    ; limit due to minimum period restriction (max I/O toggle rate) ;
-; 382.26 MHz ; 382.26 MHz      ; Extender:INST10|current_state.FULLYEXTENDED ;                                                               ;
+; 106.2 MHz  ; 106.2 MHz       ; sw[0]                                       ;                                                               ;
+; 112.21 MHz ; 112.21 MHz      ; sw[4]                                       ;                                                               ;
+; 211.24 MHz ; 211.24 MHz      ; bin_counter[24]                             ;                                                               ;
+; 286.94 MHz ; 250.0 MHz       ; clkin_50                                    ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 359.45 MHz ; 359.45 MHz      ; Extender:INST10|current_state.FULLYEXTENDED ;                                                               ;
 +------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+----------------------------------------------------------------------+
-; Slow 1200mV 85C Model Setup Summary                                  ;
-+---------------------------------------------+--------+---------------+
-; Clock                                       ; Slack  ; End Point TNS ;
-+---------------------------------------------+--------+---------------+
-; bin_counter[23]                             ; -4.272 ; -26.609       ;
-; clkin_50                                    ; -2.354 ; -50.078       ;
-; Extender:INST10|current_state.FULLYEXTENDED ; -0.808 ; -0.808        ;
-+---------------------------------------------+--------+---------------+
++--------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup Summary                                      ;
++-------------------------------------------------+--------+---------------+
+; Clock                                           ; Slack  ; End Point TNS ;
++-------------------------------------------------+--------+---------------+
+; bin_counter[24]                                 ; -6.224 ; -81.875       ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; -4.722 ; -13.489       ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; -4.619 ; -4.619        ;
+; sw[0]                                           ; -4.208 ; -4.208        ;
+; sw[4]                                           ; -3.956 ; -3.956        ;
+; clkin_50                                        ; -2.485 ; -41.917       ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; -0.891 ; -0.891        ;
++-------------------------------------------------+--------+---------------+
 
 
-+---------------------------------------------------------------------+
-; Slow 1200mV 85C Model Hold Summary                                  ;
-+---------------------------------------------+-------+---------------+
-; Clock                                       ; Slack ; End Point TNS ;
-+---------------------------------------------+-------+---------------+
-; Extender:INST10|current_state.FULLYEXTENDED ; 0.199 ; 0.000         ;
-; bin_counter[23]                             ; 0.263 ; 0.000         ;
-; clkin_50                                    ; 0.380 ; 0.000         ;
-+---------------------------------------------+-------+---------------+
++-------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Hold Summary                                      ;
++-------------------------------------------------+-------+---------------+
+; Clock                                           ; Slack ; End Point TNS ;
++-------------------------------------------------+-------+---------------+
+; bin_counter[24]                                 ; 0.240 ; 0.000         ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.273 ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.353 ; 0.000         ;
+; clkin_50                                        ; 0.378 ; 0.000         ;
+; sw[0]                                           ; 1.258 ; 0.000         ;
+; sw[4]                                           ; 1.558 ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1.945 ; 0.000         ;
++-------------------------------------------------+-------+---------------+
 
 
 ------------------------------------------
@@ -158,15 +172,19 @@ No paths to report.
 No paths to report.
 
 
-+----------------------------------------------------------------------+
-; Slow 1200mV 85C Model Minimum Pulse Width Summary                    ;
-+---------------------------------------------+--------+---------------+
-; Clock                                       ; Slack  ; End Point TNS ;
-+---------------------------------------------+--------+---------------+
-; clkin_50                                    ; -3.000 ; -53.558       ;
-; bin_counter[23]                             ; -1.487 ; -13.383       ;
-; Extender:INST10|current_state.FULLYEXTENDED ; 0.420  ; 0.000         ;
-+---------------------------------------------+--------+---------------+
++--------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Minimum Pulse Width Summary                        ;
++-------------------------------------------------+--------+---------------+
+; Clock                                           ; Slack  ; End Point TNS ;
++-------------------------------------------------+--------+---------------+
+; clkin_50                                        ; -3.000 ; -40.175       ;
+; sw[0]                                           ; -3.000 ; -3.590        ;
+; sw[4]                                           ; -3.000 ; -3.000        ;
+; bin_counter[24]                                 ; -1.487 ; -34.201       ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.421  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.424  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; 0.479  ; 0.000         ;
++-------------------------------------------------+--------+---------------+
 
 
 -----------------------------------------------
@@ -180,33 +198,43 @@ No synchronizer chains to report.
 +------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                  ; Note                                                          ;
 +------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
-; 195.2 MHz  ; 195.2 MHz       ; bin_counter[23]                             ;                                                               ;
-; 331.02 MHz ; 250.0 MHz       ; clkin_50                                    ; limit due to minimum period restriction (max I/O toggle rate) ;
-; 386.1 MHz  ; 386.1 MHz       ; Extender:INST10|current_state.FULLYEXTENDED ;                                                               ;
+; 105.69 MHz ; 105.69 MHz      ; sw[0]                                       ;                                                               ;
+; 111.83 MHz ; 111.83 MHz      ; sw[4]                                       ;                                                               ;
+; 219.68 MHz ; 219.68 MHz      ; bin_counter[24]                             ;                                                               ;
+; 319.9 MHz  ; 250.0 MHz       ; clkin_50                                    ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 367.92 MHz ; 367.92 MHz      ; Extender:INST10|current_state.FULLYEXTENDED ;                                                               ;
 +------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+----------------------------------------------------------------------+
-; Slow 1200mV 0C Model Setup Summary                                   ;
-+---------------------------------------------+--------+---------------+
-; Clock                                       ; Slack  ; End Point TNS ;
-+---------------------------------------------+--------+---------------+
-; bin_counter[23]                             ; -4.123 ; -25.221       ;
-; clkin_50                                    ; -2.021 ; -42.463       ;
-; Extender:INST10|current_state.FULLYEXTENDED ; -0.795 ; -0.795        ;
-+---------------------------------------------+--------+---------------+
++--------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Setup Summary                                       ;
++-------------------------------------------------+--------+---------------+
+; Clock                                           ; Slack  ; End Point TNS ;
++-------------------------------------------------+--------+---------------+
+; bin_counter[24]                                 ; -5.607 ; -75.693       ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; -4.582 ; -12.607       ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; -4.243 ; -4.243        ;
+; sw[0]                                           ; -4.231 ; -4.231        ;
+; sw[4]                                           ; -3.971 ; -3.971        ;
+; clkin_50                                        ; -2.126 ; -35.544       ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; -0.859 ; -0.859        ;
++-------------------------------------------------+--------+---------------+
 
 
-+---------------------------------------------------------------------+
-; Slow 1200mV 0C Model Hold Summary                                   ;
-+---------------------------------------------+-------+---------------+
-; Clock                                       ; Slack ; End Point TNS ;
-+---------------------------------------------+-------+---------------+
-; Extender:INST10|current_state.FULLYEXTENDED ; 0.140 ; 0.000         ;
-; bin_counter[23]                             ; 0.195 ; 0.000         ;
-; clkin_50                                    ; 0.340 ; 0.000         ;
-+---------------------------------------------+-------+---------------+
++-------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Hold Summary                                       ;
++-------------------------------------------------+-------+---------------+
+; Clock                                           ; Slack ; End Point TNS ;
++-------------------------------------------------+-------+---------------+
+; bin_counter[24]                                 ; 0.150 ; 0.000         ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.199 ; 0.000         ;
+; clkin_50                                        ; 0.338 ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.368 ; 0.000         ;
+; sw[0]                                           ; 1.165 ; 0.000         ;
+; sw[4]                                           ; 1.398 ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1.821 ; 0.000         ;
++-------------------------------------------------+-------+---------------+
 
 
 -----------------------------------------
@@ -221,15 +249,19 @@ No paths to report.
 No paths to report.
 
 
-+----------------------------------------------------------------------+
-; Slow 1200mV 0C Model Minimum Pulse Width Summary                     ;
-+---------------------------------------------+--------+---------------+
-; Clock                                       ; Slack  ; End Point TNS ;
-+---------------------------------------------+--------+---------------+
-; clkin_50                                    ; -3.000 ; -53.558       ;
-; bin_counter[23]                             ; -1.487 ; -13.610       ;
-; Extender:INST10|current_state.FULLYEXTENDED ; 0.435  ; 0.000         ;
-+---------------------------------------------+--------+---------------+
++--------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Minimum Pulse Width Summary                         ;
++-------------------------------------------------+--------+---------------+
+; Clock                                           ; Slack  ; End Point TNS ;
++-------------------------------------------------+--------+---------------+
+; clkin_50                                        ; -3.000 ; -40.175       ;
+; sw[0]                                           ; -3.000 ; -3.969        ;
+; sw[4]                                           ; -3.000 ; -3.188        ;
+; bin_counter[24]                                 ; -1.487 ; -34.201       ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.394  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; 0.411  ; 0.000         ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.437  ; 0.000         ;
++-------------------------------------------------+--------+---------------+
 
 
 ----------------------------------------------
@@ -238,26 +270,34 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+----------------------------------------------------------------------+
-; Fast 1200mV 0C Model Setup Summary                                   ;
-+---------------------------------------------+--------+---------------+
-; Clock                                       ; Slack  ; End Point TNS ;
-+---------------------------------------------+--------+---------------+
-; bin_counter[23]                             ; -1.254 ; -6.331        ;
-; clkin_50                                    ; -0.508 ; -1.903        ;
-; Extender:INST10|current_state.FULLYEXTENDED ; 0.056  ; 0.000         ;
-+---------------------------------------------+--------+---------------+
++--------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Setup Summary                                       ;
++-------------------------------------------------+--------+---------------+
+; Clock                                           ; Slack  ; End Point TNS ;
++-------------------------------------------------+--------+---------------+
+; bin_counter[24]                                 ; -2.473 ; -26.872       ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; -1.898 ; -1.898        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; -1.863 ; -4.988        ;
+; sw[0]                                           ; -1.040 ; -1.040        ;
+; sw[4]                                           ; -0.870 ; -0.870        ;
+; clkin_50                                        ; -0.399 ; -2.844        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.032  ; 0.000         ;
++-------------------------------------------------+--------+---------------+
 
 
-+---------------------------------------------------------------------+
-; Fast 1200mV 0C Model Hold Summary                                   ;
-+---------------------------------------------+-------+---------------+
-; Clock                                       ; Slack ; End Point TNS ;
-+---------------------------------------------+-------+---------------+
-; bin_counter[23]                             ; 0.113 ; 0.000         ;
-; Extender:INST10|current_state.FULLYEXTENDED ; 0.142 ; 0.000         ;
-; clkin_50                                    ; 0.156 ; 0.000         ;
-+---------------------------------------------+-------+---------------+
++--------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Hold Summary                                        ;
++-------------------------------------------------+--------+---------------+
+; Clock                                           ; Slack  ; End Point TNS ;
++-------------------------------------------------+--------+---------------+
+; bin_counter[24]                                 ; -0.025 ; -0.025        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.088  ; 0.000         ;
+; clkin_50                                        ; 0.155  ; 0.000         ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.174  ; 0.000         ;
+; sw[0]                                           ; 0.481  ; 0.000         ;
+; sw[4]                                           ; 0.571  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; 0.725  ; 0.000         ;
++-------------------------------------------------+--------+---------------+
 
 
 -----------------------------------------
@@ -272,15 +312,19 @@ No paths to report.
 No paths to report.
 
 
-+----------------------------------------------------------------------+
-; Fast 1200mV 0C Model Minimum Pulse Width Summary                     ;
-+---------------------------------------------+--------+---------------+
-; Clock                                       ; Slack  ; End Point TNS ;
-+---------------------------------------------+--------+---------------+
-; clkin_50                                    ; -3.000 ; -42.778       ;
-; bin_counter[23]                             ; -1.000 ; -9.000        ;
-; Extender:INST10|current_state.FULLYEXTENDED ; 0.462  ; 0.000         ;
-+---------------------------------------------+--------+---------------+
++--------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Minimum Pulse Width Summary                         ;
++-------------------------------------------------+--------+---------------+
+; Clock                                           ; Slack  ; End Point TNS ;
++-------------------------------------------------+--------+---------------+
+; clkin_50                                        ; -3.000 ; -32.162       ;
+; sw[0]                                           ; -3.000 ; -4.899        ;
+; sw[4]                                           ; -3.000 ; -4.042        ;
+; bin_counter[24]                                 ; -1.000 ; -23.000       ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.407  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; 0.439  ; 0.000         ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.462  ; 0.000         ;
++-------------------------------------------------+--------+---------------+
 
 
 ----------------------------------------------
@@ -289,20 +333,28 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+-----------------------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                                       ;
-+----------------------------------------------+---------+-------+----------+---------+---------------------+
-; Clock                                        ; Setup   ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
-+----------------------------------------------+---------+-------+----------+---------+---------------------+
-; Worst-case Slack                             ; -4.272  ; 0.113 ; N/A      ; N/A     ; -3.000              ;
-;  Extender:INST10|current_state.FULLYEXTENDED ; -0.808  ; 0.140 ; N/A      ; N/A     ; 0.420               ;
-;  bin_counter[23]                             ; -4.272  ; 0.113 ; N/A      ; N/A     ; -1.487              ;
-;  clkin_50                                    ; -2.354  ; 0.156 ; N/A      ; N/A     ; -3.000              ;
-; Design-wide TNS                              ; -77.495 ; 0.0   ; 0.0      ; 0.0     ; -67.168             ;
-;  Extender:INST10|current_state.FULLYEXTENDED ; -0.808  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-;  bin_counter[23]                             ; -26.609 ; 0.000 ; N/A      ; N/A     ; -13.610             ;
-;  clkin_50                                    ; -50.078 ; 0.000 ; N/A      ; N/A     ; -53.558             ;
-+----------------------------------------------+---------+-------+----------+---------+---------------------+
++-----------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                             ;
++--------------------------------------------------+----------+--------+----------+---------+---------------------+
+; Clock                                            ; Setup    ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
++--------------------------------------------------+----------+--------+----------+---------+---------------------+
+; Worst-case Slack                                 ; -6.224   ; -0.025 ; N/A      ; N/A     ; -3.000              ;
+;  Extender:INST10|current_state.FULLYEXTENDED     ; -0.891   ; 0.174  ; N/A      ; N/A     ; 0.421               ;
+;  MealyStatemachine:INSTMEALY|current_state.ERROR ; -4.722   ; 0.088  ; N/A      ; N/A     ; 0.394               ;
+;  MealyStatemachine:INSTMEALY|current_state.STOP  ; -4.619   ; 0.725  ; N/A      ; N/A     ; 0.411               ;
+;  bin_counter[24]                                 ; -6.224   ; -0.025 ; N/A      ; N/A     ; -1.487              ;
+;  clkin_50                                        ; -2.485   ; 0.155  ; N/A      ; N/A     ; -3.000              ;
+;  sw[0]                                           ; -4.231   ; 0.481  ; N/A      ; N/A     ; -3.000              ;
+;  sw[4]                                           ; -3.971   ; 0.571  ; N/A      ; N/A     ; -3.000              ;
+; Design-wide TNS                                  ; -150.955 ; -0.025 ; 0.0      ; 0.0     ; -81.533             ;
+;  Extender:INST10|current_state.FULLYEXTENDED     ; -0.891   ; 0.000  ; N/A      ; N/A     ; 0.000               ;
+;  MealyStatemachine:INSTMEALY|current_state.ERROR ; -13.489  ; 0.000  ; N/A      ; N/A     ; 0.000               ;
+;  MealyStatemachine:INSTMEALY|current_state.STOP  ; -4.619   ; 0.000  ; N/A      ; N/A     ; 0.000               ;
+;  bin_counter[24]                                 ; -81.875  ; -0.025 ; N/A      ; N/A     ; -34.201             ;
+;  clkin_50                                        ; -41.917  ; 0.000  ; N/A      ; N/A     ; -40.175             ;
+;  sw[0]                                           ; -4.231   ; 0.000  ; N/A      ; N/A     ; -4.899              ;
+;  sw[4]                                           ; -3.971   ; 0.000  ; N/A      ; N/A     ; -4.042              ;
++--------------------------------------------------+----------+--------+----------+---------+---------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -336,20 +388,20 @@ No synchronizer chains to report.
 +--------------+-----------------------+-----------------+-----------------+
 ; Pin          ; I/O Standard          ; 10-90 Rise Time ; 90-10 Fall Time ;
 +--------------+-----------------------+-----------------+-----------------+
-; pb[0]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
-; pb[1]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
-; pb[3]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
-; sw[4]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
-; sw[5]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
-; sw[6]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
-; sw[7]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
 ; sw[0]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
 ; sw[1]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
 ; sw[2]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
 ; sw[3]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
-; rst_n        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
+; pb[3]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
 ; pb[2]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
+; sw[4]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
+; sw[5]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
+; sw[6]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
+; sw[7]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
+; pb[0]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
+; rst_n        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
 ; clkin_50     ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
+; pb[1]        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
 ; ~ALTERA_TMS~ ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
 ; ~ALTERA_TCK~ ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
 ; ~ALTERA_TDI~ ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
@@ -434,31 +486,61 @@ No synchronizer chains to report.
 +--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; Setup Transfers                                                                                                                       ;
-+---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
-; From Clock                                  ; To Clock                                    ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
-; bin_counter[23]                             ; bin_counter[23]                             ; 56       ; 0        ; 0        ; 0        ;
-; Extender:INST10|current_state.FULLYEXTENDED ; bin_counter[23]                             ; 6        ; 10       ; 0        ; 0        ;
-; bin_counter[23]                             ; clkin_50                                    ; 1        ; 1        ; 0        ; 0        ;
-; clkin_50                                    ; clkin_50                                    ; 364      ; 0        ; 0        ; 0        ;
-; Extender:INST10|current_state.FULLYEXTENDED ; Extender:INST10|current_state.FULLYEXTENDED ; 0        ; 0        ; 1        ; 1        ;
-+---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                                                               ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
+; From Clock                                      ; To Clock                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
+; bin_counter[24]                                 ; bin_counter[24]                                 ; 196      ; 0        ; 0        ; 0        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; bin_counter[24]                                 ; 7        ; 11       ; 0        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; bin_counter[24]                                 ; 22       ; 2        ; 0        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; bin_counter[24]                                 ; 9        ; 5        ; 0        ; 0        ;
+; sw[0]                                           ; bin_counter[24]                                 ; 11       ; 17       ; 0        ; 0        ;
+; sw[4]                                           ; bin_counter[24]                                 ; 13       ; 19       ; 0        ; 0        ;
+; bin_counter[24]                                 ; clkin_50                                        ; 1        ; 1        ; 0        ; 0        ;
+; clkin_50                                        ; clkin_50                                        ; 324      ; 0        ; 0        ; 0        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; Extender:INST10|current_state.FULLYEXTENDED     ; 0        ; 0        ; 1        ; 1        ;
+; bin_counter[24]                                 ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 20       ; 0        ; 8        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 0        ; 0        ;
+; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 1        ; 1        ;
+; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 1        ; 1        ;
+; bin_counter[24]                                 ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 8        ; 0        ; 0        ; 0        ;
+; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1        ; 1        ; 0        ; 0        ;
+; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1        ; 1        ; 0        ; 0        ;
+; bin_counter[24]                                 ; sw[0]                                           ; 0        ; 0        ; 6        ; 0        ;
+; sw[0]                                           ; sw[0]                                           ; 0        ; 0        ; 1        ; 1        ;
+; bin_counter[24]                                 ; sw[4]                                           ; 0        ; 0        ; 6        ; 0        ;
+; sw[4]                                           ; sw[4]                                           ; 0        ; 0        ; 1        ; 1        ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; Hold Transfers                                                                                                                        ;
-+---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
-; From Clock                                  ; To Clock                                    ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
-; bin_counter[23]                             ; bin_counter[23]                             ; 56       ; 0        ; 0        ; 0        ;
-; Extender:INST10|current_state.FULLYEXTENDED ; bin_counter[23]                             ; 6        ; 10       ; 0        ; 0        ;
-; bin_counter[23]                             ; clkin_50                                    ; 1        ; 1        ; 0        ; 0        ;
-; clkin_50                                    ; clkin_50                                    ; 364      ; 0        ; 0        ; 0        ;
-; Extender:INST10|current_state.FULLYEXTENDED ; Extender:INST10|current_state.FULLYEXTENDED ; 0        ; 0        ; 1        ; 1        ;
-+---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                                                                ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
+; From Clock                                      ; To Clock                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
+; bin_counter[24]                                 ; bin_counter[24]                                 ; 196      ; 0        ; 0        ; 0        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; bin_counter[24]                                 ; 7        ; 11       ; 0        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; bin_counter[24]                                 ; 22       ; 2        ; 0        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; bin_counter[24]                                 ; 9        ; 5        ; 0        ; 0        ;
+; sw[0]                                           ; bin_counter[24]                                 ; 11       ; 17       ; 0        ; 0        ;
+; sw[4]                                           ; bin_counter[24]                                 ; 13       ; 19       ; 0        ; 0        ;
+; bin_counter[24]                                 ; clkin_50                                        ; 1        ; 1        ; 0        ; 0        ;
+; clkin_50                                        ; clkin_50                                        ; 324      ; 0        ; 0        ; 0        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; Extender:INST10|current_state.FULLYEXTENDED     ; 0        ; 0        ; 1        ; 1        ;
+; bin_counter[24]                                 ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 20       ; 0        ; 8        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 0        ; 0        ;
+; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 1        ; 1        ;
+; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 1        ; 1        ;
+; bin_counter[24]                                 ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 8        ; 0        ; 0        ; 0        ;
+; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1        ; 1        ; 0        ; 0        ;
+; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1        ; 1        ; 0        ; 0        ;
+; bin_counter[24]                                 ; sw[0]                                           ; 0        ; 0        ; 6        ; 0        ;
+; sw[0]                                           ; sw[0]                                           ; 0        ; 0        ; 1        ; 1        ;
+; bin_counter[24]                                 ; sw[4]                                           ; 0        ; 0        ; 6        ; 0        ;
+; sw[4]                                           ; sw[4]                                           ; 0        ; 0        ; 1        ; 1        ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
@@ -481,40 +563,47 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 10    ; 10   ;
-; Unconstrained Input Port Paths  ; 73    ; 73   ;
+; Unconstrained Input Ports       ; 13    ; 13   ;
+; Unconstrained Input Port Paths  ; 164   ; 164  ;
 ; Unconstrained Output Ports      ; 15    ; 15   ;
-; Unconstrained Output Port Paths ; 71    ; 71   ;
+; Unconstrained Output Port Paths ; 148   ; 148  ;
 +---------------------------------+-------+------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Clock Status Summary                                                                                           ;
-+---------------------------------------------+---------------------------------------------+------+-------------+
-; Target                                      ; Clock                                       ; Type ; Status      ;
-+---------------------------------------------+---------------------------------------------+------+-------------+
-; Extender:INST10|current_state.FULLYEXTENDED ; Extender:INST10|current_state.FULLYEXTENDED ; Base ; Constrained ;
-; bin_counter[23]                             ; bin_counter[23]                             ; Base ; Constrained ;
-; clkin_50                                    ; clkin_50                                    ; Base ; Constrained ;
-+---------------------------------------------+---------------------------------------------+------+-------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Clock Status Summary                                                                                                   ;
++-------------------------------------------------+-------------------------------------------------+------+-------------+
+; Target                                          ; Clock                                           ; Type ; Status      ;
++-------------------------------------------------+-------------------------------------------------+------+-------------+
+; Extender:INST10|current_state.FULLYEXTENDED     ; Extender:INST10|current_state.FULLYEXTENDED     ; Base ; Constrained ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; MealyStatemachine:INSTMEALY|current_state.ERROR ; Base ; Constrained ;
+; MealyStatemachine:INSTMEALY|current_state.STOP  ; MealyStatemachine:INSTMEALY|current_state.STOP  ; Base ; Constrained ;
+; bin_counter[24]                                 ; bin_counter[24]                                 ; Base ; Constrained ;
+; clkin_50                                        ; clkin_50                                        ; Base ; Constrained ;
+; sw[0]                                           ; sw[0]                                           ; Base ; Constrained ;
+; sw[4]                                           ; sw[4]                                           ; Base ; Constrained ;
++-------------------------------------------------+-------------------------------------------------+------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                         ;
-+------------+--------------------------------------------------------------------------------------+
-; Input Port ; Comment                                                                              ;
-+------------+--------------------------------------------------------------------------------------+
-; pb[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rst_n      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[3]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[4]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[5]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[6]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[7]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+------------+--------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                                                          ;
++------------+-----------------------------------------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                                                               ;
++------------+-----------------------------------------------------------------------------------------------------------------------+
+; pb[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; pb[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; pb[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; pb[3]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; rst_n      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found. This port has clock assignment. ;
+; sw[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[3]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[4]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found. This port has clock assignment. ;
+; sw[5]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[6]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[7]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
++------------+-----------------------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------+
@@ -523,9 +612,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Output Port  ; Comment                                                                               ;
 +--------------+---------------------------------------------------------------------------------------+
 ; leds[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; leds[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; leds[4]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; leds[5]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; leds[6]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; leds[7]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; seg7_char1   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -540,22 +629,25 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +--------------+---------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                         ;
-+------------+--------------------------------------------------------------------------------------+
-; Input Port ; Comment                                                                              ;
-+------------+--------------------------------------------------------------------------------------+
-; pb[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rst_n      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[3]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[4]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[5]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[6]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; sw[7]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+------------+--------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                                                          ;
++------------+-----------------------------------------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                                                               ;
++------------+-----------------------------------------------------------------------------------------------------------------------+
+; pb[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; pb[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; pb[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; pb[3]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; rst_n      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found. This port has clock assignment. ;
+; sw[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[3]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[4]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found. This port has clock assignment. ;
+; sw[5]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[6]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
+; sw[7]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found                                  ;
++------------+-----------------------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------+
@@ -564,9 +656,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Output Port  ; Comment                                                                               ;
 +--------------+---------------------------------------------------------------------------------------+
 ; leds[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; leds[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; leds[4]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; leds[5]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; leds[6]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; leds[7]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; seg7_char1   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -587,99 +679,148 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Fri Mar 16 18:19:34 2018
+    Info: Processing started: Sat Mar 17 00:16:41 2018
 Info: Command: quartus_sta LogicalStep_Lab4 -c LogicalStep_Lab4_top
 Info: qsta_default_script.tcl version: #1
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
-Warning (335093): TimeQuest Timing Analyzer is analyzing 1 combinational loops as latches.
+Warning (335093): TimeQuest Timing Analyzer is analyzing 7 combinational loops as latches.
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'LogicalStep_Lab4_top.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name clkin_50 clkin_50
-    Info (332105): create_clock -period 1.000 -name bin_counter[23] bin_counter[23]
+    Info (332105): create_clock -period 1.000 -name bin_counter[24] bin_counter[24]
+    Info (332105): create_clock -period 1.000 -name MealyStatemachine:INSTMEALY|current_state.ERROR MealyStatemachine:INSTMEALY|current_state.ERROR
+    Info (332105): create_clock -period 1.000 -name sw[0] sw[0]
+    Info (332105): create_clock -period 1.000 -name sw[4] sw[4]
     Info (332105): create_clock -period 1.000 -name Extender:INST10|current_state.FULLYEXTENDED Extender:INST10|current_state.FULLYEXTENDED
+    Info (332105): create_clock -period 1.000 -name MealyStatemachine:INSTMEALY|current_state.STOP MealyStatemachine:INSTMEALY|current_state.STOP
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: INST6X|AEQB~0  from: datad  to: combout
+    Info (332098): Cell: INST7Y|AEQB~0  from: datad  to: combout
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -4.272
+Info (332146): Worst-case setup slack is -6.224
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.272             -26.609 bin_counter[23] 
-    Info (332119):    -2.354             -50.078 clkin_50 
-    Info (332119):    -0.808              -0.808 Extender:INST10|current_state.FULLYEXTENDED 
-Info (332146): Worst-case hold slack is 0.199
+    Info (332119):    -6.224             -81.875 bin_counter[24] 
+    Info (332119):    -4.722             -13.489 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):    -4.619              -4.619 MealyStatemachine:INSTMEALY|current_state.STOP 
+    Info (332119):    -4.208              -4.208 sw[0] 
+    Info (332119):    -3.956              -3.956 sw[4] 
+    Info (332119):    -2.485             -41.917 clkin_50 
+    Info (332119):    -0.891              -0.891 Extender:INST10|current_state.FULLYEXTENDED 
+Info (332146): Worst-case hold slack is 0.240
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.199               0.000 Extender:INST10|current_state.FULLYEXTENDED 
-    Info (332119):     0.263               0.000 bin_counter[23] 
-    Info (332119):     0.380               0.000 clkin_50 
+    Info (332119):     0.240               0.000 bin_counter[24] 
+    Info (332119):     0.273               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):     0.353               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):     0.378               0.000 clkin_50 
+    Info (332119):     1.258               0.000 sw[0] 
+    Info (332119):     1.558               0.000 sw[4] 
+    Info (332119):     1.945               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -53.558 clkin_50 
-    Info (332119):    -1.487             -13.383 bin_counter[23] 
-    Info (332119):     0.420               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):    -3.000             -40.175 clkin_50 
+    Info (332119):    -3.000              -3.590 sw[0] 
+    Info (332119):    -3.000              -3.000 sw[4] 
+    Info (332119):    -1.487             -34.201 bin_counter[24] 
+    Info (332119):     0.421               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):     0.424               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):     0.479               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
 Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: INST6X|AEQB~0  from: datad  to: combout
+    Info (332098): Cell: INST7Y|AEQB~0  from: datad  to: combout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -4.123
+Info (332146): Worst-case setup slack is -5.607
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.123             -25.221 bin_counter[23] 
-    Info (332119):    -2.021             -42.463 clkin_50 
-    Info (332119):    -0.795              -0.795 Extender:INST10|current_state.FULLYEXTENDED 
-Info (332146): Worst-case hold slack is 0.140
+    Info (332119):    -5.607             -75.693 bin_counter[24] 
+    Info (332119):    -4.582             -12.607 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):    -4.243              -4.243 MealyStatemachine:INSTMEALY|current_state.STOP 
+    Info (332119):    -4.231              -4.231 sw[0] 
+    Info (332119):    -3.971              -3.971 sw[4] 
+    Info (332119):    -2.126             -35.544 clkin_50 
+    Info (332119):    -0.859              -0.859 Extender:INST10|current_state.FULLYEXTENDED 
+Info (332146): Worst-case hold slack is 0.150
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.140               0.000 Extender:INST10|current_state.FULLYEXTENDED 
-    Info (332119):     0.195               0.000 bin_counter[23] 
-    Info (332119):     0.340               0.000 clkin_50 
+    Info (332119):     0.150               0.000 bin_counter[24] 
+    Info (332119):     0.199               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):     0.338               0.000 clkin_50 
+    Info (332119):     0.368               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):     1.165               0.000 sw[0] 
+    Info (332119):     1.398               0.000 sw[4] 
+    Info (332119):     1.821               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -53.558 clkin_50 
-    Info (332119):    -1.487             -13.610 bin_counter[23] 
-    Info (332119):     0.435               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):    -3.000             -40.175 clkin_50 
+    Info (332119):    -3.000              -3.969 sw[0] 
+    Info (332119):    -3.000              -3.188 sw[4] 
+    Info (332119):    -1.487             -34.201 bin_counter[24] 
+    Info (332119):     0.394               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):     0.411               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
+    Info (332119):     0.437               0.000 Extender:INST10|current_state.FULLYEXTENDED 
 Info: Analyzing Fast 1200mV 0C Model
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: INST6X|AEQB~0  from: datad  to: combout
+    Info (332098): Cell: INST7Y|AEQB~0  from: datad  to: combout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -1.254
+Info (332146): Worst-case setup slack is -2.473
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.254              -6.331 bin_counter[23] 
-    Info (332119):    -0.508              -1.903 clkin_50 
-    Info (332119):     0.056               0.000 Extender:INST10|current_state.FULLYEXTENDED 
-Info (332146): Worst-case hold slack is 0.113
+    Info (332119):    -2.473             -26.872 bin_counter[24] 
+    Info (332119):    -1.898              -1.898 MealyStatemachine:INSTMEALY|current_state.STOP 
+    Info (332119):    -1.863              -4.988 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):    -1.040              -1.040 sw[0] 
+    Info (332119):    -0.870              -0.870 sw[4] 
+    Info (332119):    -0.399              -2.844 clkin_50 
+    Info (332119):     0.032               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+Info (332146): Worst-case hold slack is -0.025
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.113               0.000 bin_counter[23] 
-    Info (332119):     0.142               0.000 Extender:INST10|current_state.FULLYEXTENDED 
-    Info (332119):     0.156               0.000 clkin_50 
+    Info (332119):    -0.025              -0.025 bin_counter[24] 
+    Info (332119):     0.088               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):     0.155               0.000 clkin_50 
+    Info (332119):     0.174               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):     0.481               0.000 sw[0] 
+    Info (332119):     0.571               0.000 sw[4] 
+    Info (332119):     0.725               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -42.778 clkin_50 
-    Info (332119):    -1.000              -9.000 bin_counter[23] 
+    Info (332119):    -3.000             -32.162 clkin_50 
+    Info (332119):    -3.000              -4.899 sw[0] 
+    Info (332119):    -3.000              -4.042 sw[4] 
+    Info (332119):    -1.000             -23.000 bin_counter[24] 
+    Info (332119):     0.407               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):     0.439               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
     Info (332119):     0.462               0.000 Extender:INST10|current_state.FULLYEXTENDED 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 830 megabytes
-    Info: Processing ended: Fri Mar 16 18:19:39 2018
-    Info: Elapsed time: 00:00:05
+    Info: Peak virtual memory: 833 megabytes
+    Info: Processing ended: Sat Mar 17 00:16:45 2018
+    Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:03
 
 

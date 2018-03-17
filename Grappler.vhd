@@ -41,14 +41,14 @@ END PROCESS;
 
 -- TRANSITION LOGIC PROCESS
 
-Transition_Section: PROCESS (controlButton, enable, current_state) 
+Transition_Section: PROCESS (current_state,controlButton, enable) 
 
 BEGIN
      CASE current_state IS
          WHEN STOP =>		
 				IF( controlButton = '0' AND enable= '1' ) THEN --pressed
 					next_state <= GRAPPLE;
-					delay(
+					
 				ELSE
 					next_state <= STOP;
 				END IF;
@@ -67,7 +67,7 @@ BEGIN
 
 -- DECODER SECTION PROCESS
 
-Decoder_Section: PROCESS (controlButton, enable, current_state) 
+Decoder_Section: PROCESS (current_state,controlButton, enable)
 
 BEGIN
      CASE current_state IS

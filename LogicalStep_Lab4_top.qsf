@@ -286,4 +286,20 @@ set_instance_assignment -name AUTO_OPEN_DRAIN_PINS ON -to seg7_data[6]
 set_global_assignment -name CDF_FILE output_files/Chain2.cdf
 set_global_assignment -name VHDL_FILE Extender.vhd
 set_global_assignment -name CDF_FILE output_files/Chain3.cdf
+set_global_assignment -name CDF_FILE output_files/Chain8.cdf
+set_global_assignment -name CDF_FILE output_files/Chain9.cdf
+set_global_assignment -name CDF_FILE output_files/Chain10.cdf
+set_global_assignment -name CDF_FILE output_files/Chain6.cdf
+set_global_assignment -name CDF_FILE output_files/Chain7.cdf
+set_global_assignment -name CDF_FILE output_files/Chain11.cdf
+set_global_assignment -name CDF_FILE output_files/Chain12.cdf
+set_global_assignment -name CDF_FILE output_files/Chain13.cdf
+set_global_assignment -name CDF_FILE output_files/Chain16.cdf
+set_global_assignment -name CDF_FILE output_files/Chain19.cdf
+set_global_assignment -name CDF_FILE output_files/Chain28.cdf
+set_global_assignment -name CDF_FILE output_files/Chain31.cdf
+set_global_assignment -name CDF_FILE output_files/Chain32.cdf
+set_global_assignment -name CDF_FILE output_files/Chain33.cdf
+set_global_assignment -name VHDL_FILE muxSingle.vhd
+set_global_assignment -name CDF_FILE output_files/Chain34.cdf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

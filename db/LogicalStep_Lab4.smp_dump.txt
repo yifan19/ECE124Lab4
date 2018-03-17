@@ -1,4 +1,12 @@
 
+State Machine - |LogicalStep_Lab4_top|MealyStatemachine:INSTMEALY|current_state
+Name current_state.ERROR current_state.BOTHMOVE current_state.YMOVE current_state.XMOVE current_state.STOP 
+current_state.STOP 0 0 0 0 0 
+current_state.XMOVE 0 0 0 1 1 
+current_state.YMOVE 0 0 1 0 1 
+current_state.BOTHMOVE 0 1 0 0 1 
+current_state.ERROR 1 0 0 0 1 
+
 State Machine - |LogicalStep_Lab4_top|Extender:INST10|current_state
 Name current_state.FULLYEXTENDED current_state.EXTENDING3 current_state.EXTENDING2 current_state.EXTENDING1 current_state.RETRACTED 
 current_state.RETRACTED 0 0 0 0 0 

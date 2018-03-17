@@ -4,7 +4,7 @@ use IEEE.numeric_std.all;
 
 Entity Bin_Counter4bit is port
 	(
-		Main_clk			: in std_logic := '0';
+		Main_clk			: in std_logic;
 		rst_n				: in std_logic := '0';
 		clk_en			: in std_logic := '0';
 		up1_down0		: in std_logic := '0';

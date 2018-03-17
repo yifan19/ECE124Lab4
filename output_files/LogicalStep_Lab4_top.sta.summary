@@ -2,109 +2,253 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1200mV 85C Model Setup 'bin_counter[23]'
-Slack : -4.272
-TNS   : -26.609
+Type  : Slow 1200mV 85C Model Setup 'bin_counter[24]'
+Slack : -6.224
+TNS   : -81.875
+
+Type  : Slow 1200mV 85C Model Setup 'MealyStatemachine:INSTMEALY|current_state.ERROR'
+Slack : -4.722
+TNS   : -13.489
+
+Type  : Slow 1200mV 85C Model Setup 'MealyStatemachine:INSTMEALY|current_state.STOP'
+Slack : -4.619
+TNS   : -4.619
+
+Type  : Slow 1200mV 85C Model Setup 'sw[0]'
+Slack : -4.208
+TNS   : -4.208
+
+Type  : Slow 1200mV 85C Model Setup 'sw[4]'
+Slack : -3.956
+TNS   : -3.956
 
 Type  : Slow 1200mV 85C Model Setup 'clkin_50'
-Slack : -2.354
-TNS   : -50.078
+Slack : -2.485
+TNS   : -41.917
 
 Type  : Slow 1200mV 85C Model Setup 'Extender:INST10|current_state.FULLYEXTENDED'
-Slack : -0.808
-TNS   : -0.808
+Slack : -0.891
+TNS   : -0.891
 
-Type  : Slow 1200mV 85C Model Hold 'Extender:INST10|current_state.FULLYEXTENDED'
-Slack : 0.199
+Type  : Slow 1200mV 85C Model Hold 'bin_counter[24]'
+Slack : 0.240
 TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Hold 'bin_counter[23]'
-Slack : 0.263
+Type  : Slow 1200mV 85C Model Hold 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : 0.273
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'MealyStatemachine:INSTMEALY|current_state.ERROR'
+Slack : 0.353
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clkin_50'
-Slack : 0.380
+Slack : 0.378
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'sw[0]'
+Slack : 1.258
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'sw[4]'
+Slack : 1.558
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'MealyStatemachine:INSTMEALY|current_state.STOP'
+Slack : 1.945
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clkin_50'
 Slack : -3.000
-TNS   : -53.558
+TNS   : -40.175
 
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'bin_counter[23]'
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'sw[0]'
+Slack : -3.000
+TNS   : -3.590
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'sw[4]'
+Slack : -3.000
+TNS   : -3.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'bin_counter[24]'
 Slack : -1.487
-TNS   : -13.383
+TNS   : -34.201
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Extender:INST10|current_state.FULLYEXTENDED'
-Slack : 0.420
+Slack : 0.421
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Setup 'bin_counter[23]'
-Slack : -4.123
-TNS   : -25.221
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'MealyStatemachine:INSTMEALY|current_state.ERROR'
+Slack : 0.424
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'MealyStatemachine:INSTMEALY|current_state.STOP'
+Slack : 0.479
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'bin_counter[24]'
+Slack : -5.607
+TNS   : -75.693
+
+Type  : Slow 1200mV 0C Model Setup 'MealyStatemachine:INSTMEALY|current_state.ERROR'
+Slack : -4.582
+TNS   : -12.607
+
+Type  : Slow 1200mV 0C Model Setup 'MealyStatemachine:INSTMEALY|current_state.STOP'
+Slack : -4.243
+TNS   : -4.243
+
+Type  : Slow 1200mV 0C Model Setup 'sw[0]'
+Slack : -4.231
+TNS   : -4.231
+
+Type  : Slow 1200mV 0C Model Setup 'sw[4]'
+Slack : -3.971
+TNS   : -3.971
 
 Type  : Slow 1200mV 0C Model Setup 'clkin_50'
-Slack : -2.021
-TNS   : -42.463
+Slack : -2.126
+TNS   : -35.544
 
 Type  : Slow 1200mV 0C Model Setup 'Extender:INST10|current_state.FULLYEXTENDED'
-Slack : -0.795
-TNS   : -0.795
+Slack : -0.859
+TNS   : -0.859
 
-Type  : Slow 1200mV 0C Model Hold 'Extender:INST10|current_state.FULLYEXTENDED'
-Slack : 0.140
+Type  : Slow 1200mV 0C Model Hold 'bin_counter[24]'
+Slack : 0.150
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Hold 'bin_counter[23]'
-Slack : 0.195
+Type  : Slow 1200mV 0C Model Hold 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : 0.199
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clkin_50'
-Slack : 0.340
+Slack : 0.338
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'MealyStatemachine:INSTMEALY|current_state.ERROR'
+Slack : 0.368
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'sw[0]'
+Slack : 1.165
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'sw[4]'
+Slack : 1.398
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'MealyStatemachine:INSTMEALY|current_state.STOP'
+Slack : 1.821
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clkin_50'
 Slack : -3.000
-TNS   : -53.558
+TNS   : -40.175
 
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'bin_counter[23]'
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'sw[0]'
+Slack : -3.000
+TNS   : -3.969
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'sw[4]'
+Slack : -3.000
+TNS   : -3.188
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'bin_counter[24]'
 Slack : -1.487
-TNS   : -13.610
+TNS   : -34.201
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'MealyStatemachine:INSTMEALY|current_state.ERROR'
+Slack : 0.394
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'MealyStatemachine:INSTMEALY|current_state.STOP'
+Slack : 0.411
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Extender:INST10|current_state.FULLYEXTENDED'
-Slack : 0.435
+Slack : 0.437
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Setup 'bin_counter[23]'
-Slack : -1.254
-TNS   : -6.331
+Type  : Fast 1200mV 0C Model Setup 'bin_counter[24]'
+Slack : -2.473
+TNS   : -26.872
+
+Type  : Fast 1200mV 0C Model Setup 'MealyStatemachine:INSTMEALY|current_state.STOP'
+Slack : -1.898
+TNS   : -1.898
+
+Type  : Fast 1200mV 0C Model Setup 'MealyStatemachine:INSTMEALY|current_state.ERROR'
+Slack : -1.863
+TNS   : -4.988
+
+Type  : Fast 1200mV 0C Model Setup 'sw[0]'
+Slack : -1.040
+TNS   : -1.040
+
+Type  : Fast 1200mV 0C Model Setup 'sw[4]'
+Slack : -0.870
+TNS   : -0.870
 
 Type  : Fast 1200mV 0C Model Setup 'clkin_50'
-Slack : -0.508
-TNS   : -1.903
+Slack : -0.399
+TNS   : -2.844
 
 Type  : Fast 1200mV 0C Model Setup 'Extender:INST10|current_state.FULLYEXTENDED'
-Slack : 0.056
+Slack : 0.032
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 'bin_counter[23]'
-Slack : 0.113
-TNS   : 0.000
+Type  : Fast 1200mV 0C Model Hold 'bin_counter[24]'
+Slack : -0.025
+TNS   : -0.025
 
-Type  : Fast 1200mV 0C Model Hold 'Extender:INST10|current_state.FULLYEXTENDED'
-Slack : 0.142
+Type  : Fast 1200mV 0C Model Hold 'MealyStatemachine:INSTMEALY|current_state.ERROR'
+Slack : 0.088
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clkin_50'
-Slack : 0.156
+Slack : 0.155
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Extender:INST10|current_state.FULLYEXTENDED'
+Slack : 0.174
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'sw[0]'
+Slack : 0.481
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'sw[4]'
+Slack : 0.571
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'MealyStatemachine:INSTMEALY|current_state.STOP'
+Slack : 0.725
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clkin_50'
 Slack : -3.000
-TNS   : -42.778
+TNS   : -32.162
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'bin_counter[23]'
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'sw[0]'
+Slack : -3.000
+TNS   : -4.899
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'sw[4]'
+Slack : -3.000
+TNS   : -4.042
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'bin_counter[24]'
 Slack : -1.000
-TNS   : -9.000
+TNS   : -23.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'MealyStatemachine:INSTMEALY|current_state.ERROR'
+Slack : 0.407
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'MealyStatemachine:INSTMEALY|current_state.STOP'
+Slack : 0.439
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Extender:INST10|current_state.FULLYEXTENDED'
 Slack : 0.462

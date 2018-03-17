@@ -8,16 +8,19 @@ Entity MealyStatemachine IS Port
 
  X_EQ, X_GT, X_LT : IN std_logic; --comparing DESIRED TO ACTUAL
  Y_EQ, Y_GT, Y_LT : IN std_logic; --comparing DESIRED TO ACTUAL
-
- isError : IN std_logic; -- need to put that somewhere
+ extenderOut : IN std_logic;
 
 
  
  X_MOTION, Y_MOTION : IN std_logic;
  
- Clk_en, UPorDOWN: OUT std_logic;
+ X_Clk_en, X_UPorDOWN: OUT std_logic;
+ Y_Clk_en, Y_UPorDOWN: OUT std_logic;
  
- ExtenderEnable: OUT std_logic
+ ExtenderEnable: OUT std_logic;
+
+ isError : OUT std_logic -- need to put that somewhere
+ 
 
 
 
@@ -32,7 +35,7 @@ END ENTITY;
 
  -- state for the X control and Y control
  
- TYPE STATE IS (XMOVE, STOP, YMOVE, BOTHMOVE);
+ TYPE STATE IS (XMOVE, STOP, YMOVE, BOTHMOVE, ERROR);
 
 
  
@@ -66,7 +69,7 @@ END PROCESS;
 
 -- TRANSITION LOGIC PROCESS
 
-Transition_Section: PROCESS (current_state) -- X_EQ, X_GT, X_LT, Y_EQ, Y_GT,Y_LT)  
+Transition_Section: PROCESS (current_state, X_EQ, X_GT, X_LT,Y_EQ, Y_GT, Y_LT,extenderOut,X_MOTION, Y_MOTION)
 
 
 BEGIN
@@ -74,158 +77,204 @@ BEGIN
 	  
 	  --switching states depending on the value of the comparaison
          WHEN STOP =>		
+				--((X_GT='1' AND Y_GT ='1') OR (X_LT='1' AND Y_LT='1' )
 				
-					
-				IF( ((X_GT='1' AND Y_GT ='1') OR (X_LT='1' AND Y_LT='1' ) ) AND (X_MOTION='0') AND (Y_MOTION='0') ) THEN
+				IF( X_EQ = '0' AND Y_EQ = '0'	AND (X_MOTION='0') AND (Y_MOTION='0') ) THEN
 					-- both are bigger or smaller AND we ve got both buttons at active low
 					next_state <= BOTHMOVE;
 					
 				ELSIF((X_GT='1' or X_LT='1') AND (X_MOTION='0') ) THEN
 				
 					next_state <= XMOVE;
+					
 				ELSIF((Y_GT='1' or Y_LT='1') AND (Y_MOTION='0') ) THEN 
 
 					next_state <= YMOVE;
+					
+				ELSIF( extenderOut = '1') THEN
+				
+					next_state <= ERROR;
+					
 					
 				ELSE
 					next_state <= STOP;
 					
 				END IF;
+				
+	
+				
 
          WHEN XMOVE =>
 			
-				IF( ((X_GT='1' AND Y_GT ='1') OR (X_LT='1' AND Y_LT='1' ) ) AND (X_MOTION='0') AND (Y_MOTION='0') ) THEN
-					-- both are bigger or smaller AND we ve got both buttons at active low
-					next_state <= BOTHMOVE;
+				IF( X_EQ = '1') THEN
 					
-				ELSIF((X_GT='1' or X_LT='1') AND (X_MOTION='0') ) THEN
-				
-					next_state <= XMOVE;
-				ELSIF((Y_GT='1' or Y_LT='1') AND (Y_MOTION='0') ) THEN 
-
-					next_state <= YMOVE;
-					
-				ELSE
 					next_state <= STOP;
 					
+					
+				ELSE
+					next_state <= XMOVE;
+					
 				END IF;
+				
+
 				
 
          WHEN YMOVE =>
 			
-				IF( ((X_GT='1' AND Y_GT ='1') OR (X_LT='1' AND Y_LT='1' ) ) AND (X_MOTION='0') AND (Y_MOTION='0') ) THEN
-					-- both are bigger or smaller AND we ve got both buttons at active low
-					next_state <= BOTHMOVE;
+				IF( Y_EQ = '1') THEN
 					
-				ELSIF((X_GT='1' or X_LT='1') AND (X_MOTION='0') ) THEN
-				
-					next_state <= XMOVE;
-				ELSIF((Y_GT='1' or Y_LT='1') AND (Y_MOTION='0') ) THEN 
-
-					next_state <= YMOVE;
-					
-				ELSE
 					next_state <= STOP;
 					
+					
+				ELSE
+					next_state <= XMOVE;
+					
 				END IF;
+				
 				
 				
 				
          WHEN BOTHMOVE =>
 			
-				IF( ((X_GT='1' AND Y_GT ='1') OR (X_LT='1' AND Y_LT='1' ) ) AND (X_MOTION='0') AND (Y_MOTION='0') ) THEN
-					-- both are bigger or smaller AND we ve got both buttons at active low
-					next_state <= BOTHMOVE;
+				IF( Y_EQ = '1' OR X_EQ = '1') THEN
 					
-				ELSIF((X_GT='1' or X_LT='1') AND (X_MOTION='0') ) THEN
-				
-					next_state <= XMOVE;
-				ELSIF((Y_GT='1' or Y_LT='1') AND (Y_MOTION='0') ) THEN 
-
-					next_state <= YMOVE;
-					
-				ELSE
 					next_state <= STOP;
 					
+				ELSE
+					next_state <= BOTHMOVE;
+					
 				END IF;
+				
+				
 			
+			WHEN ERROR =>
+				
+				IF( extenderOut = '0') THEN
+					next_state <= STOP;
+				ELSE
+					next_state <= ERROR;
+				END IF;
+				
 			WHEN OTHERS =>
 				next_state <= STOP;
- 		END CASE;
+			END CASE;
+				
  END PROCESS;
 
 -- DECODER SECTION PROCESS
 
-Decoder_Section: PROCESS (current_state, X_MOTION, Y_MOTION) --X_EQ, X_GT, X_LT, Y_EQ, Y_GT, Y_LT, X_MOTION, Y_MOTION ) 
+Decoder_Section: PROCESS (current_state, X_EQ, X_GT, X_LT,Y_EQ, Y_GT, Y_LT,extenderOut,X_MOTION, Y_MOTION)
 
 BEGIN
 	
 	CASE current_state IS
 	
 		WHEN STOP =>
+				X_CLK_en <= '0';
+				Y_CLK_en <= '0';
 		
 			IF (X_EQ='1'AND Y_EQ='1') THEN
-				-- actually signal the stop
 				
+				ExtenderEnable <= '1';
+			ELSE
+				
+				ExtenderEnable <= '0';
 			
 			END IF;
+			
+			
+			
+			
 		
 		WHEN XMOVE =>
+		
 			
 			IF (X_GT='1') THEN
-			 -- count backward
+			
+				X_CLK_en <= '1';
+				X_UPorDOWN <= '1';
 				
-				UPorDOWN <= '0';
-				CLK_en <= '0';
+				
+				
+			ELSIF (X_LT = '1') THEN
+			 -- count forward
+
+				X_CLK_en <= '1';
+				X_UPorDOWN <= '0';
 				
 			ELSE
-			 -- count forward
-				UPorDOWN <= '1';
-				CLK_en <= '0';
-
+				X_CLK_en <= '0';
+				
 			END IF;
+			
+			
 		
 		WHEN YMOVE =>
+			Y_CLK_en <= '0';
+			
 			IF (Y_GT='1') THEN
 			 -- count backward
-				
-				UPorDOWN <= '0';
-				CLK_en <= '0';
-				
-			ELSE
+				Y_CLK_en <= '1';
+				Y_UPorDOWN <= '1';
+		
+			ELSIF (Y_LT = '1') THEN
 			 -- count forward
-				UPorDOWN <= '1';
-				CLK_en <= '0';
-
+				Y_CLK_en <= '1';
+				Y_UPorDOWN <= '0';
+				
+			
+			ELSE
+				Y_CLK_en <= '0';
+				
 			END IF;
+			
+			
 		
 		
 		WHEN BOTHMOVE =>
 			IF (X_GT='1') THEN
-				 -- count backward
+			
+				X_CLK_en <= '1';
+				X_UPorDOWN <= '1';
 				
-				UPorDOWN <= '0';
-				CLK_en <= '0';
+				
+				
+			ELSIF (X_LT = '1') THEN
+			 -- count forward
+
+				X_CLK_en <= '1';
+				X_UPorDOWN <= '0';
 				
 			ELSE
-			 -- count forward
-				UPorDOWN <= '1';
-				CLK_en <= '0';
-
+				X_CLK_en <= '0';
+				
 			END IF;
 		
 			
 			IF (Y_GT='1') THEN
-				 -- count backward
-				
-				UPorDOWN <= '0';
-				CLK_en <= '0';
-				
-			ELSE
+			 -- count backward
+				Y_CLK_en <= '1';
+				Y_UPorDOWN <= '1';
+		
+			ELSIF (Y_LT = '1') THEN
 			 -- count forward
-				UPorDOWN <= '1';
-				CLK_en <= '0';
-
+				Y_CLK_en <= '1';
+				Y_UPorDOWN <= '0';
+				
+			
+			ELSE
+				Y_CLK_en <= '0';
+				
+			END IF;
+			
+		WHEN ERROR =>
+				
+			IF ( (Y_EQ = '0' OR X_EQ = '0') AND (X_MOTION = '0' OR Y_MOTION = '0') )THEN
+				
+				isError <= '1';
+			ELSE 
+				isError <= '0';
+			
 			END IF;
 		
 		END CASE;
