@@ -19,7 +19,7 @@ Entity MealyStatemachine IS Port
  
  ExtenderEnable: OUT std_logic;
 
- isError : OUT std_logic -- need to put that somewhere
+ isError : OUT std_logic := '0'-- need to put that somewhere
  
 
 
@@ -77,21 +77,20 @@ BEGIN
 	  
 	  --switching states depending on the value of the comparaison
          WHEN STOP =>		
-				--((X_GT='1' AND Y_GT ='1') OR (X_LT='1' AND Y_LT='1' )
-				
-				IF( X_EQ = '0' AND Y_EQ = '0'	AND (X_MOTION='0') AND (Y_MOTION='0') ) THEN
+
+				IF( X_EQ = '0' AND Y_EQ = '0'	AND (X_MOTION='0') AND (Y_MOTION='0') and extenderout = '0') THEN
 					-- both are bigger or smaller AND we ve got both buttons at active low
 					next_state <= BOTHMOVE;
 					
-				ELSIF((X_GT='1' or X_LT='1') AND (X_MOTION='0') ) THEN
+				ELSIF((X_GT='1' or X_LT='1') AND (X_MOTION='0') and extenderout = '0' ) THEN
 				
 					next_state <= XMOVE;
 					
-				ELSIF((Y_GT='1' or Y_LT='1') AND (Y_MOTION='0') ) THEN 
+				ELSIF((Y_GT='1' or Y_LT='1') AND (Y_MOTION='0')  and extenderout = '0' ) THEN 
 
 					next_state <= YMOVE;
 					
-				ELSIF( extenderOut = '1') THEN
+				ELSIF( (X_EQ = '0' or Y_EQ = '0')  and ((X_MOTION='0') or (Y_MOTION='0')) and extenderOut = '1') THEN
 				
 					next_state <= ERROR;
 					
@@ -127,7 +126,7 @@ BEGIN
 					
 					
 				ELSE
-					next_state <= XMOVE;
+					next_state <= YMOVE;
 					
 				END IF;
 				
@@ -136,11 +135,20 @@ BEGIN
 				
          WHEN BOTHMOVE =>
 			
-				IF( Y_EQ = '1' OR X_EQ = '1') THEN
-					
+				IF(Y_EQ = '1' and  X_EQ = '1') THEN
+				
 					next_state <= STOP;
 					
+				ELSIF( Y_EQ = '1' and  X_EQ = '0') THEN
+					
+					next_state <= XMOVE;
+					
+				ELSIF( Y_EQ = '0' and  X_EQ = '1')THEN
+				
+					next_state <= YMOVE;
+					
 				ELSE
+				
 					next_state <= BOTHMOVE;
 					
 				END IF;
@@ -172,6 +180,7 @@ BEGIN
 		WHEN STOP =>
 				X_CLK_en <= '0';
 				Y_CLK_en <= '0';
+				isError <= '0';
 		
 			IF (X_EQ='1'AND Y_EQ='1') THEN
 				
@@ -269,13 +278,16 @@ BEGIN
 			
 		WHEN ERROR =>
 				
-			IF ( (Y_EQ = '0' OR X_EQ = '0') AND (X_MOTION = '0' OR Y_MOTION = '0') )THEN
+			--IF ( (Y_EQ = '0' OR X_EQ = '0') AND (X_MOTION = '0' OR Y_MOTION = '0') )THEN
 				
 				isError <= '1';
-			ELSE 
-				isError <= '0';
+				X_CLK_en <= '0';
+				Y_CLK_en <= '0';
+				ExtenderEnable <= '1';
+			--ELSE 
+				--isError <= '0';
 			
-			END IF;
+			--END IF;
 		
 		END CASE;
 		

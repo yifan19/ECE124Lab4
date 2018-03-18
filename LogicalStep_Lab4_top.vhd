@@ -125,6 +125,17 @@ COMPONENT muxSingle is port (
 ); 
 end COMPONENT;
 
+COMPONENT FlashCounter is port
+	(
+		Main_clk			: in std_logic;
+		rst_n				: in std_logic := '0';
+		clk_en			: in std_logic := '0';
+		up1_down0		: in std_logic := '0';
+		counter_bits	: out std_logic	
+	);
+	end COMPONENT;
+	
+
 
 
 
@@ -159,12 +170,14 @@ end COMPONENT;
 	SIGNAL GrappleEnableSignal : std_logic;
 
 	SIGNAL extenderEnableSignal : std_logic;
-	SIGNAL ERROR7seg : std_logic_vector(6 downto 0);
+	SIGNAL ERROR7seg, NOTHING7seg, ERROR7segOutput : std_logic_vector(6 downto 0);
 	SIGNAL X_ERROR_AND_VALUE7seg, Y_ERROR_AND_VALUE7seg:std_logic_vector(6 downto 0);
 	
 	SIGNAL ERROR : std_logic;
 	
 	SIGNAL MUX_CLOCK : std_logic;
+	
+	SIGNAL FLASH: std_logic;
 	
 
 
@@ -182,16 +195,20 @@ BinCLK: PROCESS(clkin_50, rst_n) is
       END IF;
    END PROCESS;
 
+
+
+	
 Clock_Source:
 				Main_Clk <= 
 				clkin_50 when sim = TRUE else				-- for simulations only
-				std_logic(bin_counter(24));								-- for real FPGA operation
+				std_logic(bin_counter(23));								-- for real FPGA operation
 					
 ---------------------------------------------------------------------------------------------------
 
 leds (7 downto 4) <= currentShiftValue (3 downto 0);
 leds (0) <= ERROR;
 ERROR7seg <= "1111001";
+NOTHING7seg <= "0000000";
 
 
 ---------------------------------------------------------------------------------------------------
@@ -214,21 +231,32 @@ INST14MUX_Y:mux PORT MAP (
 	
 INST15X_MUX_ERROR :mux PORT MAP (
    
-   XMUX7seg, ERROR7seg,
+   XMUX7seg, ERROR7segOutput,
 	ERROR,
 	X_ERROR_AND_VALUE7seg);
 	
 INST16Y_MUX_ERROR :mux PORT MAP (
    
-   YMUX7seg,ERROR7seg,
+   YMUX7seg,ERROR7segOutput,
 	ERROR,
 	Y_ERROR_AND_VALUE7seg);
 
-INST17CLOCKMUX :muxSingle PORT MAP (
-   
-   std_logic(bin_counter(23)),clkin_50,
-	ERROR,
-	MUX_CLOCK);
+
+INST18ERROR_AND_NOTHING: mux PORT MAP(
+
+	ERROR7seg, NOTHING7seg,
+	FLASH,
+	
+	ERROR7segOutput);
+	
+INST19FLASH: FlashCounter PORT MAP
+	(
+		std_logic(bin_counter(23)),
+		rst_n,
+		'1',
+		'1',
+		FLASH
+	);	
 
 
 
@@ -252,7 +280,8 @@ INST7Y: FourBitComparator PORT MAP (
 	YTargGTCurr, YTargEQCurr, YTargLTCurr);
 	
 	
-INST8GrapplerSM: Grappler PORT MAP (Main_Clk, rst_n, pb(0) , GrappleEnableSignal, leds(3)); --working
+INST8GrapplerSM: Grappler PORT MAP (Main_Clk, rst_n, pb(0) , GrappleEnableSignal, leds(3));
+
 
 INST9: Bidir_shift_reg PORT MAP(
 	Main_Clk, rst_n,	

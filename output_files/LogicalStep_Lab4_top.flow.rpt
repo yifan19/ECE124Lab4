@@ -1,5 +1,5 @@
 Flow report for LogicalStep_Lab4_top
-Sat Mar 17 00:16:51 2018
+Sat Mar 17 23:16:05 2018
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -41,15 +41,15 @@ agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Sat Mar 17 00:16:51 2018           ;
+; Flow Status                        ; Successful - Sat Mar 17 23:16:05 2018           ;
 ; Quartus Prime Version              ; 15.1.0 Build 185 10/21/2015 SJ Standard Edition ;
 ; Revision Name                      ; LogicalStep_Lab4_top                            ;
 ; Top-level Entity Name              ; LogicalStep_Lab4_top                            ;
 ; Family                             ; MAX 10                                          ;
 ; Device                             ; 10M08SAE144C8G                                  ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 152 / 8,064 ( 2 % )                             ;
-;     Total combinational functions  ; 150 / 8,064 ( 2 % )                             ;
+; Total logic elements               ; 153 / 8,064 ( 2 % )                             ;
+;     Total combinational functions  ; 152 / 8,064 ( 2 % )                             ;
 ;     Dedicated logic registers      ; 48 / 8,064 ( < 1 % )                            ;
 ; Total registers                    ; 48                                              ;
 ; Total pins                         ; 31 / 101 ( 31 % )                               ;
@@ -67,7 +67,7 @@ agreement for further details.
 +-------------------+----------------------+
 ; Option            ; Setting              ;
 +-------------------+----------------------+
-; Start date & time ; 03/17/2018 00:15:54  ;
+; Start date & time ; 03/17/2018 23:15:08  ;
 ; Main task         ; Compilation          ;
 ; Revision Name     ; LogicalStep_Lab4_top ;
 +-------------------+----------------------+
@@ -78,7 +78,7 @@ agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 163580558468961.152126015401884       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 163580558468179.152134290805976       ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                  ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
 ; FLOW_ENABLE_POWER_ANALYZER          ; On                                    ; Off           ; --          ; --             ;
@@ -112,13 +112,13 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:15     ; 1.0                     ; 857 MB              ; 00:00:22                           ;
-; Fitter                    ; 00:00:09     ; 1.0                     ; 1445 MB             ; 00:00:08                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 739 MB              ; 00:00:01                           ;
-; PowerPlay Power Analyzer  ; 00:00:03     ; 1.0                     ; 856 MB              ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 833 MB              ; 00:00:03                           ;
+; Analysis & Synthesis      ; 00:00:14     ; 1.0                     ; 860 MB              ; 00:00:22                           ;
+; Fitter                    ; 00:00:09     ; 1.1                     ; 1460 MB             ; 00:00:08                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 738 MB              ; 00:00:01                           ;
+; PowerPlay Power Analyzer  ; 00:00:03     ; 1.0                     ; 847 MB              ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 834 MB              ; 00:00:03                           ;
 ; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 703 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:34     ; --                      ; --                  ; 00:00:37                           ;
+; Total                     ; 00:00:33     ; --                      ; --                  ; 00:00:37                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -127,12 +127,12 @@ agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; ECE-NUC7i7-070   ; Windows 8 ; 6.2        ; x86_64         ;
-; Fitter                    ; ECE-NUC7i7-070   ; Windows 8 ; 6.2        ; x86_64         ;
-; Assembler                 ; ECE-NUC7i7-070   ; Windows 8 ; 6.2        ; x86_64         ;
-; PowerPlay Power Analyzer  ; ECE-NUC7i7-070   ; Windows 8 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; ECE-NUC7i7-070   ; Windows 8 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; ECE-NUC7i7-070   ; Windows 8 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; ECE-NUC7i7-066   ; Windows 8 ; 6.2        ; x86_64         ;
+; Fitter                    ; ECE-NUC7i7-066   ; Windows 8 ; 6.2        ; x86_64         ;
+; Assembler                 ; ECE-NUC7i7-066   ; Windows 8 ; 6.2        ; x86_64         ;
+; PowerPlay Power Analyzer  ; ECE-NUC7i7-066   ; Windows 8 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; ECE-NUC7i7-066   ; Windows 8 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; ECE-NUC7i7-066   ; Windows 8 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

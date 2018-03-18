@@ -45,7 +45,8 @@ END PROCESS;
 Transition_Section: PROCESS ( current_state,controlButton, enable, currentShiftValue) 
 
 BEGIN
-     CASE current_state IS
+     
+ CASE current_state IS
          WHEN RETRACTED =>		
 				IF(controlButton = '0' AND enable = '1') THEN
 					next_state <= EXTENDING1;
@@ -139,3 +140,5 @@ BEGIN
  END PROCESS;
 
  END ARCHITECTURE SM;
+ 
+

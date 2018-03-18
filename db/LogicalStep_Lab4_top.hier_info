@@ -1,5 +1,5 @@
 |LogicalStep_Lab4_top
-clkin_50 => muxSingle:INST17CLOCKMUX.hex_in2
+clkin_50 => segment7_mux:INST3.clk
 clkin_50 => bin_counter[0].CLK
 clkin_50 => bin_counter[1].CLK
 clkin_50 => bin_counter[2].CLK
@@ -26,7 +26,7 @@ clkin_50 => bin_counter[22].CLK
 clkin_50 => bin_counter[23].CLK
 clkin_50 => bin_counter[24].CLK
 clkin_50 => bin_counter[25].CLK
-clkin_50 => segment7_mux:INST3.clk
+rst_n => FlashCounter:INST19FLASH.rst_n
 rst_n => Bin_Counter4bit:INST4X.rst_n
 rst_n => Bin_Counter4bit:INST5Y.rst_n
 rst_n => Grappler:INST8GrapplerSM.rst_n
@@ -55,23 +55,23 @@ sw[6] => SevenSegment:INST1XTARGET.hex[2]
 sw[6] => FourBitComparator:INST6X.bitA2
 sw[7] => SevenSegment:INST1XTARGET.hex[3]
 sw[7] => FourBitComparator:INST6X.bitA3
-leds[0] <= MealyStatemachine:INSTMEALY.isError
-leds[1] <= <GND>
-leds[2] <= <GND>
-leds[3] <= Grappler:INST8GrapplerSM.grappleControl
-leds[4] <= Bidir_shift_reg:INST9.REG_BITS[0]
-leds[5] <= Bidir_shift_reg:INST9.REG_BITS[1]
-leds[6] <= Bidir_shift_reg:INST9.REG_BITS[2]
-leds[7] <= Bidir_shift_reg:INST9.REG_BITS[3]
-seg7_data[0] <= segment7_mux:INST3.DOUT[0]
-seg7_data[1] <= segment7_mux:INST3.DOUT[1]
-seg7_data[2] <= segment7_mux:INST3.DOUT[2]
-seg7_data[3] <= segment7_mux:INST3.DOUT[3]
-seg7_data[4] <= segment7_mux:INST3.DOUT[4]
-seg7_data[5] <= segment7_mux:INST3.DOUT[5]
-seg7_data[6] <= segment7_mux:INST3.DOUT[6]
-seg7_char1 <= segment7_mux:INST3.DIG2
-seg7_char2 <= segment7_mux:INST3.DIG1
+leds[0] << MealyStatemachine:INSTMEALY.isError
+leds[1] << <GND>
+leds[2] << <GND>
+leds[3] << Grappler:INST8GrapplerSM.grappleControl
+leds[4] << Bidir_shift_reg:INST9.REG_BITS[0]
+leds[5] << Bidir_shift_reg:INST9.REG_BITS[1]
+leds[6] << Bidir_shift_reg:INST9.REG_BITS[2]
+leds[7] << Bidir_shift_reg:INST9.REG_BITS[3]
+seg7_data[0] << segment7_mux:INST3.DOUT[0]
+seg7_data[1] << segment7_mux:INST3.DOUT[1]
+seg7_data[2] << segment7_mux:INST3.DOUT[2]
+seg7_data[3] << segment7_mux:INST3.DOUT[3]
+seg7_data[4] << segment7_mux:INST3.DOUT[4]
+seg7_data[5] << segment7_mux:INST3.DOUT[5]
+seg7_data[6] << segment7_mux:INST3.DOUT[6]
+seg7_char1 << segment7_mux:INST3.DIG2
+seg7_char2 << segment7_mux:INST3.DIG1
 
 
 |LogicalStep_Lab4_top|SevenSegment:INST1XTARGET
@@ -350,11 +350,45 @@ hex_out[5] <= hex_out.DB_MAX_OUTPUT_PORT_TYPE
 hex_out[6] <= hex_out.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|LogicalStep_Lab4_top|muxSingle:INST17CLOCKMUX
-hex_in1 => hex_out.DATAB
-hex_in2 => hex_out.DATAA
+|LogicalStep_Lab4_top|mux:INST18ERROR_AND_NOTHING
+hex_in1[0] => hex_out.DATAB
+hex_in1[1] => hex_out.DATAB
+hex_in1[2] => hex_out.DATAB
+hex_in1[3] => hex_out.DATAB
+hex_in1[4] => hex_out.DATAB
+hex_in1[5] => hex_out.DATAB
+hex_in1[6] => hex_out.DATAB
+hex_in2[0] => hex_out.DATAA
+hex_in2[1] => hex_out.DATAA
+hex_in2[2] => hex_out.DATAA
+hex_in2[3] => hex_out.DATAA
+hex_in2[4] => hex_out.DATAA
+hex_in2[5] => hex_out.DATAA
+hex_in2[6] => hex_out.DATAA
 mux_select => hex_out.OUTPUTSELECT
-hex_out <= hex_out.DB_MAX_OUTPUT_PORT_TYPE
+mux_select => hex_out.OUTPUTSELECT
+mux_select => hex_out.OUTPUTSELECT
+mux_select => hex_out.OUTPUTSELECT
+mux_select => hex_out.OUTPUTSELECT
+mux_select => hex_out.OUTPUTSELECT
+mux_select => hex_out.OUTPUTSELECT
+hex_out[0] <= hex_out.DB_MAX_OUTPUT_PORT_TYPE
+hex_out[1] <= hex_out.DB_MAX_OUTPUT_PORT_TYPE
+hex_out[2] <= hex_out.DB_MAX_OUTPUT_PORT_TYPE
+hex_out[3] <= hex_out.DB_MAX_OUTPUT_PORT_TYPE
+hex_out[4] <= hex_out.DB_MAX_OUTPUT_PORT_TYPE
+hex_out[5] <= hex_out.DB_MAX_OUTPUT_PORT_TYPE
+hex_out[6] <= hex_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|LogicalStep_Lab4_top|FlashCounter:INST19FLASH
+Main_clk => ud_bin_counter[0].CLK
+rst_n => ud_bin_counter[0].ACLR
+clk_en => process_0.IN0
+clk_en => process_0.IN0
+up1_down0 => process_0.IN1
+up1_down0 => process_0.IN1
+counter_bits[0] <= ud_bin_counter[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |LogicalStep_Lab4_top|segment7_mux:INST3
@@ -620,35 +654,39 @@ grapplerEnable <= grapplerEnable.DB_MAX_OUTPUT_PORT_TYPE
 clk_input => current_state~1.DATAIN
 resetButton => current_state~3.DATAIN
 X_EQ => Transition_Section.IN0
-X_EQ => Selector2.IN3
-X_EQ => Decoder_Section.IN0
+X_EQ => Selector1.IN3
 X_EQ => Decoder_Section.IN0
 X_EQ => Transition_Section.IN0
-X_EQ => Selector1.IN4
+X_EQ => Selector0.IN1
+X_EQ => Transition_Section.IN0
+X_EQ => Transition_Section.IN0
 X_GT => X_Clk_en.OUTPUTSELECT
 X_GT => X_UPorDOWN.IN0
 X_GT => X_UPorDOWN$latch.DATAIN
 X_LT => X_Clk_en.DATAA
 X_LT => X_UPorDOWN.IN1
 Y_EQ => Transition_Section.IN1
-Y_EQ => Selector2.IN4
-Y_EQ => Decoder_Section.IN1
+Y_EQ => Selector1.IN4
 Y_EQ => Decoder_Section.IN1
 Y_EQ => Transition_Section.IN1
-Y_EQ => Selector1.IN3
+Y_EQ => Transition_Section.IN1
+Y_EQ => Selector2.IN1
+Y_EQ => Transition_Section.IN1
 Y_GT => Y_Clk_en.OUTPUTSELECT
 Y_GT => Y_UPorDOWN.IN0
 Y_GT => Y_UPorDOWN$latch.DATAIN
 Y_LT => Y_Clk_en.DATAA
 Y_LT => Y_UPorDOWN.IN1
-extenderOut => next_state.DATAA
+extenderOut => Transition_Section.IN1
 extenderOut => Selector4.IN3
-extenderOut => next_state.DATAA
-extenderOut => Selector2.IN0
-X_MOTION => Decoder_Section.IN0
+extenderOut => Transition_Section.IN1
+extenderOut => Transition_Section.IN1
+extenderOut => Transition_Section.IN1
+extenderOut => Selector1.IN0
 X_MOTION => Transition_Section.IN1
 X_MOTION => Transition_Section.IN1
-Y_MOTION => Decoder_Section.IN1
+X_MOTION => Transition_Section.IN0
+Y_MOTION => Transition_Section.IN1
 Y_MOTION => Transition_Section.IN1
 Y_MOTION => Transition_Section.IN1
 X_Clk_en <= X_Clk_en$latch.DB_MAX_OUTPUT_PORT_TYPE

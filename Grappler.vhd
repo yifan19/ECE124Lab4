@@ -10,7 +10,7 @@ Entity Grappler IS Port
 END ENTITY;
  
 
- Architecture SM of Grappler is
+ Architecture STATEMACHINE of Grappler is
  
 
  
@@ -85,4 +85,4 @@ BEGIN
 	  END CASE;
  END PROCESS;
 
- END ARCHITECTURE SM;
+ END ARCHITECTURE STATEMACHINE;

@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for LogicalStep_Lab4_top
-Sat Mar 17 00:16:45 2018
+Sat Mar 17 23:16:00 2018
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -106,27 +106,29 @@ agreement for further details.
 +-------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------------------------------------+
 ; Clock Name                                      ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                                             ;
 +-------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------------------------------------+
-; bin_counter[24]                                 ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { bin_counter[24] }                                 ;
+; bin_counter[23]                                 ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { bin_counter[23] }                                 ;
 ; clkin_50                                        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clkin_50 }                                        ;
 ; Extender:INST10|current_state.FULLYEXTENDED     ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { Extender:INST10|current_state.FULLYEXTENDED }     ;
 ; MealyStatemachine:INSTMEALY|current_state.ERROR ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { MealyStatemachine:INSTMEALY|current_state.ERROR } ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { MealyStatemachine:INSTMEALY|current_state.STOP }  ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { MealyStatemachine:INSTMEALY|current_state.XMOVE } ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { MealyStatemachine:INSTMEALY|current_state.YMOVE } ;
 ; sw[0]                                           ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { sw[0] }                                           ;
 ; sw[4]                                           ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { sw[4] }                                           ;
 +-------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 85C Model Fmax Summary                                                                                                         ;
-+------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
-; Fmax       ; Restricted Fmax ; Clock Name                                  ; Note                                                          ;
-+------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
-; 106.2 MHz  ; 106.2 MHz       ; sw[0]                                       ;                                                               ;
-; 112.21 MHz ; 112.21 MHz      ; sw[4]                                       ;                                                               ;
-; 211.24 MHz ; 211.24 MHz      ; bin_counter[24]                             ;                                                               ;
-; 286.94 MHz ; 250.0 MHz       ; clkin_50                                    ; limit due to minimum period restriction (max I/O toggle rate) ;
-; 359.45 MHz ; 359.45 MHz      ; Extender:INST10|current_state.FULLYEXTENDED ;                                                               ;
-+------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary                                                                                                             ;
++------------+-----------------+-------------------------------------------------+---------------------------------------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name                                      ; Note                                                          ;
++------------+-----------------+-------------------------------------------------+---------------------------------------------------------------+
+; INF MHz    ; 206.7 MHz       ; sw[4]                                           ; limit due to hold check                                       ;
+; 163.35 MHz ; 163.35 MHz      ; sw[0]                                           ;                                                               ;
+; 181.92 MHz ; 181.92 MHz      ; bin_counter[23]                                 ;                                                               ;
+; 183.28 MHz ; 183.28 MHz      ; MealyStatemachine:INSTMEALY|current_state.ERROR ;                                                               ;
+; 299.49 MHz ; 250.0 MHz       ; clkin_50                                        ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 413.91 MHz ; 413.91 MHz      ; Extender:INST10|current_state.FULLYEXTENDED     ;                                                               ;
++------------+-----------------+-------------------------------------------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -135,29 +137,31 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; bin_counter[24]                                 ; -6.224 ; -81.875       ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; -4.722 ; -13.489       ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; -4.619 ; -4.619        ;
-; sw[0]                                           ; -4.208 ; -4.208        ;
-; sw[4]                                           ; -3.956 ; -3.956        ;
-; clkin_50                                        ; -2.485 ; -41.917       ;
-; Extender:INST10|current_state.FULLYEXTENDED     ; -0.891 ; -0.891        ;
+; bin_counter[23]                                 ; -7.063 ; -94.261       ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; -6.095 ; -11.506       ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; -4.263 ; -8.368        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; -3.535 ; -5.667        ;
+; sw[0]                                           ; -2.769 ; -2.769        ;
+; clkin_50                                        ; -2.339 ; -36.441       ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; -0.708 ; -0.708        ;
+; sw[4]                                           ; 0.941  ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
-+-------------------------------------------------------------------------+
-; Slow 1200mV 85C Model Hold Summary                                      ;
-+-------------------------------------------------+-------+---------------+
-; Clock                                           ; Slack ; End Point TNS ;
-+-------------------------------------------------+-------+---------------+
-; bin_counter[24]                                 ; 0.240 ; 0.000         ;
-; Extender:INST10|current_state.FULLYEXTENDED     ; 0.273 ; 0.000         ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.353 ; 0.000         ;
-; clkin_50                                        ; 0.378 ; 0.000         ;
-; sw[0]                                           ; 1.258 ; 0.000         ;
-; sw[4]                                           ; 1.558 ; 0.000         ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1.945 ; 0.000         ;
-+-------------------------------------------------+-------+---------------+
++--------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Hold Summary                                       ;
++-------------------------------------------------+--------+---------------+
+; Clock                                           ; Slack  ; End Point TNS ;
++-------------------------------------------------+--------+---------------+
+; sw[4]                                           ; -2.987 ; -2.987        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.195  ; 0.000         ;
+; bin_counter[23]                                 ; 0.255  ; 0.000         ;
+; clkin_50                                        ; 0.380  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 0.725  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 0.853  ; 0.000         ;
+; sw[0]                                           ; 0.870  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.898  ; 0.000         ;
++-------------------------------------------------+--------+---------------+
 
 
 ------------------------------------------
@@ -177,13 +181,14 @@ No paths to report.
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; clkin_50                                        ; -3.000 ; -40.175       ;
-; sw[0]                                           ; -3.000 ; -3.590        ;
-; sw[4]                                           ; -3.000 ; -3.000        ;
-; bin_counter[24]                                 ; -1.487 ; -34.201       ;
+; clkin_50                                        ; -3.000 ; -38.688       ;
+; sw[0]                                           ; -3.000 ; -4.097        ;
+; sw[4]                                           ; -3.000 ; -3.074        ;
+; bin_counter[23]                                 ; -1.487 ; -35.688       ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.354  ; 0.000         ;
 ; Extender:INST10|current_state.FULLYEXTENDED     ; 0.421  ; 0.000         ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.424  ; 0.000         ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; 0.479  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 0.430  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 0.437  ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
@@ -193,17 +198,18 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 0C Model Fmax Summary                                                                                                          ;
-+------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
-; Fmax       ; Restricted Fmax ; Clock Name                                  ; Note                                                          ;
-+------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
-; 105.69 MHz ; 105.69 MHz      ; sw[0]                                       ;                                                               ;
-; 111.83 MHz ; 111.83 MHz      ; sw[4]                                       ;                                                               ;
-; 219.68 MHz ; 219.68 MHz      ; bin_counter[24]                             ;                                                               ;
-; 319.9 MHz  ; 250.0 MHz       ; clkin_50                                    ; limit due to minimum period restriction (max I/O toggle rate) ;
-; 367.92 MHz ; 367.92 MHz      ; Extender:INST10|current_state.FULLYEXTENDED ;                                                               ;
-+------------+-----------------+---------------------------------------------+---------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Fmax Summary                                                                                                              ;
++------------+-----------------+-------------------------------------------------+---------------------------------------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name                                      ; Note                                                          ;
++------------+-----------------+-------------------------------------------------+---------------------------------------------------------------+
+; INF MHz    ; 250.0 MHz       ; sw[4]                                           ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 158.98 MHz ; 158.98 MHz      ; sw[0]                                           ;                                                               ;
+; 175.81 MHz ; 175.81 MHz      ; MealyStatemachine:INSTMEALY|current_state.ERROR ;                                                               ;
+; 188.82 MHz ; 188.82 MHz      ; bin_counter[23]                                 ;                                                               ;
+; 333.0 MHz  ; 250.0 MHz       ; clkin_50                                        ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 425.53 MHz ; 425.53 MHz      ; Extender:INST10|current_state.FULLYEXTENDED     ;                                                               ;
++------------+-----------------+-------------------------------------------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -212,29 +218,31 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; bin_counter[24]                                 ; -5.607 ; -75.693       ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; -4.582 ; -12.607       ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; -4.243 ; -4.243        ;
-; sw[0]                                           ; -4.231 ; -4.231        ;
-; sw[4]                                           ; -3.971 ; -3.971        ;
-; clkin_50                                        ; -2.126 ; -35.544       ;
-; Extender:INST10|current_state.FULLYEXTENDED     ; -0.859 ; -0.859        ;
+; bin_counter[23]                                 ; -6.297 ; -87.075       ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; -5.607 ; -10.840       ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; -4.144 ; -7.945        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; -3.558 ; -5.773        ;
+; sw[0]                                           ; -2.758 ; -2.758        ;
+; clkin_50                                        ; -2.003 ; -30.779       ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; -0.675 ; -0.675        ;
+; sw[4]                                           ; 0.641  ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
-+-------------------------------------------------------------------------+
-; Slow 1200mV 0C Model Hold Summary                                       ;
-+-------------------------------------------------+-------+---------------+
-; Clock                                           ; Slack ; End Point TNS ;
-+-------------------------------------------------+-------+---------------+
-; bin_counter[24]                                 ; 0.150 ; 0.000         ;
-; Extender:INST10|current_state.FULLYEXTENDED     ; 0.199 ; 0.000         ;
-; clkin_50                                        ; 0.338 ; 0.000         ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.368 ; 0.000         ;
-; sw[0]                                           ; 1.165 ; 0.000         ;
-; sw[4]                                           ; 1.398 ; 0.000         ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1.821 ; 0.000         ;
-+-------------------------------------------------+-------+---------------+
++--------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Hold Summary                                        ;
++-------------------------------------------------+--------+---------------+
+; Clock                                           ; Slack  ; End Point TNS ;
++-------------------------------------------------+--------+---------------+
+; sw[4]                                           ; -2.591 ; -2.591        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.138  ; 0.000         ;
+; bin_counter[23]                                 ; 0.158  ; 0.000         ;
+; clkin_50                                        ; 0.340  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 0.671  ; 0.000         ;
+; sw[0]                                           ; 0.761  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 0.786  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.821  ; 0.000         ;
++-------------------------------------------------+--------+---------------+
 
 
 -----------------------------------------
@@ -254,13 +262,14 @@ No paths to report.
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; clkin_50                                        ; -3.000 ; -40.175       ;
-; sw[0]                                           ; -3.000 ; -3.969        ;
-; sw[4]                                           ; -3.000 ; -3.188        ;
-; bin_counter[24]                                 ; -1.487 ; -34.201       ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.394  ; 0.000         ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; 0.411  ; 0.000         ;
-; Extender:INST10|current_state.FULLYEXTENDED     ; 0.437  ; 0.000         ;
+; clkin_50                                        ; -3.000 ; -38.688       ;
+; sw[0]                                           ; -3.000 ; -4.102        ;
+; sw[4]                                           ; -3.000 ; -3.926        ;
+; bin_counter[23]                                 ; -1.487 ; -35.934       ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.187  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 0.369  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 0.386  ; 0.000         ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.438  ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
@@ -275,13 +284,14 @@ No synchronizer chains to report.
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; bin_counter[24]                                 ; -2.473 ; -26.872       ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; -1.898 ; -1.898        ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; -1.863 ; -4.988        ;
-; sw[0]                                           ; -1.040 ; -1.040        ;
-; sw[4]                                           ; -0.870 ; -0.870        ;
-; clkin_50                                        ; -0.399 ; -2.844        ;
-; Extender:INST10|current_state.FULLYEXTENDED     ; 0.032  ; 0.000         ;
+; bin_counter[23]                                 ; -2.883 ; -33.255       ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; -2.500 ; -4.358        ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; -1.628 ; -2.835        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; -0.667 ; -1.019        ;
+; sw[0]                                           ; -0.516 ; -0.516        ;
+; clkin_50                                        ; -0.506 ; -1.776        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.105  ; 0.000         ;
+; sw[4]                                           ; 1.277  ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
@@ -290,13 +300,14 @@ No synchronizer chains to report.
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; bin_counter[24]                                 ; -0.025 ; -0.025        ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.088  ; 0.000         ;
-; clkin_50                                        ; 0.155  ; 0.000         ;
-; Extender:INST10|current_state.FULLYEXTENDED     ; 0.174  ; 0.000         ;
-; sw[0]                                           ; 0.481  ; 0.000         ;
-; sw[4]                                           ; 0.571  ; 0.000         ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; 0.725  ; 0.000         ;
+; sw[4]                                           ; -1.359 ; -1.359        ;
+; bin_counter[23]                                 ; 0.088  ; 0.000         ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; 0.136  ; 0.000         ;
+; clkin_50                                        ; 0.156  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 0.239  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 0.297  ; 0.000         ;
+; sw[0]                                           ; 0.326  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.557  ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
@@ -317,12 +328,13 @@ No paths to report.
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; clkin_50                                        ; -3.000 ; -32.162       ;
-; sw[0]                                           ; -3.000 ; -4.899        ;
-; sw[4]                                           ; -3.000 ; -4.042        ;
-; bin_counter[24]                                 ; -1.000 ; -23.000       ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.407  ; 0.000         ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; 0.439  ; 0.000         ;
+; clkin_50                                        ; -3.000 ; -31.080       ;
+; sw[4]                                           ; -3.000 ; -5.469        ;
+; sw[0]                                           ; -3.000 ; -4.558        ;
+; bin_counter[23]                                 ; -1.000 ; -24.000       ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0.351  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 0.404  ; 0.000         ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 0.430  ; 0.000         ;
 ; Extender:INST10|current_state.FULLYEXTENDED     ; 0.462  ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
@@ -333,28 +345,30 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+-----------------------------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                                             ;
-+--------------------------------------------------+----------+--------+----------+---------+---------------------+
-; Clock                                            ; Setup    ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
-+--------------------------------------------------+----------+--------+----------+---------+---------------------+
-; Worst-case Slack                                 ; -6.224   ; -0.025 ; N/A      ; N/A     ; -3.000              ;
-;  Extender:INST10|current_state.FULLYEXTENDED     ; -0.891   ; 0.174  ; N/A      ; N/A     ; 0.421               ;
-;  MealyStatemachine:INSTMEALY|current_state.ERROR ; -4.722   ; 0.088  ; N/A      ; N/A     ; 0.394               ;
-;  MealyStatemachine:INSTMEALY|current_state.STOP  ; -4.619   ; 0.725  ; N/A      ; N/A     ; 0.411               ;
-;  bin_counter[24]                                 ; -6.224   ; -0.025 ; N/A      ; N/A     ; -1.487              ;
-;  clkin_50                                        ; -2.485   ; 0.155  ; N/A      ; N/A     ; -3.000              ;
-;  sw[0]                                           ; -4.231   ; 0.481  ; N/A      ; N/A     ; -3.000              ;
-;  sw[4]                                           ; -3.971   ; 0.571  ; N/A      ; N/A     ; -3.000              ;
-; Design-wide TNS                                  ; -150.955 ; -0.025 ; 0.0      ; 0.0     ; -81.533             ;
-;  Extender:INST10|current_state.FULLYEXTENDED     ; -0.891   ; 0.000  ; N/A      ; N/A     ; 0.000               ;
-;  MealyStatemachine:INSTMEALY|current_state.ERROR ; -13.489  ; 0.000  ; N/A      ; N/A     ; 0.000               ;
-;  MealyStatemachine:INSTMEALY|current_state.STOP  ; -4.619   ; 0.000  ; N/A      ; N/A     ; 0.000               ;
-;  bin_counter[24]                                 ; -81.875  ; -0.025 ; N/A      ; N/A     ; -34.201             ;
-;  clkin_50                                        ; -41.917  ; 0.000  ; N/A      ; N/A     ; -40.175             ;
-;  sw[0]                                           ; -4.231   ; 0.000  ; N/A      ; N/A     ; -4.899              ;
-;  sw[4]                                           ; -3.971   ; 0.000  ; N/A      ; N/A     ; -4.042              ;
-+--------------------------------------------------+----------+--------+----------+---------+---------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                            ;
++--------------------------------------------------+---------+--------+----------+---------+---------------------+
+; Clock                                            ; Setup   ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
++--------------------------------------------------+---------+--------+----------+---------+---------------------+
+; Worst-case Slack                                 ; -7.063  ; -2.987 ; N/A      ; N/A     ; -3.000              ;
+;  Extender:INST10|current_state.FULLYEXTENDED     ; -0.708  ; 0.136  ; N/A      ; N/A     ; 0.421               ;
+;  MealyStatemachine:INSTMEALY|current_state.ERROR ; -3.558  ; 0.557  ; N/A      ; N/A     ; 0.187               ;
+;  MealyStatemachine:INSTMEALY|current_state.XMOVE ; -4.263  ; 0.239  ; N/A      ; N/A     ; 0.386               ;
+;  MealyStatemachine:INSTMEALY|current_state.YMOVE ; -6.095  ; 0.297  ; N/A      ; N/A     ; 0.369               ;
+;  bin_counter[23]                                 ; -7.063  ; 0.088  ; N/A      ; N/A     ; -1.487              ;
+;  clkin_50                                        ; -2.339  ; 0.156  ; N/A      ; N/A     ; -3.000              ;
+;  sw[0]                                           ; -2.769  ; 0.326  ; N/A      ; N/A     ; -3.000              ;
+;  sw[4]                                           ; 0.641   ; -2.987 ; N/A      ; N/A     ; -3.000              ;
+; Design-wide TNS                                  ; -159.72 ; -2.987 ; 0.0      ; 0.0     ; -82.65              ;
+;  Extender:INST10|current_state.FULLYEXTENDED     ; -0.708  ; 0.000  ; N/A      ; N/A     ; 0.000               ;
+;  MealyStatemachine:INSTMEALY|current_state.ERROR ; -5.773  ; 0.000  ; N/A      ; N/A     ; 0.000               ;
+;  MealyStatemachine:INSTMEALY|current_state.XMOVE ; -8.368  ; 0.000  ; N/A      ; N/A     ; 0.000               ;
+;  MealyStatemachine:INSTMEALY|current_state.YMOVE ; -11.506 ; 0.000  ; N/A      ; N/A     ; 0.000               ;
+;  bin_counter[23]                                 ; -94.261 ; 0.000  ; N/A      ; N/A     ; -35.934             ;
+;  clkin_50                                        ; -36.441 ; 0.000  ; N/A      ; N/A     ; -38.688             ;
+;  sw[0]                                           ; -2.769  ; 0.000  ; N/A      ; N/A     ; -4.558              ;
+;  sw[4]                                           ; 0.000   ; -2.987 ; N/A      ; N/A     ; -5.469              ;
++--------------------------------------------------+---------+--------+----------+---------+---------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -491,25 +505,31 @@ No synchronizer chains to report.
 +-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                      ; To Clock                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
-; bin_counter[24]                                 ; bin_counter[24]                                 ; 196      ; 0        ; 0        ; 0        ;
-; Extender:INST10|current_state.FULLYEXTENDED     ; bin_counter[24]                                 ; 7        ; 11       ; 0        ; 0        ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; bin_counter[24]                                 ; 22       ; 2        ; 0        ; 0        ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; bin_counter[24]                                 ; 9        ; 5        ; 0        ; 0        ;
-; sw[0]                                           ; bin_counter[24]                                 ; 11       ; 17       ; 0        ; 0        ;
-; sw[4]                                           ; bin_counter[24]                                 ; 13       ; 19       ; 0        ; 0        ;
-; bin_counter[24]                                 ; clkin_50                                        ; 1        ; 1        ; 0        ; 0        ;
-; clkin_50                                        ; clkin_50                                        ; 324      ; 0        ; 0        ; 0        ;
+; bin_counter[23]                                 ; bin_counter[23]                                 ; 238      ; 0        ; 0        ; 0        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; bin_counter[23]                                 ; 7        ; 11       ; 0        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; bin_counter[23]                                 ; 2        ; 6        ; 0        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; bin_counter[23]                                 ; 12       ; 8        ; 0        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; bin_counter[23]                                 ; 12       ; 8        ; 0        ; 0        ;
+; sw[0]                                           ; bin_counter[23]                                 ; 15       ; 21       ; 0        ; 0        ;
+; sw[4]                                           ; bin_counter[23]                                 ; 17       ; 23       ; 0        ; 0        ;
+; bin_counter[23]                                 ; clkin_50                                        ; 1        ; 1        ; 0        ; 0        ;
+; clkin_50                                        ; clkin_50                                        ; 299      ; 0        ; 0        ; 0        ;
 ; Extender:INST10|current_state.FULLYEXTENDED     ; Extender:INST10|current_state.FULLYEXTENDED     ; 0        ; 0        ; 1        ; 1        ;
-; bin_counter[24]                                 ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 20       ; 0        ; 8        ; 0        ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 0        ; 0        ;
-; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 1        ; 1        ;
-; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 1        ; 1        ;
-; bin_counter[24]                                 ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 8        ; 0        ; 0        ; 0        ;
-; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1        ; 1        ; 0        ; 0        ;
-; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1        ; 1        ; 0        ; 0        ;
-; bin_counter[24]                                 ; sw[0]                                           ; 0        ; 0        ; 6        ; 0        ;
+; bin_counter[23]                                 ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0        ; 0        ; 8        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0        ; 0        ; 2        ; 2        ;
+; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0        ; 0        ; 1        ; 1        ;
+; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0        ; 0        ; 1        ; 1        ;
+; bin_counter[23]                                 ; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 11       ; 0        ; 6        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 1        ; 1        ; 0        ; 0        ;
+; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 2        ; 2        ; 0        ; 0        ;
+; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 0        ; 0        ; 1        ; 1        ;
+; bin_counter[23]                                 ; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 11       ; 0        ; 6        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 1        ; 1        ; 0        ; 0        ;
+; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 0        ; 0        ; 1        ; 1        ;
+; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 2        ; 2        ; 0        ; 0        ;
+; bin_counter[23]                                 ; sw[0]                                           ; 0        ; 0        ; 6        ; 0        ;
 ; sw[0]                                           ; sw[0]                                           ; 0        ; 0        ; 1        ; 1        ;
-; bin_counter[24]                                 ; sw[4]                                           ; 0        ; 0        ; 6        ; 0        ;
+; bin_counter[23]                                 ; sw[4]                                           ; 0        ; 0        ; 6        ; 0        ;
 ; sw[4]                                           ; sw[4]                                           ; 0        ; 0        ; 1        ; 1        ;
 +-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -520,25 +540,31 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                      ; To Clock                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
-; bin_counter[24]                                 ; bin_counter[24]                                 ; 196      ; 0        ; 0        ; 0        ;
-; Extender:INST10|current_state.FULLYEXTENDED     ; bin_counter[24]                                 ; 7        ; 11       ; 0        ; 0        ;
-; MealyStatemachine:INSTMEALY|current_state.ERROR ; bin_counter[24]                                 ; 22       ; 2        ; 0        ; 0        ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; bin_counter[24]                                 ; 9        ; 5        ; 0        ; 0        ;
-; sw[0]                                           ; bin_counter[24]                                 ; 11       ; 17       ; 0        ; 0        ;
-; sw[4]                                           ; bin_counter[24]                                 ; 13       ; 19       ; 0        ; 0        ;
-; bin_counter[24]                                 ; clkin_50                                        ; 1        ; 1        ; 0        ; 0        ;
-; clkin_50                                        ; clkin_50                                        ; 324      ; 0        ; 0        ; 0        ;
+; bin_counter[23]                                 ; bin_counter[23]                                 ; 238      ; 0        ; 0        ; 0        ;
+; Extender:INST10|current_state.FULLYEXTENDED     ; bin_counter[23]                                 ; 7        ; 11       ; 0        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; bin_counter[23]                                 ; 2        ; 6        ; 0        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; bin_counter[23]                                 ; 12       ; 8        ; 0        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; bin_counter[23]                                 ; 12       ; 8        ; 0        ; 0        ;
+; sw[0]                                           ; bin_counter[23]                                 ; 15       ; 21       ; 0        ; 0        ;
+; sw[4]                                           ; bin_counter[23]                                 ; 17       ; 23       ; 0        ; 0        ;
+; bin_counter[23]                                 ; clkin_50                                        ; 1        ; 1        ; 0        ; 0        ;
+; clkin_50                                        ; clkin_50                                        ; 299      ; 0        ; 0        ; 0        ;
 ; Extender:INST10|current_state.FULLYEXTENDED     ; Extender:INST10|current_state.FULLYEXTENDED     ; 0        ; 0        ; 1        ; 1        ;
-; bin_counter[24]                                 ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 20       ; 0        ; 8        ; 0        ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 0        ; 0        ;
-; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 1        ; 1        ;
-; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 2        ; 2        ; 1        ; 1        ;
-; bin_counter[24]                                 ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 8        ; 0        ; 0        ; 0        ;
-; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1        ; 1        ; 0        ; 0        ;
-; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.STOP  ; 1        ; 1        ; 0        ; 0        ;
-; bin_counter[24]                                 ; sw[0]                                           ; 0        ; 0        ; 6        ; 0        ;
+; bin_counter[23]                                 ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0        ; 0        ; 8        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0        ; 0        ; 2        ; 2        ;
+; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0        ; 0        ; 1        ; 1        ;
+; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.ERROR ; 0        ; 0        ; 1        ; 1        ;
+; bin_counter[23]                                 ; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 11       ; 0        ; 6        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 1        ; 1        ; 0        ; 0        ;
+; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 2        ; 2        ; 0        ; 0        ;
+; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.XMOVE ; 0        ; 0        ; 1        ; 1        ;
+; bin_counter[23]                                 ; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 11       ; 0        ; 6        ; 0        ;
+; MealyStatemachine:INSTMEALY|current_state.ERROR ; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 1        ; 1        ; 0        ; 0        ;
+; sw[0]                                           ; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 0        ; 0        ; 1        ; 1        ;
+; sw[4]                                           ; MealyStatemachine:INSTMEALY|current_state.YMOVE ; 2        ; 2        ; 0        ; 0        ;
+; bin_counter[23]                                 ; sw[0]                                           ; 0        ; 0        ; 6        ; 0        ;
 ; sw[0]                                           ; sw[0]                                           ; 0        ; 0        ; 1        ; 1        ;
-; bin_counter[24]                                 ; sw[4]                                           ; 0        ; 0        ; 6        ; 0        ;
+; bin_counter[23]                                 ; sw[4]                                           ; 0        ; 0        ; 6        ; 0        ;
 ; sw[4]                                           ; sw[4]                                           ; 0        ; 0        ; 1        ; 1        ;
 +-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -564,9 +590,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 13    ; 13   ;
-; Unconstrained Input Port Paths  ; 164   ; 164  ;
+; Unconstrained Input Port Paths  ; 157   ; 157  ;
 ; Unconstrained Output Ports      ; 15    ; 15   ;
-; Unconstrained Output Port Paths ; 148   ; 148  ;
+; Unconstrained Output Port Paths ; 153   ; 153  ;
 +---------------------------------+-------+------+
 
 
@@ -577,8 +603,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +-------------------------------------------------+-------------------------------------------------+------+-------------+
 ; Extender:INST10|current_state.FULLYEXTENDED     ; Extender:INST10|current_state.FULLYEXTENDED     ; Base ; Constrained ;
 ; MealyStatemachine:INSTMEALY|current_state.ERROR ; MealyStatemachine:INSTMEALY|current_state.ERROR ; Base ; Constrained ;
-; MealyStatemachine:INSTMEALY|current_state.STOP  ; MealyStatemachine:INSTMEALY|current_state.STOP  ; Base ; Constrained ;
-; bin_counter[24]                                 ; bin_counter[24]                                 ; Base ; Constrained ;
+; MealyStatemachine:INSTMEALY|current_state.XMOVE ; MealyStatemachine:INSTMEALY|current_state.XMOVE ; Base ; Constrained ;
+; MealyStatemachine:INSTMEALY|current_state.YMOVE ; MealyStatemachine:INSTMEALY|current_state.YMOVE ; Base ; Constrained ;
+; bin_counter[23]                                 ; bin_counter[23]                                 ; Base ; Constrained ;
 ; clkin_50                                        ; clkin_50                                        ; Base ; Constrained ;
 ; sw[0]                                           ; sw[0]                                           ; Base ; Constrained ;
 ; sw[4]                                           ; sw[4]                                           ; Base ; Constrained ;
@@ -679,7 +706,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Sat Mar 17 00:16:41 2018
+    Info: Processing started: Sat Mar 17 23:15:55 2018
 Info: Command: quartus_sta LogicalStep_Lab4 -c LogicalStep_Lab4_top
 Info: qsta_default_script.tcl version: #1
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -690,137 +717,147 @@ Critical Warning (332012): Synopsys Design Constraints File file not found: 'Log
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name clkin_50 clkin_50
-    Info (332105): create_clock -period 1.000 -name bin_counter[24] bin_counter[24]
-    Info (332105): create_clock -period 1.000 -name MealyStatemachine:INSTMEALY|current_state.ERROR MealyStatemachine:INSTMEALY|current_state.ERROR
-    Info (332105): create_clock -period 1.000 -name sw[0] sw[0]
+    Info (332105): create_clock -period 1.000 -name bin_counter[23] bin_counter[23]
     Info (332105): create_clock -period 1.000 -name sw[4] sw[4]
+    Info (332105): create_clock -period 1.000 -name MealyStatemachine:INSTMEALY|current_state.XMOVE MealyStatemachine:INSTMEALY|current_state.XMOVE
+    Info (332105): create_clock -period 1.000 -name sw[0] sw[0]
+    Info (332105): create_clock -period 1.000 -name MealyStatemachine:INSTMEALY|current_state.ERROR MealyStatemachine:INSTMEALY|current_state.ERROR
     Info (332105): create_clock -period 1.000 -name Extender:INST10|current_state.FULLYEXTENDED Extender:INST10|current_state.FULLYEXTENDED
-    Info (332105): create_clock -period 1.000 -name MealyStatemachine:INSTMEALY|current_state.STOP MealyStatemachine:INSTMEALY|current_state.STOP
+    Info (332105): create_clock -period 1.000 -name MealyStatemachine:INSTMEALY|current_state.YMOVE MealyStatemachine:INSTMEALY|current_state.YMOVE
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): Cell: INST6X|AEQB~0  from: datad  to: combout
-    Info (332098): Cell: INST7Y|AEQB~0  from: datad  to: combout
+    Info (332098): Cell: INST6X|AEQB~0  from: datab  to: combout
+    Info (332098): Cell: INSTMEALY|Y_UPorDOWN~0  from: datad  to: combout
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -6.224
+Info (332146): Worst-case setup slack is -7.063
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -6.224             -81.875 bin_counter[24] 
-    Info (332119):    -4.722             -13.489 MealyStatemachine:INSTMEALY|current_state.ERROR 
-    Info (332119):    -4.619              -4.619 MealyStatemachine:INSTMEALY|current_state.STOP 
-    Info (332119):    -4.208              -4.208 sw[0] 
-    Info (332119):    -3.956              -3.956 sw[4] 
-    Info (332119):    -2.485             -41.917 clkin_50 
-    Info (332119):    -0.891              -0.891 Extender:INST10|current_state.FULLYEXTENDED 
-Info (332146): Worst-case hold slack is 0.240
+    Info (332119):    -7.063             -94.261 bin_counter[23] 
+    Info (332119):    -6.095             -11.506 MealyStatemachine:INSTMEALY|current_state.YMOVE 
+    Info (332119):    -4.263              -8.368 MealyStatemachine:INSTMEALY|current_state.XMOVE 
+    Info (332119):    -3.535              -5.667 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):    -2.769              -2.769 sw[0] 
+    Info (332119):    -2.339             -36.441 clkin_50 
+    Info (332119):    -0.708              -0.708 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):     0.941               0.000 sw[4] 
+Info (332146): Worst-case hold slack is -2.987
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.240               0.000 bin_counter[24] 
-    Info (332119):     0.273               0.000 Extender:INST10|current_state.FULLYEXTENDED 
-    Info (332119):     0.353               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
-    Info (332119):     0.378               0.000 clkin_50 
-    Info (332119):     1.258               0.000 sw[0] 
-    Info (332119):     1.558               0.000 sw[4] 
-    Info (332119):     1.945               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
+    Info (332119):    -2.987              -2.987 sw[4] 
+    Info (332119):     0.195               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):     0.255               0.000 bin_counter[23] 
+    Info (332119):     0.380               0.000 clkin_50 
+    Info (332119):     0.725               0.000 MealyStatemachine:INSTMEALY|current_state.XMOVE 
+    Info (332119):     0.853               0.000 MealyStatemachine:INSTMEALY|current_state.YMOVE 
+    Info (332119):     0.870               0.000 sw[0] 
+    Info (332119):     0.898               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -40.175 clkin_50 
-    Info (332119):    -3.000              -3.590 sw[0] 
-    Info (332119):    -3.000              -3.000 sw[4] 
-    Info (332119):    -1.487             -34.201 bin_counter[24] 
+    Info (332119):    -3.000             -38.688 clkin_50 
+    Info (332119):    -3.000              -4.097 sw[0] 
+    Info (332119):    -3.000              -3.074 sw[4] 
+    Info (332119):    -1.487             -35.688 bin_counter[23] 
+    Info (332119):     0.354               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
     Info (332119):     0.421               0.000 Extender:INST10|current_state.FULLYEXTENDED 
-    Info (332119):     0.424               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
-    Info (332119):     0.479               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
+    Info (332119):     0.430               0.000 MealyStatemachine:INSTMEALY|current_state.XMOVE 
+    Info (332119):     0.437               0.000 MealyStatemachine:INSTMEALY|current_state.YMOVE 
 Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): Cell: INST6X|AEQB~0  from: datad  to: combout
-    Info (332098): Cell: INST7Y|AEQB~0  from: datad  to: combout
+    Info (332098): Cell: INST6X|AEQB~0  from: datab  to: combout
+    Info (332098): Cell: INSTMEALY|Y_UPorDOWN~0  from: datad  to: combout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -5.607
+Info (332146): Worst-case setup slack is -6.297
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.607             -75.693 bin_counter[24] 
-    Info (332119):    -4.582             -12.607 MealyStatemachine:INSTMEALY|current_state.ERROR 
-    Info (332119):    -4.243              -4.243 MealyStatemachine:INSTMEALY|current_state.STOP 
-    Info (332119):    -4.231              -4.231 sw[0] 
-    Info (332119):    -3.971              -3.971 sw[4] 
-    Info (332119):    -2.126             -35.544 clkin_50 
-    Info (332119):    -0.859              -0.859 Extender:INST10|current_state.FULLYEXTENDED 
-Info (332146): Worst-case hold slack is 0.150
+    Info (332119):    -6.297             -87.075 bin_counter[23] 
+    Info (332119):    -5.607             -10.840 MealyStatemachine:INSTMEALY|current_state.YMOVE 
+    Info (332119):    -4.144              -7.945 MealyStatemachine:INSTMEALY|current_state.XMOVE 
+    Info (332119):    -3.558              -5.773 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):    -2.758              -2.758 sw[0] 
+    Info (332119):    -2.003             -30.779 clkin_50 
+    Info (332119):    -0.675              -0.675 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):     0.641               0.000 sw[4] 
+Info (332146): Worst-case hold slack is -2.591
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.150               0.000 bin_counter[24] 
-    Info (332119):     0.199               0.000 Extender:INST10|current_state.FULLYEXTENDED 
-    Info (332119):     0.338               0.000 clkin_50 
-    Info (332119):     0.368               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
-    Info (332119):     1.165               0.000 sw[0] 
-    Info (332119):     1.398               0.000 sw[4] 
-    Info (332119):     1.821               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
+    Info (332119):    -2.591              -2.591 sw[4] 
+    Info (332119):     0.138               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):     0.158               0.000 bin_counter[23] 
+    Info (332119):     0.340               0.000 clkin_50 
+    Info (332119):     0.671               0.000 MealyStatemachine:INSTMEALY|current_state.XMOVE 
+    Info (332119):     0.761               0.000 sw[0] 
+    Info (332119):     0.786               0.000 MealyStatemachine:INSTMEALY|current_state.YMOVE 
+    Info (332119):     0.821               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -40.175 clkin_50 
-    Info (332119):    -3.000              -3.969 sw[0] 
-    Info (332119):    -3.000              -3.188 sw[4] 
-    Info (332119):    -1.487             -34.201 bin_counter[24] 
-    Info (332119):     0.394               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
-    Info (332119):     0.411               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
-    Info (332119):     0.437               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):    -3.000             -38.688 clkin_50 
+    Info (332119):    -3.000              -4.102 sw[0] 
+    Info (332119):    -3.000              -3.926 sw[4] 
+    Info (332119):    -1.487             -35.934 bin_counter[23] 
+    Info (332119):     0.187               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):     0.369               0.000 MealyStatemachine:INSTMEALY|current_state.YMOVE 
+    Info (332119):     0.386               0.000 MealyStatemachine:INSTMEALY|current_state.XMOVE 
+    Info (332119):     0.438               0.000 Extender:INST10|current_state.FULLYEXTENDED 
 Info: Analyzing Fast 1200mV 0C Model
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): Cell: INST6X|AEQB~0  from: datad  to: combout
-    Info (332098): Cell: INST7Y|AEQB~0  from: datad  to: combout
+    Info (332098): Cell: INST6X|AEQB~0  from: datab  to: combout
+    Info (332098): Cell: INSTMEALY|Y_UPorDOWN~0  from: datad  to: combout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -2.473
+Info (332146): Worst-case setup slack is -2.883
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.473             -26.872 bin_counter[24] 
-    Info (332119):    -1.898              -1.898 MealyStatemachine:INSTMEALY|current_state.STOP 
-    Info (332119):    -1.863              -4.988 MealyStatemachine:INSTMEALY|current_state.ERROR 
-    Info (332119):    -1.040              -1.040 sw[0] 
-    Info (332119):    -0.870              -0.870 sw[4] 
-    Info (332119):    -0.399              -2.844 clkin_50 
-    Info (332119):     0.032               0.000 Extender:INST10|current_state.FULLYEXTENDED 
-Info (332146): Worst-case hold slack is -0.025
+    Info (332119):    -2.883             -33.255 bin_counter[23] 
+    Info (332119):    -2.500              -4.358 MealyStatemachine:INSTMEALY|current_state.YMOVE 
+    Info (332119):    -1.628              -2.835 MealyStatemachine:INSTMEALY|current_state.XMOVE 
+    Info (332119):    -0.667              -1.019 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):    -0.516              -0.516 sw[0] 
+    Info (332119):    -0.506              -1.776 clkin_50 
+    Info (332119):     0.105               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):     1.277               0.000 sw[4] 
+Info (332146): Worst-case hold slack is -1.359
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.025              -0.025 bin_counter[24] 
-    Info (332119):     0.088               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
-    Info (332119):     0.155               0.000 clkin_50 
-    Info (332119):     0.174               0.000 Extender:INST10|current_state.FULLYEXTENDED 
-    Info (332119):     0.481               0.000 sw[0] 
-    Info (332119):     0.571               0.000 sw[4] 
-    Info (332119):     0.725               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
+    Info (332119):    -1.359              -1.359 sw[4] 
+    Info (332119):     0.088               0.000 bin_counter[23] 
+    Info (332119):     0.136               0.000 Extender:INST10|current_state.FULLYEXTENDED 
+    Info (332119):     0.156               0.000 clkin_50 
+    Info (332119):     0.239               0.000 MealyStatemachine:INSTMEALY|current_state.XMOVE 
+    Info (332119):     0.297               0.000 MealyStatemachine:INSTMEALY|current_state.YMOVE 
+    Info (332119):     0.326               0.000 sw[0] 
+    Info (332119):     0.557               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -32.162 clkin_50 
-    Info (332119):    -3.000              -4.899 sw[0] 
-    Info (332119):    -3.000              -4.042 sw[4] 
-    Info (332119):    -1.000             -23.000 bin_counter[24] 
-    Info (332119):     0.407               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
-    Info (332119):     0.439               0.000 MealyStatemachine:INSTMEALY|current_state.STOP 
+    Info (332119):    -3.000             -31.080 clkin_50 
+    Info (332119):    -3.000              -5.469 sw[4] 
+    Info (332119):    -3.000              -4.558 sw[0] 
+    Info (332119):    -1.000             -24.000 bin_counter[23] 
+    Info (332119):     0.351               0.000 MealyStatemachine:INSTMEALY|current_state.ERROR 
+    Info (332119):     0.404               0.000 MealyStatemachine:INSTMEALY|current_state.YMOVE 
+    Info (332119):     0.430               0.000 MealyStatemachine:INSTMEALY|current_state.XMOVE 
     Info (332119):     0.462               0.000 Extender:INST10|current_state.FULLYEXTENDED 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 833 megabytes
-    Info: Processing ended: Sat Mar 17 00:16:45 2018
-    Info: Elapsed time: 00:00:04
+    Info: Peak virtual memory: 834 megabytes
+    Info: Processing ended: Sat Mar 17 23:16:00 2018
+    Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:03
 
 

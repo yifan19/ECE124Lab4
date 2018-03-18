@@ -1,5 +1,5 @@
 Analysis & Synthesis report for LogicalStep_Lab4_top
-Sat Mar 17 00:16:09 2018
+Sat Mar 17 23:15:23 2018
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -23,12 +23,11 @@ Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
  15. Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST3"
  16. Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST2"
  17. Port Connectivity Checks: "FourBitComparator:INST6X|SingleBitComparator:INST1"
- 18. Port Connectivity Checks: "muxSingle:INST17CLOCKMUX"
- 19. Port Connectivity Checks: "mux:INST16Y_MUX_ERROR"
- 20. Port Connectivity Checks: "mux:INST15X_MUX_ERROR"
- 21. Post-Synthesis Netlist Statistics for Top Partition
- 22. Elapsed Time Per Partition
- 23. Analysis & Synthesis Messages
+ 18. Port Connectivity Checks: "FlashCounter:INST19FLASH"
+ 19. Port Connectivity Checks: "mux:INST18ERROR_AND_NOTHING"
+ 20. Post-Synthesis Netlist Statistics for Top Partition
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
 
 
 
@@ -55,13 +54,13 @@ agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Mar 17 00:16:09 2018           ;
+; Analysis & Synthesis Status        ; Successful - Sat Mar 17 23:15:23 2018           ;
 ; Quartus Prime Version              ; 15.1.0 Build 185 10/21/2015 SJ Standard Edition ;
 ; Revision Name                      ; LogicalStep_Lab4_top                            ;
 ; Top-level Entity Name              ; LogicalStep_Lab4_top                            ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 149                                             ;
-;     Total combinational functions  ; 149                                             ;
+; Total logic elements               ; 151                                             ;
+;     Total combinational functions  ; 151                                             ;
 ;     Dedicated logic registers      ; 48                                              ;
 ; Total registers                    ; 48                                              ;
 ; Total pins                         ; 31                                              ;
@@ -178,56 +177,56 @@ agreement for further details.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                        ;
-+----------------------------------+-----------------+-----------------------+----------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type             ; File Name with Absolute Path           ; Library ;
-+----------------------------------+-----------------+-----------------------+----------------------------------------+---------+
-; LogicalStep_Lab4_top.vhd         ; yes             ; User VHDL File        ; N:/ECE124Lab4/LogicalStep_Lab4_top.vhd ;         ;
-; MealyStatemachine.vhd            ; yes             ; User VHDL File        ; N:/ECE124Lab4/MealyStatemachine.vhd    ;         ;
-; segment7_mux.vhd                 ; yes             ; User VHDL File        ; N:/ECE124Lab4/segment7_mux.vhd         ;         ;
-; SevenSegment.vhd                 ; yes             ; User VHDL File        ; N:/ECE124Lab4/SevenSegment.vhd         ;         ;
-; Extender.vhd                     ; yes             ; User VHDL File        ; N:/ECE124Lab4/Extender.vhd             ;         ;
-; muxSingle.vhd                    ; yes             ; User VHDL File        ; N:/ECE124Lab4/muxSingle.vhd            ;         ;
-; mux.vhd                          ; yes             ; Auto-Found VHDL File  ; N:/ECE124Lab4/mux.vhd                  ;         ;
-; bin_counter4bit.vhd              ; yes             ; Auto-Found VHDL File  ; N:/ECE124Lab4/bin_counter4bit.vhd      ;         ;
-; fourbitcomparator.vhd            ; yes             ; Auto-Found VHDL File  ; N:/ECE124Lab4/fourbitcomparator.vhd    ;         ;
-; singlebitcomparator.vhd          ; yes             ; Auto-Found VHDL File  ; N:/ECE124Lab4/singlebitcomparator.vhd  ;         ;
-; grappler.vhd                     ; yes             ; Auto-Found VHDL File  ; N:/ECE124Lab4/grappler.vhd             ;         ;
-; bidir_shift_reg.vhd              ; yes             ; Auto-Found VHDL File  ; N:/ECE124Lab4/bidir_shift_reg.vhd      ;         ;
-+----------------------------------+-----------------+-----------------------+----------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                ;
++----------------------------------+-----------------+-----------------------+----------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type             ; File Name with Absolute Path                                   ; Library ;
++----------------------------------+-----------------+-----------------------+----------------------------------------------------------------+---------+
+; LogicalStep_Lab4_top.vhd         ; yes             ; User VHDL File        ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd ;         ;
+; MealyStatemachine.vhd            ; yes             ; User VHDL File        ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd    ;         ;
+; segment7_mux.vhd                 ; yes             ; User VHDL File        ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/segment7_mux.vhd         ;         ;
+; SevenSegment.vhd                 ; yes             ; User VHDL File        ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/SevenSegment.vhd         ;         ;
+; Extender.vhd                     ; yes             ; User VHDL File        ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/Extender.vhd             ;         ;
+; FlashCounter.vhd                 ; yes             ; User VHDL File        ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/FlashCounter.vhd         ;         ;
+; mux.vhd                          ; yes             ; Auto-Found VHDL File  ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/mux.vhd                  ;         ;
+; bin_counter4bit.vhd              ; yes             ; Auto-Found VHDL File  ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd      ;         ;
+; fourbitcomparator.vhd            ; yes             ; Auto-Found VHDL File  ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/fourbitcomparator.vhd    ;         ;
+; singlebitcomparator.vhd          ; yes             ; Auto-Found VHDL File  ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/singlebitcomparator.vhd  ;         ;
+; grappler.vhd                     ; yes             ; Auto-Found VHDL File  ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/grappler.vhd             ;         ;
+; bidir_shift_reg.vhd              ; yes             ; Auto-Found VHDL File  ; N:/ECE124/Lab4/ECE124Lab4-master_rev2/bidir_shift_reg.vhd      ;         ;
++----------------------------------+-----------------+-----------------------+----------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                  ;
-+---------------------------------------------+----------------+
-; Resource                                    ; Usage          ;
-+---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 149            ;
-;                                             ;                ;
-; Total combinational functions               ; 149            ;
-; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 78             ;
-;     -- 3 input functions                    ; 21             ;
-;     -- <=2 input functions                  ; 50             ;
-;                                             ;                ;
-; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 120            ;
-;     -- arithmetic mode                      ; 29             ;
-;                                             ;                ;
-; Total registers                             ; 48             ;
-;     -- Dedicated logic registers            ; 48             ;
-;     -- I/O registers                        ; 0              ;
-;                                             ;                ;
-; I/O pins                                    ; 31             ;
-;                                             ;                ;
-; Embedded Multiplier 9-bit elements          ; 0              ;
-;                                             ;                ;
-; Maximum fan-out node                        ; clkin_50~input ;
-; Maximum fan-out                             ; 25             ;
-; Total fan-out                               ; 648            ;
-; Average fan-out                             ; 2.50           ;
-+---------------------------------------------+----------------+
++---------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                   ;
++---------------------------------------------+-----------------+
+; Resource                                    ; Usage           ;
++---------------------------------------------+-----------------+
+; Estimated Total logic elements              ; 151             ;
+;                                             ;                 ;
+; Total combinational functions               ; 151             ;
+; Logic element usage by number of LUT inputs ;                 ;
+;     -- 4 input functions                    ; 80              ;
+;     -- 3 input functions                    ; 28              ;
+;     -- <=2 input functions                  ; 43              ;
+;                                             ;                 ;
+; Logic elements by mode                      ;                 ;
+;     -- normal mode                          ; 123             ;
+;     -- arithmetic mode                      ; 28              ;
+;                                             ;                 ;
+; Total registers                             ; 48              ;
+;     -- Dedicated logic registers            ; 48              ;
+;     -- I/O registers                        ; 0               ;
+;                                             ;                 ;
+; I/O pins                                    ; 31              ;
+;                                             ;                 ;
+; Embedded Multiplier 9-bit elements          ; 0               ;
+;                                             ;                 ;
+; Maximum fan-out node                        ; bin_counter[23] ;
+; Maximum fan-out                             ; 25              ;
+; Total fan-out                               ; 663             ;
+; Average fan-out                             ; 2.54            ;
++---------------------------------------------+-----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -235,15 +234,16 @@ agreement for further details.
 +----------------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------+--------------+
 ; Compilation Hierarchy Node       ; LC Combinationals ; LC Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                               ; Library Name ;
 +----------------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------+--------------+
-; |LogicalStep_Lab4_top            ; 149 (25)          ; 48 (25)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 31   ; 0            ; 0          ; |LogicalStep_Lab4_top                             ; work         ;
+; |LogicalStep_Lab4_top            ; 151 (24)          ; 48 (24)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 31   ; 0            ; 0          ; |LogicalStep_Lab4_top                             ; work         ;
 ;    |Bidir_shift_reg:INST9|       ; 4 (4)             ; 4 (4)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|Bidir_shift_reg:INST9       ; work         ;
 ;    |Bin_Counter4bit:INST4X|      ; 6 (6)             ; 4 (4)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|Bin_Counter4bit:INST4X      ; work         ;
 ;    |Bin_Counter4bit:INST5Y|      ; 6 (6)             ; 4 (4)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|Bin_Counter4bit:INST5Y      ; work         ;
-;    |Extender:INST10|             ; 17 (17)           ; 5 (5)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|Extender:INST10             ; work         ;
+;    |Extender:INST10|             ; 16 (16)           ; 5 (5)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|Extender:INST10             ; work         ;
+;    |FlashCounter:INST19FLASH|    ; 1 (1)             ; 1 (1)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|FlashCounter:INST19FLASH    ; work         ;
 ;    |FourBitComparator:INST6X|    ; 6 (6)             ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|FourBitComparator:INST6X    ; work         ;
-;    |FourBitComparator:INST7Y|    ; 6 (6)             ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|FourBitComparator:INST7Y    ; work         ;
+;    |FourBitComparator:INST7Y|    ; 4 (4)             ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|FourBitComparator:INST7Y    ; work         ;
 ;    |Grappler:INST8GrapplerSM|    ; 1 (1)             ; 1 (1)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|Grappler:INST8GrapplerSM    ; work         ;
-;    |MealyStatemachine:INSTMEALY| ; 28 (28)           ; 5 (5)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|MealyStatemachine:INSTMEALY ; work         ;
+;    |MealyStatemachine:INSTMEALY| ; 33 (33)           ; 5 (5)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|MealyStatemachine:INSTMEALY ; work         ;
 ;    |SevenSegment:INST11XCURRENT| ; 7 (7)             ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|SevenSegment:INST11XCURRENT ; work         ;
 ;    |SevenSegment:INST12YCURRENT| ; 7 (7)             ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|SevenSegment:INST12YCURRENT ; work         ;
 ;    |SevenSegment:INST1XTARGET|   ; 7 (7)             ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |LogicalStep_Lab4_top|SevenSegment:INST1XTARGET   ; work         ;
@@ -286,13 +286,13 @@ Encoding Type:  One-Hot
 +----------------------------------------------------+-------------------------------------------------+------------------------+
 ; Latch Name                                         ; Latch Enable Signal                             ; Free of Timing Hazards ;
 +----------------------------------------------------+-------------------------------------------------+------------------------+
-; MealyStatemachine:INSTMEALY|isError                ; MealyStatemachine:INSTMEALY|current_state.ERROR ; yes                    ;
+; MealyStatemachine:INSTMEALY|isError                ; MealyStatemachine:INSTMEALY|WideOr1             ; yes                    ;
 ; Extender:INST10|bitShiftDirection                  ; Extender:INST10|bitShifting                     ; yes                    ;
-; MealyStatemachine:INSTMEALY|X_Clk_en               ; MealyStatemachine:INSTMEALY|X_Clk_en            ; yes                    ;
-; MealyStatemachine:INSTMEALY|X_UPorDOWN             ; MealyStatemachine:INSTMEALY|Selector7           ; yes                    ;
-; MealyStatemachine:INSTMEALY|Y_Clk_en               ; MealyStatemachine:INSTMEALY|Y_Clk_en            ; yes                    ;
-; MealyStatemachine:INSTMEALY|Y_UPorDOWN             ; MealyStatemachine:INSTMEALY|Selector6           ; yes                    ;
-; MealyStatemachine:INSTMEALY|ExtenderEnable         ; MealyStatemachine:INSTMEALY|current_state.STOP  ; yes                    ;
+; MealyStatemachine:INSTMEALY|X_Clk_en               ; MealyStatemachine:INSTMEALY|current_state.YMOVE ; yes                    ;
+; MealyStatemachine:INSTMEALY|X_UPorDOWN             ; MealyStatemachine:INSTMEALY|Selector9           ; yes                    ;
+; MealyStatemachine:INSTMEALY|Y_Clk_en               ; MealyStatemachine:INSTMEALY|current_state.XMOVE ; yes                    ;
+; MealyStatemachine:INSTMEALY|Y_UPorDOWN             ; MealyStatemachine:INSTMEALY|Selector8           ; yes                    ;
+; MealyStatemachine:INSTMEALY|ExtenderEnable         ; MealyStatemachine:INSTMEALY|WideOr1             ; yes                    ;
 ; Number of user-specified and inferred latches = 7  ;                                                 ;                        ;
 +----------------------------------------------------+-------------------------------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
@@ -314,8 +314,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; segment7_mux:INST3|\clk_proc:COUNT[8]  ; Merged with bin_counter[8]  ;
 ; segment7_mux:INST3|\clk_proc:COUNT[9]  ; Merged with bin_counter[9]  ;
 ; segment7_mux:INST3|\clk_proc:COUNT[10] ; Merged with bin_counter[10] ;
-; bin_counter[25]                        ; Lost fanout                 ;
-; Total Number of Removed Registers = 12 ;                             ;
+; bin_counter[24,25]                     ; Lost fanout                 ;
+; Total Number of Removed Registers = 13 ;                             ;
 +----------------------------------------+-----------------------------+
 
 
@@ -327,7 +327,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; Total registers                              ; 48    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 23    ;
+; Number of registers using Asynchronous Clear ; 24    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 10    ;
 ; Number of registers using Preset             ; 0     ;
@@ -339,7 +339,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
-; 6:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; No         ; |LogicalStep_Lab4_top|segment7_mux:INST3|DOUT[0] ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |LogicalStep_Lab4_top|segment7_mux:INST3|DOUT[2] ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 15 LEs               ; 0 LEs                  ; No         ; |LogicalStep_Lab4_top|segment7_mux:INST3|DOUT[0] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 
 
@@ -379,35 +380,27 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "muxSingle:INST17CLOCKMUX"                                                              ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; Port    ; Type   ; Severity ; Details                                                                             ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; hex_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FlashCounter:INST19FLASH"                                    ;
++--------------+--------+----------+------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                              ;
++--------------+--------+----------+------------------------------------------------------+
+; clk_en       ; Input  ; Info     ; Stuck at VCC                                         ;
+; up1_down0    ; Input  ; Info     ; Stuck at VCC                                         ;
+; counter_bits ; Output ; Info     ; Connecting a non-array bit to a single-element array ;
++--------------+--------+----------+------------------------------------------------------+
 
 
-+---------------------------------------------------+
-; Port Connectivity Checks: "mux:INST16Y_MUX_ERROR" ;
-+---------------+-------+----------+----------------+
-; Port          ; Type  ; Severity ; Details        ;
-+---------------+-------+----------+----------------+
-; hex_in2[6..3] ; Input ; Info     ; Stuck at VCC   ;
-; hex_in2[2..1] ; Input ; Info     ; Stuck at GND   ;
-; hex_in2[0]    ; Input ; Info     ; Stuck at VCC   ;
-+---------------+-------+----------+----------------+
-
-
-+---------------------------------------------------+
-; Port Connectivity Checks: "mux:INST15X_MUX_ERROR" ;
-+---------------+-------+----------+----------------+
-; Port          ; Type  ; Severity ; Details        ;
-+---------------+-------+----------+----------------+
-; hex_in2[6..3] ; Input ; Info     ; Stuck at VCC   ;
-; hex_in2[2..1] ; Input ; Info     ; Stuck at GND   ;
-; hex_in2[0]    ; Input ; Info     ; Stuck at VCC   ;
-+---------------+-------+----------+----------------+
++---------------------------------------------------------+
+; Port Connectivity Checks: "mux:INST18ERROR_AND_NOTHING" ;
++---------------+-------+----------+----------------------+
+; Port          ; Type  ; Severity ; Details              ;
++---------------+-------+----------+----------------------+
+; hex_in1[6..3] ; Input ; Info     ; Stuck at VCC         ;
+; hex_in1[2..1] ; Input ; Info     ; Stuck at GND         ;
+; hex_in1[0]    ; Input ; Info     ; Stuck at VCC         ;
+; hex_in2       ; Input ; Info     ; Stuck at GND         ;
++---------------+-------+----------+----------------------+
 
 
 +-----------------------------------------------------+
@@ -417,23 +410,23 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------+-----------------------------+
 ; boundary_port         ; 31                          ;
 ; cycloneiii_ff         ; 48                          ;
-;     CLR               ; 13                          ;
+;     CLR               ; 14                          ;
 ;     ENA CLR           ; 10                          ;
-;     plain             ; 25                          ;
+;     plain             ; 24                          ;
 ; cycloneiii_io_obuf    ; 3                           ;
-; cycloneiii_lcell_comb ; 151                         ;
-;     arith             ; 29                          ;
-;         2 data inputs ; 24                          ;
+; cycloneiii_lcell_comb ; 153                         ;
+;     arith             ; 28                          ;
+;         2 data inputs ; 23                          ;
 ;         3 data inputs ; 5                           ;
-;     normal            ; 122                         ;
+;     normal            ; 125                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 3                           ;
-;         2 data inputs ; 24                          ;
-;         3 data inputs ; 16                          ;
-;         4 data inputs ; 78                          ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 17                          ;
+;         3 data inputs ; 23                          ;
+;         4 data inputs ; 80                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 3.18                        ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 3.08                        ;
 +-----------------------+-----------------------------+
 
 
@@ -452,106 +445,113 @@ Note: All latches listed above may not be present at the end of synthesis due to
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Sat Mar 17 00:15:53 2018
+    Info: Processing started: Sat Mar 17 23:15:08 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LogicalStep_Lab4 -c LogicalStep_Lab4_top
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file logicalstep_lab4_top.vhd
-    Info (12022): Found design unit 1: LogicalStep_Lab4_top-SimpleCircuit File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 20
-    Info (12023): Found entity 1: LogicalStep_Lab4_top File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 6
+    Info (12022): Found design unit 1: LogicalStep_Lab4_top-SimpleCircuit File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 20
+    Info (12023): Found entity 1: LogicalStep_Lab4_top File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file state_machine_example.vhd
-    Info (12022): Found design unit 1: State_Machine_Example-SM File: N:/ECE124Lab4/State_Machine_Example.vhd Line: 13
-    Info (12023): Found entity 1: State_Machine_Example File: N:/ECE124Lab4/State_Machine_Example.vhd Line: 5
+    Info (12022): Found design unit 1: State_Machine_Example-SM File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/State_Machine_Example.vhd Line: 13
+    Info (12023): Found entity 1: State_Machine_Example File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/State_Machine_Example.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file mealystatemachine.vhd
-    Info (12022): Found design unit 1: MealyStatemachine-behaviour File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 33
-    Info (12023): Found entity 1: MealyStatemachine File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 5
+    Info (12022): Found design unit 1: MealyStatemachine-behaviour File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 33
+    Info (12023): Found entity 1: MealyStatemachine File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file segment7_mux.vhd
-    Info (12022): Found design unit 1: segment7_mux-syn File: N:/ECE124Lab4/segment7_mux.vhd Line: 67
-    Info (12023): Found entity 1: segment7_mux File: N:/ECE124Lab4/segment7_mux.vhd Line: 52
+    Info (12022): Found design unit 1: segment7_mux-syn File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/segment7_mux.vhd Line: 67
+    Info (12023): Found entity 1: segment7_mux File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/segment7_mux.vhd Line: 52
 Info (12021): Found 2 design units, including 1 entities, in source file sevensegment.vhd
-    Info (12022): Found design unit 1: SevenSegment-Behavioral File: N:/ECE124Lab4/SevenSegment.vhd Line: 18
-    Info (12023): Found entity 1: SevenSegment File: N:/ECE124Lab4/SevenSegment.vhd Line: 10
+    Info (12022): Found design unit 1: SevenSegment-Behavioral File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/SevenSegment.vhd Line: 18
+    Info (12023): Found entity 1: SevenSegment File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/SevenSegment.vhd Line: 10
 Warning (12019): Can't analyze file -- file compx4.vhd is missing
 Warning (12019): Can't analyze file -- file compx1.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file extender.vhd
-    Info (12022): Found design unit 1: Extender-SM File: N:/ECE124Lab4/Extender.vhd Line: 14
-    Info (12023): Found entity 1: Extender File: N:/ECE124Lab4/Extender.vhd Line: 5
+    Info (12022): Found design unit 1: Extender-SM File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/Extender.vhd Line: 14
+    Info (12023): Found entity 1: Extender File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/Extender.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file muxsingle.vhd
-    Info (12022): Found design unit 1: muxSingle-mux_logic File: N:/ECE124Lab4/muxSingle.vhd Line: 16
-    Info (12023): Found entity 1: muxSingle File: N:/ECE124Lab4/muxSingle.vhd Line: 6
+    Info (12022): Found design unit 1: muxSingle-mux_logic File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/muxSingle.vhd Line: 16
+    Info (12023): Found entity 1: muxSingle File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/muxSingle.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file flashcounter.vhd
+    Info (12022): Found design unit 1: FlashCounter-one File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/FlashCounter.vhd Line: 16
+    Info (12023): Found entity 1: FlashCounter File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/FlashCounter.vhd Line: 6
 Info (12127): Elaborating entity "LogicalStep_Lab4_top" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at LogicalStep_Lab4_top.vhd(167): object "MUX_CLOCK" assigned a value but never read File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 167
-Warning (10873): Using initial value X (don't care) for net "leds[2..1]" at LogicalStep_Lab4_top.vhd(13) File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 13
-Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:INST1XTARGET" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 198
-Warning (12090): Entity "mux" obtained from "mux.vhd" instead of from Quartus Prime megafunction library File: N:/ECE124Lab4/mux.vhd Line: 6
+Warning (10873): Using initial value X (don't care) for net "leds[2..1]" at LogicalStep_Lab4_top.vhd(13) File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 13
+Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:INST1XTARGET" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 215
+Warning (12090): Entity "mux" obtained from "mux.vhd" instead of from Quartus Prime megafunction library File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/mux.vhd Line: 6
 Warning (12125): Using design file mux.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: mux-mux_logic File: N:/ECE124Lab4/mux.vhd Line: 16
-    Info (12023): Found entity 1: mux File: N:/ECE124Lab4/mux.vhd Line: 6
-Info (12128): Elaborating entity "mux" for hierarchy "mux:INST13MUX_X" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 203
-Info (12128): Elaborating entity "muxSingle" for hierarchy "muxSingle:INST17CLOCKMUX" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 227
-Info (12128): Elaborating entity "segment7_mux" for hierarchy "segment7_mux:INST3" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 235
+    Info (12022): Found design unit 1: mux-mux_logic File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/mux.vhd Line: 16
+    Info (12023): Found entity 1: mux File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/mux.vhd Line: 6
+Info (12128): Elaborating entity "mux" for hierarchy "mux:INST13MUX_X" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 220
+Info (12128): Elaborating entity "FlashCounter" for hierarchy "FlashCounter:INST19FLASH" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 252
+Warning (10492): VHDL Process Statement warning at FlashCounter.vhd(37): signal "ud_bin_counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/FlashCounter.vhd Line: 37
+Info (12128): Elaborating entity "segment7_mux" for hierarchy "segment7_mux:INST3" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 263
 Warning (12125): Using design file bin_counter4bit.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: Bin_Counter4bit-one File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 15
-    Info (12023): Found entity 1: Bin_Counter4bit File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 5
-Info (12128): Elaborating entity "Bin_Counter4bit" for hierarchy "Bin_Counter4bit:INST4X" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 237
-Warning (10492): VHDL Process Statement warning at bin_counter4bit.vhd(36): signal "ud_bin_counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 36
+    Info (12022): Found design unit 1: Bin_Counter4bit-one File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 15
+    Info (12023): Found entity 1: Bin_Counter4bit File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 5
+Info (12128): Elaborating entity "Bin_Counter4bit" for hierarchy "Bin_Counter4bit:INST4X" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 265
+Warning (10492): VHDL Process Statement warning at bin_counter4bit.vhd(36): signal "ud_bin_counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 36
 Warning (12125): Using design file fourbitcomparator.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: FOurBitComparator-Behavioural File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 18
-    Info (12023): Found entity 1: FourBitComparator File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 6
-Info (12128): Elaborating entity "FourBitComparator" for hierarchy "FourBitComparator:INST6X" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 242
-Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A3LTB3" assigned a value but never read File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 31
-Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A2LTB2" assigned a value but never read File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 31
-Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A1LTB1" assigned a value but never read File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 31
-Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A0LTB0" assigned a value but never read File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 31
+    Info (12022): Found design unit 1: FOurBitComparator-Behavioural File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/fourbitcomparator.vhd Line: 18
+    Info (12023): Found entity 1: FourBitComparator File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/fourbitcomparator.vhd Line: 6
+Info (12128): Elaborating entity "FourBitComparator" for hierarchy "FourBitComparator:INST6X" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 270
+Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A3LTB3" assigned a value but never read File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/fourbitcomparator.vhd Line: 31
+Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A2LTB2" assigned a value but never read File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/fourbitcomparator.vhd Line: 31
+Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A1LTB1" assigned a value but never read File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/fourbitcomparator.vhd Line: 31
+Warning (10036): Verilog HDL or VHDL warning at fourbitcomparator.vhd(31): object "A0LTB0" assigned a value but never read File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/fourbitcomparator.vhd Line: 31
 Warning (12125): Using design file singlebitcomparator.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: SingleBitComparator-Behavioural File: N:/ECE124Lab4/singlebitcomparator.vhd Line: 19
-    Info (12023): Found entity 1: SingleBitComparator File: N:/ECE124Lab4/singlebitcomparator.vhd Line: 6
-Info (12128): Elaborating entity "SingleBitComparator" for hierarchy "FourBitComparator:INST6X|SingleBitComparator:INST1" File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 37
+    Info (12022): Found design unit 1: SingleBitComparator-Behavioural File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/singlebitcomparator.vhd Line: 19
+    Info (12023): Found entity 1: SingleBitComparator File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/singlebitcomparator.vhd Line: 6
+Info (12128): Elaborating entity "SingleBitComparator" for hierarchy "FourBitComparator:INST6X|SingleBitComparator:INST1" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/fourbitcomparator.vhd Line: 37
 Warning (12125): Using design file grappler.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: Grappler-SM File: N:/ECE124Lab4/grappler.vhd Line: 13
-    Info (12023): Found entity 1: Grappler File: N:/ECE124Lab4/grappler.vhd Line: 5
-Info (12128): Elaborating entity "Grappler" for hierarchy "Grappler:INST8GrapplerSM" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 255
+    Info (12022): Found design unit 1: Grappler-STATEMACHINE File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/grappler.vhd Line: 13
+    Info (12023): Found entity 1: Grappler File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/grappler.vhd Line: 5
+Info (12128): Elaborating entity "Grappler" for hierarchy "Grappler:INST8GrapplerSM" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 283
 Warning (12125): Using design file bidir_shift_reg.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: Bidir_shift_reg-one File: N:/ECE124Lab4/bidir_shift_reg.vhd Line: 16
-    Info (12023): Found entity 1: Bidir_shift_reg File: N:/ECE124Lab4/bidir_shift_reg.vhd Line: 6
-Info (12128): Elaborating entity "Bidir_shift_reg" for hierarchy "Bidir_shift_reg:INST9" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 257
-Warning (10492): VHDL Process Statement warning at bidir_shift_reg.vhd(36): signal "sreg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: N:/ECE124Lab4/bidir_shift_reg.vhd Line: 36
-Info (12128): Elaborating entity "Extender" for hierarchy "Extender:INST10" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 262
-Warning (10631): VHDL Process Statement warning at Extender.vhd(98): inferring latch(es) for signal or variable "bitShiftDirection", which holds its previous value in one or more paths through the process File: N:/ECE124Lab4/Extender.vhd Line: 98
-Info (10041): Inferred latch for "bitShiftDirection" at Extender.vhd(98) File: N:/ECE124Lab4/Extender.vhd Line: 98
-Info (12128): Elaborating entity "MealyStatemachine" for hierarchy "MealyStatemachine:INSTMEALY" File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 270
-Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(166): inferring latch(es) for signal or variable "X_Clk_en", which holds its previous value in one or more paths through the process File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(166): inferring latch(es) for signal or variable "Y_Clk_en", which holds its previous value in one or more paths through the process File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(166): inferring latch(es) for signal or variable "ExtenderEnable", which holds its previous value in one or more paths through the process File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(166): inferring latch(es) for signal or variable "X_UPorDOWN", which holds its previous value in one or more paths through the process File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(166): inferring latch(es) for signal or variable "Y_UPorDOWN", which holds its previous value in one or more paths through the process File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(166): inferring latch(es) for signal or variable "isError", which holds its previous value in one or more paths through the process File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Info (10041): Inferred latch for "isError" at MealyStatemachine.vhd(166) File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Info (10041): Inferred latch for "Y_UPorDOWN" at MealyStatemachine.vhd(166) File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Info (10041): Inferred latch for "X_UPorDOWN" at MealyStatemachine.vhd(166) File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Info (10041): Inferred latch for "ExtenderEnable" at MealyStatemachine.vhd(166) File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Info (10041): Inferred latch for "Y_Clk_en" at MealyStatemachine.vhd(166) File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Info (10041): Inferred latch for "X_Clk_en" at MealyStatemachine.vhd(166) File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 166
-Warning (13012): Latch Extender:INST10|bitShiftDirection has unsafe behavior File: N:/ECE124Lab4/Extender.vhd Line: 9
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Extender:INST10|current_state.FULLYEXTENDED File: N:/ECE124Lab4/Extender.vhd Line: 21
-Warning (13012): Latch MealyStatemachine:INSTMEALY|X_UPorDOWN has unsafe behavior File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 17
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal FourBitComparator:INST6X|AGTB File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 10
-Warning (13012): Latch MealyStatemachine:INSTMEALY|Y_UPorDOWN has unsafe behavior File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 18
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal FourBitComparator:INST7Y|AGTB File: N:/ECE124Lab4/fourbitcomparator.vhd Line: 10
+    Info (12022): Found design unit 1: Bidir_shift_reg-one File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bidir_shift_reg.vhd Line: 16
+    Info (12023): Found entity 1: Bidir_shift_reg File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bidir_shift_reg.vhd Line: 6
+Info (12128): Elaborating entity "Bidir_shift_reg" for hierarchy "Bidir_shift_reg:INST9" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 286
+Warning (10492): VHDL Process Statement warning at bidir_shift_reg.vhd(36): signal "sreg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bidir_shift_reg.vhd Line: 36
+Info (12128): Elaborating entity "Extender" for hierarchy "Extender:INST10" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 291
+Warning (10631): VHDL Process Statement warning at Extender.vhd(99): inferring latch(es) for signal or variable "bitShiftDirection", which holds its previous value in one or more paths through the process File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/Extender.vhd Line: 99
+Info (10041): Inferred latch for "bitShiftDirection" at Extender.vhd(99) File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/Extender.vhd Line: 99
+Info (12128): Elaborating entity "MealyStatemachine" for hierarchy "MealyStatemachine:INSTMEALY" File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 299
+Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(174): inferring latch(es) for signal or variable "X_Clk_en", which holds its previous value in one or more paths through the process File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(174): inferring latch(es) for signal or variable "Y_Clk_en", which holds its previous value in one or more paths through the process File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(174): inferring latch(es) for signal or variable "isError", which holds its previous value in one or more paths through the process File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(174): inferring latch(es) for signal or variable "ExtenderEnable", which holds its previous value in one or more paths through the process File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(174): inferring latch(es) for signal or variable "X_UPorDOWN", which holds its previous value in one or more paths through the process File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Warning (10631): VHDL Process Statement warning at MealyStatemachine.vhd(174): inferring latch(es) for signal or variable "Y_UPorDOWN", which holds its previous value in one or more paths through the process File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Info (10041): Inferred latch for "Y_UPorDOWN" at MealyStatemachine.vhd(174) File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Info (10041): Inferred latch for "X_UPorDOWN" at MealyStatemachine.vhd(174) File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Info (10041): Inferred latch for "ExtenderEnable" at MealyStatemachine.vhd(174) File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Info (10041): Inferred latch for "isError" at MealyStatemachine.vhd(174) File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Info (10041): Inferred latch for "Y_Clk_en" at MealyStatemachine.vhd(174) File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Info (10041): Inferred latch for "X_Clk_en" at MealyStatemachine.vhd(174) File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 174
+Warning (13012): Latch MealyStatemachine:INSTMEALY|isError has unsafe behavior File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 22
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MealyStatemachine:INSTMEALY|current_state.ERROR File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 42
+Warning (13012): Latch Extender:INST10|bitShiftDirection has unsafe behavior File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/Extender.vhd Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Extender:INST10|current_state.FULLYEXTENDED File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/Extender.vhd Line: 21
+Warning (13012): Latch MealyStatemachine:INSTMEALY|X_UPorDOWN has unsafe behavior File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 17
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FourBitComparator:INST6X|AGTB File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/fourbitcomparator.vhd Line: 10
+Warning (13012): Latch MealyStatemachine:INSTMEALY|Y_UPorDOWN has unsafe behavior File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 18
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FourBitComparator:INST7Y|AGTB File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/fourbitcomparator.vhd Line: 10
+Warning (13012): Latch MealyStatemachine:INSTMEALY|ExtenderEnable has unsafe behavior File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 20
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MealyStatemachine:INSTMEALY|current_state.ERROR File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 42
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "leds[1]" is stuck at GND File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 13
-    Warning (13410): Pin "leds[2]" is stuck at GND File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 13
+    Warning (13410): Pin "leds[1]" is stuck at GND File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 13
+    Warning (13410): Pin "leds[2]" is stuck at GND File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 13
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 180 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 182 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 14 input pins
     Info (21059): Implemented 17 output pins
-    Info (21061): Implemented 149 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 33 warnings
-    Info: Peak virtual memory: 857 megabytes
-    Info: Processing ended: Sat Mar 17 00:16:09 2018
-    Info: Elapsed time: 00:00:16
+    Info (21061): Implemented 151 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 37 warnings
+    Info: Peak virtual memory: 860 megabytes
+    Info: Processing ended: Sat Mar 17 23:15:23 2018
+    Info: Elapsed time: 00:00:15
     Info: Total CPU time (on all processors): 00:00:23
 
 
