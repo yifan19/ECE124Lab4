@@ -1,5 +1,5 @@
 Fitter report for LogicalStep_Lab4_top
-Tue Mar 20 09:33:58 2018
+Tue Mar 20 11:44:29 2018
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -69,7 +69,7 @@ agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                       ;
 +------------------------------------+-------------------------------------------------+
-; Fitter Status                      ; Successful - Tue Mar 20 09:33:58 2018           ;
+; Fitter Status                      ; Successful - Tue Mar 20 11:44:29 2018           ;
 ; Quartus Prime Version              ; 15.1.0 Build 185 10/21/2015 SJ Standard Edition ;
 ; Revision Name                      ; LogicalStep_Lab4_top                            ;
 ; Top-level Entity Name              ; LogicalStep_Lab4_top                            ;
@@ -155,12 +155,12 @@ agreement for further details.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
-; Average used               ; 1.00        ;
+; Average used               ; 1.11        ;
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ; < 0.1%      ;
+;     Processor 2            ;  11.1%      ;
 +----------------------------+-------------+
 
 
@@ -363,7 +363,7 @@ agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in N:/ECE124/Lab4/ECE124Lab4-master_rev2/output_files/LogicalStep_Lab4_top.pin.
+The pin-out file can be found in N:/ECE124Lab4/output_files/LogicalStep_Lab4_top.pin.
 
 
 +--------------------------------------------------------------------+
@@ -1324,27 +1324,27 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
-Info (176353): Automatically promoted node clkin_50~input (placed in PIN 29 (CLK1p, DIFFIO_RX_L20p, DIFFOUT_L20p, High_Speed)) File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 9
+Info (176353): Automatically promoted node clkin_50~input (placed in PIN 29 (CLK1p, DIFFIO_RX_L20p, DIFFOUT_L20p, High_Speed)) File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 9
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G4
-Info (176353): Automatically promoted node bin_counter[23]  File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 193
+Info (176353): Automatically promoted node bin_counter[23]  File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 193
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node Bin_Counter4bit:INST4X|ud_bin_counter[1] File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 23
-        Info (176357): Destination node Bin_Counter4bit:INST4X|ud_bin_counter[2] File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 23
-        Info (176357): Destination node Bin_Counter4bit:INST4X|ud_bin_counter[3] File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 23
-        Info (176357): Destination node Bin_Counter4bit:INST5Y|ud_bin_counter[1] File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 23
-        Info (176357): Destination node Bin_Counter4bit:INST5Y|ud_bin_counter[2] File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 23
-        Info (176357): Destination node Bin_Counter4bit:INST5Y|ud_bin_counter[3] File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 23
-        Info (176357): Destination node bin_counter[23]~67 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 193
-        Info (176357): Destination node Bin_Counter4bit:INST4X|ud_bin_counter[0] File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 23
-        Info (176357): Destination node Bin_Counter4bit:INST5Y|ud_bin_counter[0] File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/bin_counter4bit.vhd Line: 23
-        Info (176357): Destination node MealyStatemachine:INSTMEALY|current_state.STOP File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 42
+        Info (176357): Destination node Bin_Counter4bit:INST4X|ud_bin_counter[1] File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 23
+        Info (176357): Destination node Bin_Counter4bit:INST4X|ud_bin_counter[2] File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 23
+        Info (176357): Destination node Bin_Counter4bit:INST4X|ud_bin_counter[3] File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 23
+        Info (176357): Destination node Bin_Counter4bit:INST5Y|ud_bin_counter[1] File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 23
+        Info (176357): Destination node Bin_Counter4bit:INST5Y|ud_bin_counter[2] File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 23
+        Info (176357): Destination node Bin_Counter4bit:INST5Y|ud_bin_counter[3] File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 23
+        Info (176357): Destination node bin_counter[23]~67 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 193
+        Info (176357): Destination node Bin_Counter4bit:INST4X|ud_bin_counter[0] File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 23
+        Info (176357): Destination node Bin_Counter4bit:INST5Y|ud_bin_counter[0] File: N:/ECE124Lab4/bin_counter4bit.vhd Line: 23
+        Info (176357): Destination node MealyStatemachine:INSTMEALY|current_state.STOP File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 42
         Info (176358): Non-global destination nodes limited to 10 nodes
-Info (176353): Automatically promoted node MealyStatemachine:INSTMEALY|WideOr1~0  File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 178
+Info (176353): Automatically promoted node MealyStatemachine:INSTMEALY|WideOr1~0  File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 178
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node MealyStatemachine:INSTMEALY|Selector14~4 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 178
-        Info (176357): Destination node MealyStatemachine:INSTMEALY|Selector12~4 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/MealyStatemachine.vhd Line: 178
+        Info (176357): Destination node MealyStatemachine:INSTMEALY|Selector14~4 File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 178
+        Info (176357): Destination node MealyStatemachine:INSTMEALY|Selector12~4 File: N:/ECE124Lab4/MealyStatemachine.vhd Line: 178
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
@@ -1435,20 +1435,20 @@ Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:02
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Warning (169177): 14 pins must meet Altera requirements for 3.3-, 3.0-, and 2.5-V interfaces. For more information, refer to AN 447: Interfacing MAX 10 Devices with 3.3/3.0/2.5-V LVTTL/LVCMOS I/O Systems.
-    Info (169178): Pin sw[0] uses I/O standard 3.3-V LVCMOS at 30 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 12
-    Info (169178): Pin sw[1] uses I/O standard 3.3-V LVCMOS at 13 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 12
-    Info (169178): Pin sw[2] uses I/O standard 3.3-V LVCMOS at 14 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 12
-    Info (169178): Pin sw[3] uses I/O standard 3.3-V LVCMOS at 11 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 12
-    Info (169178): Pin pb[3] uses I/O standard 3.3-V LVCMOS at 43 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 11
-    Info (169178): Pin pb[2] uses I/O standard 3.3-V LVCMOS at 44 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 11
-    Info (169178): Pin sw[4] uses I/O standard 3.3-V LVCMOS at 8 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 12
-    Info (169178): Pin sw[5] uses I/O standard 3.3-V LVCMOS at 6 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 12
-    Info (169178): Pin sw[6] uses I/O standard 3.3-V LVCMOS at 39 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 12
-    Info (169178): Pin sw[7] uses I/O standard 3.3-V LVCMOS at 141 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 12
-    Info (169178): Pin pb[0] uses I/O standard 3.3-V LVCMOS at 46 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 11
-    Info (169178): Pin rst_n uses I/O standard 3.3-V LVCMOS at 32 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 10
-    Info (169178): Pin clkin_50 uses I/O standard 3.3-V LVCMOS at 29 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 9
-    Info (169178): Pin pb[1] uses I/O standard 3.3-V LVCMOS at 45 File: N:/ECE124/Lab4/ECE124Lab4-master_rev2/LogicalStep_Lab4_top.vhd Line: 11
+    Info (169178): Pin sw[0] uses I/O standard 3.3-V LVCMOS at 30 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 12
+    Info (169178): Pin sw[1] uses I/O standard 3.3-V LVCMOS at 13 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 12
+    Info (169178): Pin sw[2] uses I/O standard 3.3-V LVCMOS at 14 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 12
+    Info (169178): Pin sw[3] uses I/O standard 3.3-V LVCMOS at 11 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 12
+    Info (169178): Pin pb[3] uses I/O standard 3.3-V LVCMOS at 43 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 11
+    Info (169178): Pin pb[2] uses I/O standard 3.3-V LVCMOS at 44 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 11
+    Info (169178): Pin sw[4] uses I/O standard 3.3-V LVCMOS at 8 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 12
+    Info (169178): Pin sw[5] uses I/O standard 3.3-V LVCMOS at 6 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 12
+    Info (169178): Pin sw[6] uses I/O standard 3.3-V LVCMOS at 39 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 12
+    Info (169178): Pin sw[7] uses I/O standard 3.3-V LVCMOS at 141 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 12
+    Info (169178): Pin pb[0] uses I/O standard 3.3-V LVCMOS at 46 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 11
+    Info (169178): Pin rst_n uses I/O standard 3.3-V LVCMOS at 32 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 10
+    Info (169178): Pin clkin_50 uses I/O standard 3.3-V LVCMOS at 29 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 9
+    Info (169178): Pin pb[1] uses I/O standard 3.3-V LVCMOS at 45 File: N:/ECE124Lab4/LogicalStep_Lab4_top.vhd Line: 11
 Warning (14579): Pin leds[2] uses I/O standard 3.3-V LVCMOS located at 17 will have lower speed performance due to its location.  Refer to the product datasheet for the supported I/O speed.
 Warning (14579): Pin leds[3] uses I/O standard 3.3-V LVCMOS located at 12 will have lower speed performance due to its location.  Refer to the product datasheet for the supported I/O speed.
 Warning (14579): Pin leds[4] uses I/O standard 3.3-V LVCMOS located at 10 will have lower speed performance due to its location.  Refer to the product datasheet for the supported I/O speed.
@@ -1467,10 +1467,10 @@ Warning (14579): Pin sw[3] uses I/O standard 3.3-V LVCMOS located at 11 will hav
 Warning (14579): Pin sw[4] uses I/O standard 3.3-V LVCMOS located at 8 will have lower speed performance due to its location.  Refer to the product datasheet for the supported I/O speed.
 Warning (14579): Pin sw[5] uses I/O standard 3.3-V LVCMOS located at 6 will have lower speed performance due to its location.  Refer to the product datasheet for the supported I/O speed.
 Warning (14579): Pin sw[7] uses I/O standard 3.3-V LVCMOS located at 141 will have lower speed performance due to its location.  Refer to the product datasheet for the supported I/O speed.
-Info (144001): Generated suppressed messages file N:/ECE124/Lab4/ECE124Lab4-master_rev2/output_files/LogicalStep_Lab4_top.fit.smsg
+Info (144001): Generated suppressed messages file N:/ECE124Lab4/output_files/LogicalStep_Lab4_top.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 90 warnings
-    Info: Peak virtual memory: 1452 megabytes
-    Info: Processing ended: Tue Mar 20 09:34:00 2018
+    Info: Peak virtual memory: 1449 megabytes
+    Info: Processing ended: Tue Mar 20 11:44:30 2018
     Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:07
 
@@ -1478,6 +1478,6 @@ Info: Quartus Prime Fitter was successful. 0 errors, 90 warnings
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in N:/ECE124/Lab4/ECE124Lab4-master_rev2/output_files/LogicalStep_Lab4_top.fit.smsg.
+The suppressed messages can be found in N:/ECE124Lab4/output_files/LogicalStep_Lab4_top.fit.smsg.
 
 

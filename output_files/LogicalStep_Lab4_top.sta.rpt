@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for LogicalStep_Lab4_top
-Tue Mar 20 09:34:21 2018
+Tue Mar 20 11:44:53 2018
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -92,12 +92,12 @@ agreement for further details.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
-; Average used               ; 1.00        ;
+; Average used               ; 1.25        ;
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ; < 0.1%      ;
+;     Processor 2            ;  25.0%      ;
 +----------------------------+-------------+
 
 
@@ -706,7 +706,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Tue Mar 20 09:34:17 2018
+    Info: Processing started: Tue Mar 20 11:44:48 2018
 Info: Command: quartus_sta LogicalStep_Lab4 -c LogicalStep_Lab4_top
 Info: qsta_default_script.tcl version: #1
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -855,9 +855,9 @@ Info (332146): Worst-case minimum pulse width slack is -3.000
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 834 megabytes
-    Info: Processing ended: Tue Mar 20 09:34:21 2018
-    Info: Elapsed time: 00:00:04
+    Info: Peak virtual memory: 837 megabytes
+    Info: Processing ended: Tue Mar 20 11:44:53 2018
+    Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:02
 
 
